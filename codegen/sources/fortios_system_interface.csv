@@ -152,7 +152,7 @@ system_id_type,string,auto|user,,,,"Method in which system ID is generated. Vali
 system_id,string,,,,,Define a system ID for the aggregate interface.
 lacp_speed,string,slow|fast,,,,"How often the interface sends LACP messages. Valid values: slow, fast."
 min_links,number,,,,,Minimum number of aggregated ports that must be up.
-min_links_down,number,operational|administrative,,,,"Action to take when less than the configured minimum number of links are active. Valid values: operational, administrative."
+min_links_down,string,operational|administrative,,,,"Action to take when less than the configured minimum number of links are active. Valid values: operational, administrative."
 algorithm,string,,,,,Frame distribution algorithm.
 link_up_delay,string,,,,,Number of milliseconds to wait before considering a link is up.
 aggregate_type,string,physical|vxlan,,,,"Type of aggregation. Valid values: physical, vxlan."
@@ -324,7 +324,7 @@ ipv6.ip6_other_flag,string,enable|disable,,,,"Enable/disable the other IPv6 flag
 ipv6.ip6_max_interval,number,,4-1800,,,IPv6 maximum interval (4 to 1800 sec).
 ipv6.ip6_min_interval,number,,3-1350,,,IPv6 minimum interval (3 to 1350 sec).
 ipv6.ip6_link_mtu,number,,,,,IPv6 link MTU.
-ipv6.ra_send_mtu,number,enable|disable,,,,"Enable/disable sending link MTU in RA packet. Valid values: enable, disable."
+ipv6.ra_send_mtu,string,enable|disable,,,,"Enable/disable sending link MTU in RA packet. Valid values: enable, disable."
 ipv6.ip6_reachable_time,number,,,,,IPv6 reachable time (milliseconds; 0 means unspecified).
 ipv6.ip6_retrans_time,number,,,,,IPv6 retransmit time (milliseconds; 0 means unspecified).
 ipv6.ip6_default_life,number,,,,,Default life (sec).

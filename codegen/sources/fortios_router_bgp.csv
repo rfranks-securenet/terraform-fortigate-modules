@@ -1,7 +1,7 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: BGP Router configuration,,,,,,
 #name: routerbgp,,,,,,
-#module: bgp
+#module: router-bgp
 as_string,string,,,,,"Router AS number, asplain/asdot/asdot+ format, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as."
 as,string,,1-4294967295,1,,"(Required) Router AS number, valid from 1 to 4294967295, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as_string."
 router_id,string,,,,,Router ID.

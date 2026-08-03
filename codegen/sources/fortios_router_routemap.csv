@@ -1,6 +1,6 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: Route Map,,,,,,
-#module: bgp
+#module: router-global
 name,string,,,1,,(Required) Name.
 comments,string,,,,,Optional comments.
 rule,list(object),,,,,Rule. The structure of rule block is documented below.

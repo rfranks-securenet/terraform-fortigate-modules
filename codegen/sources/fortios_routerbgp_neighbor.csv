@@ -1,6 +1,6 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: BGP Peer,,,,,,
-#module: bgp
+#module: router-bgp
 ip,string,,,1,,(Required) IP/IPv6 address of neighbor.
 name,string,,,,,Name of this neighbor.
 advertisement_interval,number,,,,,Minimum interval (sec) between sending updates.

@@ -1,6 +1,6 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: IPv6 Routing prefix list,,,,,,
-#module: bgp
+#module: router-global
 name,string,,,1,,(Required) Name.
 comments,string,,,,,Comment.
 rule,list(object),,,,,IPv6 prefix list rule. The structure of rule block is documented below.

@@ -1,0 +1,219 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: Phase 1 interfaces to create,,,,,,
+#module: ipsec
+name,string,,,,,IPsec remote gateway name.
+type,string,static|dynamic|ddns,,,,"Remote gateway type. Valid values: static, dynamic, ddns."
+interface,string,,,1,,"(Required) Local physical, aggregate, or VLAN outgoing interface."
+ip_version,number,4|6,,,,"IP version to use for VPN interface. Valid values: 4, 6."
+ike_version,number,1|2,,,,"IKE protocol version. Valid values: 1, 2."
+local_gw,string,,,,,IPv4 address of the local gateway's external interface.
+local_gw6,string,,,,,IPv6 address of the local gateway's external interface.
+remote_gw,string,,,,,IPv4 address of the remote gateway's external interface.
+remote_gw6,string,,,,,IPv6 address of the remote gateway's external interface.
+remotegw_ddns,string,,,,,"Domain name of remote gateway. For example, name.ddns.com."
+keylife,number,,,,,Time to wait in seconds before phase 1 encryption key expires.
+certificate,list(string),,,,,The names of up to 4 signed personal certificates. The structure of certificate block is documented below.
+authmethod,string,psk|signature,,,,"Authentication method. Valid values: psk, signature."
+authmethod_remote,string,psk|signature,,,,"Authentication method (remote side). Valid values: psk, signature."
+mode,string,aggressive|main,,,,"The ID protection mode used to establish a secure channel. Valid values: aggressive, main."
+peertype,string,any|one|dialup|peer|peergrp,,,,"Accept this peer type. Valid values: any, one, dialup, peer, peergrp."
+peerid,string,,,,,Accept this peer identity.
+default_gw,string,,,,,IPv4 address of default route gateway to use for traffic exiting the interface.
+default_gw_priority,number,,,,,Priority for default gateway route. A higher priority number signifies a less preferred route.
+usrgrp,string,,,,,User group name for dialup peers.
+peer,string,,,,,Accept this peer certificate.
+peergrp,string,,,,,Accept this peer certificate group.
+monitor,string,,,,,IPsec interface as backup for primary interface.
+monitor_min,number,,,,,Minimum number of links to become degraded before activating this interface. Zero (0) means all links must be down before activating this interface.
+monitor_hold_down_type,string,immediate|delay|time,,,,"Recovery time method when primary interface re-establishes. Valid values: immediate, delay, time."
+monitor_hold_down_delay,number,,,,,Time to wait in seconds before recovery once primary re-establishes.
+monitor_hold_down_weekday,string,everyday|sunday|monday|tuesday|wednesday|thursday|friday|saturday,,,,"Day of the week to recover once primary re-establishes. Valid values: everyday, sunday, monday, tuesday, wednesday, thursday, friday, saturday."
+monitor_hold_down_time,string,,,,,Time of day at which to fail back to primary after it re-establishes.
+net_device,string,enable|disable,,,,"Enable/disable kernel device creation. Valid values: enable, disable."
+tunnel_search,string,selectors|nexthop,,,,"Tunnel search method for when the interface is shared. Valid values: selectors, nexthop."
+passive_mode,string,enable|disable,,,,"Enable/disable IPsec passive mode for static tunnels. Valid values: enable, disable."
+exchange_interface_ip,string,enable|disable,,,,"Enable/disable exchange of IPsec interface IP address. Valid values: enable, disable."
+exchange_ip_addr4,string,,,,,IPv4 address to exchange with peers.
+exchange_ip_addr6,string,,,,,IPv6 address to exchange with peers
+aggregate_member,string,enable|disable,,,,"Enable/disable use as an aggregate member. Valid values: enable, disable."
+aggregate_weight,number,,,,,Link weight for aggregate.
+packet_redistribution,string,enable|disable,,,,"Enable/disable packet distribution (RPS) on the IPsec interface. Valid values: enable, disable."
+peer_egress_shaping,string,enable|disable,,,,"Enable/disable peer egress shaping. Valid values: enable, disable."
+peer_egress_shaping_value,number,,0-100000000,,,Configure outbound bandwidth to use for peer egress shaping in kbps (default = 0). On FortiOS versions 7.6.4-7.6.7: 0 - 80000000. On FortiOS versions >= 8.0.0: 0 - 100000000.
+multipath,number,,0-31,,,"Configure the number of additional security associations (SAs) on a phase1 interface for each phase2 interface (0 - 31, default = 0)."
+mode_cfg,string,disable|enable,,,,"Enable/disable configuration method. Valid values: disable, enable."
+mode_cfg_allow_client_selector,string,disable|enable,,,,"Enable/disable mode-cfg client to use custom phase2 selectors. Valid values: disable, enable."
+assign_ip,string,disable|enable,,,,"Enable/disable assignment of IP to IPsec interface via configuration method. Valid values: disable, enable."
+assign_ip_from,string,range|usrgrp|dhcp|name,,,,"Method by which the IP address will be assigned. Valid values: range, usrgrp, dhcp, name."
+ipv4_start_ip,string,,,,,Start of IPv4 range.
+ipv4_end_ip,string,,,,,End of IPv4 range.
+ipv4_netmask,string,,,,,IPv4 Netmask.
+dhcp_ra_giaddr,string,,,,,Relay agent gateway IP address to use in the giaddr field of DHCP requests.
+dhcp6_ra_linkaddr,string,,,,,Relay agent IPv6 link address to use in DHCP6 requests.
+dns_mode,string,manual|auto,,,,"DNS server mode. Valid values: manual, auto."
+ipv4_dns_server1,string,,,,,IPv4 DNS server 1.
+ipv4_dns_server2,string,,,,,IPv4 DNS server 2.
+ipv4_dns_server3,string,,,,,IPv4 DNS server 3.
+internal_domain_list,list(string),,,,,One or more internal domain names in quotes separated by spaces. The structure of internal_domain_list block is documented below.
+dns_suffix_search,list(string),,,,,One or more DNS domain name suffixes in quotes separated by spaces. The structure of dns_suffix_search block is documented below.
+ipv4_wins_server1,string,,,,,WINS server 1.
+ipv4_wins_server2,string,,,,,WINS server 2.
+ipv4_exclude_range,list(object),,,,,Configuration Method IPv4 exclude ranges. The structure of ipv4_exclude_range block is documented below.
+ipv4_exclude_range.id,number,,,,,
+ipv4_exclude_range.start_ip,string,,,,,
+ipv4_exclude_range.end_ip,string,,,,,
+ipv4_split_include,string,,,,,IPv4 split-include subnets.
+split_include_service,string,,,,,Split-include services.
+ipv4_name,string,,,,,IPv4 address name.
+ipv6_start_ip,string,,,,,Start of IPv6 range.
+ipv6_end_ip,string,,,,,End of IPv6 range.
+ipv6_prefix,string,,,,,IPv6 prefix.
+ipv6_dns_server1,string,,,,,IPv6 DNS server 1.
+ipv6_dns_server2,string,,,,,IPv6 DNS server 2.
+ipv6_dns_server3,string,,,,,IPv6 DNS server 3.
+ipv6_exclude_range,list(object),,,,,Configuration method IPv6 exclude ranges. The structure of ipv6_exclude_range block is documented below.
+ipv6_exclude_range.id,number,,,,,
+ipv6_exclude_range.start_ip,string,,,,,
+ipv6_exclude_range.end_ip,string,,,,,
+ipv6_split_include,string,,,,,IPv6 split-include subnets.
+ipv6_name,string,,,,,IPv6 address name.
+ip_delay_interval,number,,0-28800,,,IP address reuse delay interval in seconds (0 - 28800).
+unity_support,string,disable|enable,,,,"Enable/disable support for Cisco UNITY Configuration Method extensions. Valid values: disable, enable."
+domain,string,,,,,Instruct unity clients about the default DNS domain.
+banner,string,,,,,Message that unity client should display after connecting.
+include_local_lan,string,disable|enable,,,,"Enable/disable allow local LAN access on unity clients. Valid values: disable, enable."
+ipv4_split_exclude,string,,,,,IPv4 subnets that should not be sent over the IPsec tunnel.
+ipv6_split_exclude,string,,,,,IPv6 subnets that should not be sent over the IPsec tunnel.
+save_password,string,disable|enable,,,,"Enable/disable saving XAuth username and password on VPN clients. Valid values: disable, enable."
+client_auto_negotiate,string,disable|enable,,,,"Enable/disable allowing the VPN client to bring up the tunnel when there is no traffic. Valid values: disable, enable."
+client_keep_alive,string,disable|enable,,,,"Enable/disable allowing the VPN client to keep the tunnel up when there is no traffic. Valid values: disable, enable."
+backup_gateway,list(string),,,,,Instruct unity clients about the backup gateway address(es). The structure of backup_gateway block is documented below.
+proposal,string,,,1,,(Required) Phase1 proposal.
+add_route,string,disable|enable,,,,"Enable/disable control addition of a route to peer destination selector. Valid values: disable, enable."
+add_gw_route,string,enable|disable,,,,"Enable/disable automatically add a route to the remote gateway. Valid values: enable, disable."
+psksecret,string,,,,,Pre-shared secret for PSK authentication (ASCII string or hexadecimal encoded with a leading 0x).
+psksecret_remote,string,,,,,Pre-shared secret for remote side PSK authentication (ASCII string or hexadecimal encoded with a leading 0x).
+keepalive,number,,,,,NAT-T keep alive interval.
+distance,number,,1-255,,,Distance for routes added by IKE (1 - 255).
+priority,number,,1-65535,,,Priority for routes added by IKE. On FortiOS versions 6.2.0-7.0.3: 0 - 4294967295. On FortiOS versions >= 7.0.4: 1 - 65535.
+localid,string,,,,,Local ID.
+localid_type,string,auto|fqdn|user-fqdn|keyid|address|asn1dn,,,,"Local ID type. Valid values: auto, fqdn, user-fqdn, keyid, address, asn1dn."
+auto_negotiate,string,enable|disable,,,,"Enable/disable automatic initiation of IKE SA negotiation. Valid values: enable, disable."
+negotiate_timeout,number,,1-300,,,IKE SA negotiation timeout in seconds (1 - 300).
+fragmentation,string,enable|disable,,,,"Enable/disable fragment IKE message on re-transmission. Valid values: enable, disable."
+ip_fragmentation,string,pre-encapsulation|post-encapsulation,,,,"Determine whether IP packets are fragmented before or after IPsec encapsulation. Valid values: pre-encapsulation, post-encapsulation."
+dpd,string,disable|on-idle|on-demand,,,,"Dead Peer Detection mode. Valid values: disable, on-idle, on-demand."
+dpd_retrycount,number,,,,,Number of DPD retry attempts.
+dpd_retryinterval,number,,,,,DPD retry interval.
+forticlient_enforcement,string,enable|disable,,,,"Enable/disable FortiClient enforcement. Valid values: enable, disable."
+comments,string,,,,,Comment.
+npu_offload,string,enable|disable,,,,"Enable/disable offloading NPU. Valid values: enable, disable."
+send_cert_chain,string,enable|disable,,,,"Enable/disable sending certificate chain. Valid values: enable, disable."
+dhgrp,number,1|2|5|14|15|16|17|18|19|20|21|27|28|29|30|31|32,,,,"DH group. Valid values: 1, 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 27, 28, 29, 30, 31, 32."
+addke1,string,,,,,ADDKE1 group.
+addke2,string,,,,,ADDKE2 group.
+addke3,string,,,,,ADDKE3 group.
+addke4,string,,,,,ADDKE4 group.
+addke5,string,,,,,ADDKE5 group.
+addke6,string,,,,,ADDKE6 group.
+addke7,string,,,,,ADDKE7 group.
+suite_b,string,disable|suite-b-gcm-128|suite-b-gcm-256,,,,"Use Suite-B. Valid values: disable, suite-b-gcm-128, suite-b-gcm-256."
+eap,string,enable|disable,,,,"Enable/disable IKEv2 EAP authentication. Valid values: enable, disable."
+eap_identity,string,use-id-payload|send-request,,,,"IKEv2 EAP peer identity type. Valid values: use-id-payload, send-request."
+eap_exclude_peergrp,string,,,,,Peer group excluded from EAP authentication.
+eap_cert_auth,string,enable|disable,,,,"Enable/disable peer certificate authentication in addition to EAP if peer is a FortiClient endpoint. Valid values: enable, disable."
+acct_verify,string,enable|disable,,,,"Enable/disable verification of RADIUS accounting record. Valid values: enable, disable."
+ppk,string,disable|allow|require,,,,"Enable/disable IKEv2 Postquantum Preshared Key (PPK). Valid values: disable, allow, require."
+ppk_secret,string,,,,,IKEv2 Postquantum Preshared Key (ASCII string or hexadecimal encoded with a leading 0x).
+ppk_identity,string,,,,,IKEv2 Postquantum Preshared Key Identity.
+wizard_type,string,,,,,GUI VPN Wizard Type.
+xauthtype,string,disable|client|pap|chap|auto,,,,"XAuth type. Valid values: disable, client, pap, chap, auto."
+reauth,string,disable|enable,,,,"Enable/disable re-authentication upon IKE SA lifetime expiration. Valid values: disable, enable."
+authusr,string,,,,,XAuth user name.
+authpasswd,string,,,,,XAuth password (max 35 characters).
+group_authentication,string,enable|disable,,,,"Enable/disable IKEv2 IDi group authentication. Valid values: enable, disable."
+group_authentication_secret,string,,,,,Password for IKEv2 ID group authentication. ASCII string or hexadecimal indicated by a leading 0x.
+authusrgrp,string,,,,,Authentication user group.
+mesh_selector_type,string,disable|subnet|host,,,,"Add selectors containing subsets of the configuration depending on traffic. Valid values: disable, subnet, host."
+idle_timeout,string,enable|disable,,,,"Enable/disable IPsec tunnel idle timeout. Valid values: enable, disable."
+shared_idle_timeout,string,enable|disable,,,,"Enable/disable IPsec tunnel shared idle timeout. Valid values: enable, disable."
+idle_timeoutinterval,number,,5-43200,,,IPsec tunnel idle timeout in minutes (5 - 43200).
+ha_sync_esp_seqno,string,enable|disable,,,,"Enable/disable sequence number jump ahead for IPsec HA. Valid values: enable, disable."
+fgsp_sync,string,enable|disable,,,,"Enable/disable IPsec syncing of tunnels for FGSP IPsec. Valid values: enable, disable."
+inbound_dscp_copy,string,enable|disable,,,,"Enable/disable copy the dscp in the ESP header to the inner IP Header. Valid values: enable, disable."
+auto_discovery_sender,string,enable|disable,,,,"Enable/disable sending auto-discovery short-cut messages. Valid values: enable, disable."
+auto_discovery_receiver,string,enable|disable,,,,"Enable/disable accepting auto-discovery short-cut messages. Valid values: enable, disable."
+auto_discovery_forwarder,string,enable|disable,,,,"Enable/disable forwarding auto-discovery short-cut messages. Valid values: enable, disable."
+auto_discovery_psk,string,enable|disable,,,,"Enable/disable use of pre-shared secrets for authentication of auto-discovery tunnels. Valid values: enable, disable."
+auto_discovery_shortcuts,string,independent|dependent,,,,"Control deletion of child short-cut tunnels when the parent tunnel goes down. Valid values: independent, dependent."
+auto_discovery_crossover,string,allow|block,,,,"Allow/block set-up of short-cut tunnels between different network IDs. Valid values: allow, block."
+auto_discovery_offer_interval,number,,1-300,,,"Interval between shortcut offer messages in seconds (1 - 300, default = 5)."
+auto_discovery_dialup_placeholder,string,disable|enable,,,,"Control if this dynamic gateway is used for shortcut connections only. Valid values: disable, enable."
+encapsulation,string,,,,,Enable/disable GRE/VXLAN encapsulation.
+encapsulation_address,string,ike|ipv4|ipv6,,,,"Source for GRE/VXLAN tunnel address. Valid values: ike, ipv4, ipv6."
+encap_local_gw4,string,,,,,Local IPv4 address of GRE/VXLAN tunnel.
+encap_local_gw6,string,,,,,Local IPv6 address of GRE/VXLAN tunnel.
+encap_remote_gw4,string,,,,,Remote IPv4 address of GRE/VXLAN tunnel.
+encap_remote_gw6,string,,,,,Remote IPv6 address of GRE/VXLAN tunnel.
+vni,string,,,,,VNI of VXLAN tunnel.
+nattraversal,string,enable|disable|forced,,,,"Enable/disable NAT traversal. Valid values: enable, disable, forced."
+esn,string,require|allow|disable,,,,"Extended sequence number (ESN) negotiation. Valid values: require, allow, disable."
+fragmentation_mtu,number,,500-16000,,,IKE fragmentation MTU (500 - 16000).
+childless_ike,string,enable|disable,,,,"Enable/disable childless IKEv2 initiation (RFC 6023). Valid values: enable, disable."
+azure_ad_autoconnect,string,enable|disable,,,,"Enable/disable Azure AD Auto-Connect for FortiClient. Valid values: enable, disable."
+client_resume,string,enable|disable,,,,"Enable/disable resumption of offline FortiClient sessions. When a FortiClient enabled laptop is closed or enters sleep/hibernate mode, enabling this feature allows FortiClient to keep the tunnel during this period, and allows users to immediately resume using the IPsec tunnel when the device wakes up. Valid values: enable, disable."
+client_resume_interval,number,,120-172800,,,Maximum time in seconds during which a VPN client may resume using a tunnel after a client PC has entered sleep mode or temporarily lost its network connection (120 - 172800). On FortiOS versions 7.4.4: default = 1800. On FortiOS versions >= 7.6.0: default = 7200.
+rekey,string,enable|disable,,,,"Enable/disable phase1 rekey. Valid values: enable, disable."
+digital_signature_auth,string,enable|disable,,,,"Enable/disable IKEv2 Digital Signature Authentication (RFC 7427). Valid values: enable, disable."
+signature_hash_alg,string,,,,,Digital Signature Authentication hash algorithms.
+rsa_signature_format,string,pkcs1|pss,,,,"Digital Signature Authentication RSA signature format. Valid values: pkcs1, pss."
+rsa_signature_hash_override,string,enable|disable,,,,"Enable/disable IKEv2 RSA signature hash algorithm override. Valid values: enable, disable."
+enforce_unique_id,string,disable|keep-new|keep-old,,,,"Enable/disable peer ID uniqueness check. Valid values: disable, keep-new, keep-old."
+cert_id_validation,string,enable|disable,,,,"Enable/disable cross validation of peer ID and the identity in the peer's certificate as specified in RFC 4945. Valid values: enable, disable."
+fec_egress,string,enable|disable,,,,"Enable/disable Forward Error Correction for egress IPsec traffic. Valid values: enable, disable."
+fec_separate_redundant_tunnel,string,enable|disable,,,,"Enable/disable Forward Error Correction redundancy on separate tunnel. Valid values: enable, disable."
+fec_send_timeout,number,,1-1000,,,Timeout in milliseconds before sending Forward Error Correction packets (1 - 1000).
+fec_base,number,,1-40,,,Number of base Forward Error Correction packets. On FortiOS versions 6.2.4-7.0.1: 1 - 100. On FortiOS versions 7.0.2-7.6.7: 1 - 20. On FortiOS versions >= 8.0.0: 1 - 40.
+fec_codec_string,string,rs|xor,,,,"Forward Error Correction encoding/decoding algorithm. Due to the data type change of API, for other versions of FortiOS, please check variable fec-codec. Valid values: rs, xor."
+fec_codec,number,,0-1,,,"ipsec fec encoding/decoding algorithm (0: reed-solomon, 1: xor). Due to the data type change of API, for other versions of FortiOS, please check variable fec-codec_string."
+fec_redundant,number,,1-20,,,"Number of redundant Forward Error Correction packets. On FortiOS versions 6.2.4-7.0.1: 0 - 100, when fec-codec is reed-solomon or 1 when fec-codec is xor. On FortiOS versions 7.0.2-7.6.7: 1 - 5 for reed-solomon, 1 for xor. On FortiOS versions >= 8.0.0: 1 - 20 for reed-solomon, 1 for xor."
+fec_ingress,string,enable|disable,,,,"Enable/disable Forward Error Correction for ingress IPsec traffic. Valid values: enable, disable."
+fec_receive_timeout,number,,1-1000,,,Timeout in milliseconds before dropping Forward Error Correction packets. On FortiOS versions 6.2.4-7.0.1: 1 - 10000. On FortiOS versions >= 7.0.2: 1 - 1000.
+fec_health_check,string,,,,,SD-WAN health check.
+fec_mapping_profile,string,,,,,Forward Error Correction (FEC) mapping profile.
+network_overlay,string,disable|enable,,,,"Enable/disable network overlays. Valid values: disable, enable."
+network_id,number,,,,,VPN gateway network ID.
+dev_id_notification,string,disable|enable,,,,"Enable/disable device ID notification. Valid values: disable, enable."
+dev_id,string,,,,,Device ID carried by the device ID notification.
+loopback_asymroute,string,enable|disable,,,,"Enable/disable asymmetric routing for IKE traffic on loopback interface. Valid values: enable, disable."
+link_cost,number,,,,,VPN tunnel underlay link cost.
+kms,string,,,,,Key Management Services server.
+exchange_fgt_device_id,string,enable|disable,,,,"Enable/disable device identifier exchange with peer FortiGate units for use of VPN monitor data by FortiManager. Valid values: enable, disable."
+ipv6_auto_linklocal,string,enable|disable,,,,"Enable/disable auto generation of IPv6 link-local address using last 8 bytes of mode-cfg assigned IPv6 address. Valid values: enable, disable."
+ems_sn_check,string,enable|disable,,,,"Enable/disable verification of EMS serial number. Valid values: enable, disable."
+remote_gw_match,string,,,,,Set type of IPv4 remote gateway address matching.
+remote_gw_subnet,string,,,,,IPv4 address and subnet mask.
+remote_gw_start_ip,string,,,,,First IPv4 address in the range.
+remote_gw_end_ip,string,,,,,Last IPv4 address in the range.
+remote_gw_country,string,,,,,IPv4 addresses associated to a specific country.
+remote_gw_ztna_tags,list(string),,,,,IPv4 ZTNA posture tags. The structure of remote_gw_ztna_tags block is documented below.
+remote_gw6_match,string,any|ipprefix|iprange|geography,,,,"Set type of IPv6 remote gateway address matching. Valid values: any, ipprefix, iprange, geography."
+remote_gw6_subnet,string,,,,,IPv6 address and prefix.
+remote_gw6_start_ip,string,,,,,First IPv6 address in the range.
+remote_gw6_end_ip,string,,,,,Last IPv6 address in the range.
+remote_gw6_country,string,,,,,IPv6 addresses associated to a specific country.
+cert_peer_username_validation,string,none|othername|rfc822name|cn,,,,"Enable/disable cross validation of peer username and the identity in the peer's certificate. Valid values: none, othername, rfc822name, cn."
+cert_peer_username_strip,string,disable|enable,,,,"Enable/disable domain stripping on certificate identity. Valid values: disable, enable."
+ztna_cert_scim_authorization,string,disable|email|user-name|display-name|external-id,,,,"Enable/disable SCIM authorization based on the ZTNA peer certificate identity. Valid values: disable, email, user-name, display-name, external-id."
+cert_trust_store,string,local|ems,,,,"CA certificate trust store. Valid values: local, ems."
+qkd,string,disable|allow|require,,,,"Enable/disable use of Quantum Key Distribution (QKD) server. Valid values: disable, allow, require."
+qkd_hybrid,string,disable|allow|require,,,,"Enable/disable use of Quantum Key Distribution (QKD) hybrid keys. Valid values: disable, allow, require."
+qkd_profile,string,,,,,Quantum Key Distribution (QKD) server profile.
+transport,string,,,,,Set IKE transport protocol.
+fortinet_esp,string,enable|disable,,,,"Enable/disable Fortinet ESP encapsulaton. Valid values: enable, disable."
+auto_transport_threshold,number,,,,,Timeout in seconds before falling back to next transport protocol.
+fallback_tcp_threshold,number,,,,,Timeout in seconds before falling back IKE/IPsec traffic to tcp.
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

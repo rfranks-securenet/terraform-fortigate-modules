@@ -1,0 +1,58 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: Phase 2 interfaces to create,,,,,,
+#module: ipsec
+name,string,,,,,IPsec tunnel name.
+phase1name,string,,,1,,(Required) Phase 1 determines the options required for phase 2.
+dhcp_ipsec,string,enable|disable,,,,"Enable/disable DHCP-IPsec. Valid values: enable, disable."
+proposal,string,,,1,,(Required) Phase2 proposal.
+pfs,string,enable|disable,,,,"Enable/disable PFS feature. Valid values: enable, disable."
+ipv4_df,string,enable|disable,,,,"Enable/disable setting and resetting of IPv4 'Don't Fragment' bit. Valid values: enable, disable."
+dhgrp,string,1|2|5|14|15|16|17|18|19|20|21|27|28|29|30|31|32,,,,"Phase2 DH group. Valid values: 1, 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 27, 28, 29, 30, 31, 32."
+addke1,string,,,,,phase2 ADDKE1 group.
+addke2,string,,,,,phase2 ADDKE2 group.
+addke3,string,,,,,phase2 ADDKE3 group.
+addke4,string,,,,,phase2 ADDKE4 group.
+addke5,string,,,,,phase2 ADDKE5 group.
+addke6,string,,,,,phase2 ADDKE6 group.
+addke7,string,,,,,phase2 ADDKE7 group.
+replay,string,enable|disable,,,,"Enable/disable replay detection. Valid values: enable, disable."
+keepalive,string,enable|disable,,,,"Enable/disable keep alive. Valid values: enable, disable."
+auto_negotiate,string,enable|disable,,,,"Enable/disable IPsec SA auto-negotiation. Valid values: enable, disable."
+add_route,string,phase1|enable|disable,,,,"Enable/disable automatic route addition. Valid values: phase1, enable, disable."
+inbound_dscp_copy,string,phase1|enable|disable,,,,"Enable/disable copying of the DSCP field in the ESP header to the inner IP header. Valid values: phase1, enable, disable."
+auto_discovery_sender,string,phase1|enable|disable,,,,"Enable/disable sending short-cut messages. Valid values: phase1, enable, disable."
+auto_discovery_forwarder,string,phase1|enable|disable,,,,"Enable/disable forwarding short-cut messages. Valid values: phase1, enable, disable."
+keylifeseconds,number,,120-172800,,,Phase2 key life in time in seconds (120 - 172800).
+keylifekbs,number,,5120-4294967295,,,Phase2 key life in number of kilobytes of traffic (5120 - 4294967295).
+keylife_type,string,seconds|kbs|both,,,,"Keylife type. Valid values: seconds, kbs, both."
+single_source,string,enable|disable,,,,"Enable/disable single source IP restriction. Valid values: enable, disable."
+route_overlap,string,use-old|use-new|allow,,,,"Action for overlapping routes. Valid values: use-old, use-new, allow."
+encapsulation,string,tunnel-mode|transport-mode,,,,"ESP encapsulation mode. Valid values: tunnel-mode, transport-mode."
+l2tp,string,enable|disable,,,,"Enable/disable L2TP over IPsec. Valid values: enable, disable."
+comments,string,,,,,Comment.
+initiator_ts_narrow,string,enable|disable,,,,"Enable/disable traffic selector narrowing for IKEv2 initiator. Valid values: enable, disable."
+diffserv,string,enable|disable,,,,"Enable/disable applying DSCP value to the IPsec tunnel outer IP header. Valid values: enable, disable."
+diffservcode,string,,,,,DSCP value to be applied to the IPsec tunnel outer IP header.
+protocol,number,,1-255,,,Quick mode protocol selector (1 - 255 or 0 for all).
+src_name,string,,,,,Local proxy ID name.
+src_name6,string,,,,,Local proxy ID name.
+src_addr_type,string,subnet|range|ip|name|subnet6|range6|ip6|name6,,,,"Local proxy ID type. Valid values: subnet, range, ip, name, subnet6, range6, ip6, name6."
+src_start_ip,string,,,,,Local proxy ID start.
+src_start_ip6,string,,,,,Local proxy ID IPv6 start.
+src_end_ip,string,,,,,Local proxy ID end.
+src_end_ip6,string,,,,,Local proxy ID IPv6 end.
+src_subnet,string,,,,,Local proxy ID subnet.
+src_subnet6,string,,,,,Local proxy ID IPv6 subnet.
+src_port,number,,1-65535,,,Quick mode source port (1 - 65535 or 0 for all).
+dst_name,string,,,,,Remote proxy ID name.
+dst_name6,string,,,,,Remote proxy ID name.
+dst_addr_type,string,subnet|range|ip|name|subnet6|range6|ip6|name6,,,,"Remote proxy ID type. Valid values: subnet, range, ip, name, subnet6, range6, ip6, name6."
+dst_start_ip,string,,,,,Remote proxy ID IPv4 start.
+dst_start_ip6,string,,,,,Remote proxy ID IPv6 start.
+dst_end_ip,string,,,,,Remote proxy ID IPv4 end.
+dst_end_ip6,string,,,,,Remote proxy ID IPv6 end.
+dst_subnet,string,,,,,Remote proxy ID IPv4 subnet.
+dst_subnet6,string,,,,,Remote proxy ID IPv6 subnet.
+dst_port,number,,1-65535,,,Quick mode destination port (1 - 65535 or 0 for all).
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

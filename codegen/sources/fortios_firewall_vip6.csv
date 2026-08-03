@@ -1,0 +1,122 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: VIP6s to create,,,,,,
+#module: vips
+name,string,,,,,Virtual ip6 name.
+fosid,string,,,,,Custom defined ID.
+uuid,string,,,,,Universally Unique Identifier (UUID; automatically assigned but can be manually reset).
+comment,string,,,,,Comment.
+type,string,,,,,Configure a static NAT or server load balance VIP.
+src_filter,list(string),,,,,Source IP6 filter (x:x:x:x:x:x:x:x/x). Separate addresses with spaces. The structure of src_filter block is documented below.
+src_vip_filter,string,disable|enable,,,,"Enable/disable use of 'src-filter' to match destinations for the reverse SNAT rule. Valid values: disable, enable."
+extip,string,,,1,,(Required) IP address or address range on the external interface that you want to map to an address or address range on the destination network.
+mappedip,string,,,1,,(Required) Mapped IP address range in the format startIP-endIP.
+nat_source_vip,string,disable|enable,,,,"Enable to perform SNAT on traffic from mappedip to the extip for all egress interfaces. Valid values: disable, enable."
+ndp_reply,string,disable|enable,,,,"Enable/disable this FortiGate unit's ability to respond to NDP requests for this virtual IP address (default = enable). Valid values: disable, enable."
+arp_reply,string,disable|enable,,,,"Enable to respond to ARP requests for this virtual IP address. Enabled by default. Valid values: disable, enable."
+portforward,string,disable|enable,,,,"Enable port forwarding. Valid values: disable, enable."
+protocol,string,tcp|udp|sctp,,,,"Protocol to use when forwarding packets. Valid values: tcp, udp, sctp."
+extport,string,,,,,Incoming port number range that you want to map to a port number range on the destination network.
+mappedport,string,,,,,Port number range on the destination network to which the external port number range is mapped.
+color,string,,,,,Color of icon on the GUI.
+ldb_method,string,static|round-robin|weighted|least-session|least-rtt|first-alive|http-host,,,,"Method used to distribute sessions to real servers. Valid values: static, round-robin, weighted, least-session, least-rtt, first-alive, http-host."
+server_type,string,http|https|imaps|pop3s|smtps|ssl|tcp|udp|ip,,,,"Protocol to be load balanced by the virtual server (also called the server load balance virtual IP). Valid values: http, https, imaps, pop3s, smtps, ssl, tcp, udp, ip."
+http_redirect,string,enable|disable,,,,"Enable/disable redirection of HTTP to HTTPS Valid values: enable, disable."
+persistence,string,none|http-cookie|ssl-session-id,,,,"Configure how to make sure that clients connect to the same server every time they make a request that is part of the same session. Valid values: none, http-cookie, ssl-session-id."
+h2_support,string,enable|disable,,,,"Enable/disable HTTP2 support (default = enable). Valid values: enable, disable."
+h3_support,string,enable|disable,,,,"Enable/disable HTTP3/QUIC support (default = disable). Valid values: enable, disable."
+quic,object,,,,,QUIC setting. The structure of quic block is documented below.
+quic.max_idle_timeout,number,,1-60000,,,"Maximum idle timeout milliseconds (1 - 60000, default = 30000)."
+quic.max_udp_payload_size,number,,1200-1500,,,"Maximum UDP payload size in bytes (1200 - 1500, default = 1500)."
+quic.active_connection_id_limit,number,,1-8,,,"Active connection ID limit (1 - 8, default = 2)."
+quic.ack_delay_exponent,number,,1-20,,,"ACK delay exponent (1 - 20, default = 3)."
+quic.max_ack_delay,number,,1-16383,,,"Maximum ACK delay in milliseconds (1 - 16383, default = 25)."
+quic.max_datagram_frame_size,number,,1-1500,,,"Maximum datagram frame size in bytes (1 - 1500, default = 1500)."
+quic.active_migration,string,enable|disable,,,,"Enable/disable active migration (default = disable). Valid values: enable, disable."
+quic.grease_quic_bit,string,enable|disable,,,,"Enable/disable grease QUIC bit (default = enable). Valid values: enable, disable."
+nat66,string,disable|enable,,,,"Enable/disable DNAT66. Valid values: disable, enable."
+nat64,string,disable|enable,,,,"Enable/disable DNAT64. Valid values: disable, enable."
+add_nat64_route,string,disable|enable,,,,"Enable/disable adding NAT64 route. Valid values: disable, enable."
+auth_virtual_host,string,,,,,Virtual host for authentication portal.
+empty_cert_action,string,accept|block|accept-unmanageable,,,,"Action for an empty client certificate. Valid values: accept, block, accept-unmanageable."
+user_agent_detect,string,disable|enable,,,,"Enable/disable detecting device type by HTTP user-agent if no client certificate is provided. Valid values: disable, enable."
+client_cert,string,disable|enable,,,,"Enable/disable requesting client certificate. Valid values: disable, enable."
+realservers,list(object),,,,,Select the real servers that this server load balancing VIP will distribute traffic to. The structure of realservers block is documented below.
+realservers.id,number,,,,,Real server ID.
+realservers.ip,string,,,,,IPv6 address of the real server.
+realservers.port,number,,,,,Port for communicating with the real server. Required if port forwarding is enabled.
+realservers.status,string,active|standby|disable,,,,"Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no traffic is sent. Valid values: active, standby, disable."
+realservers.weight,number,,,,,"Weight of the real server. If weighted load balancing is enabled, the server with the highest weight gets more connections."
+realservers.holddown_interval,number,,,,,Time in seconds that the health check monitor continues to monitor an unresponsive server that should be active.
+realservers.healthcheck,string,disable|enable|vip,,,,"Enable to check the responsiveness of the real server before forwarding traffic. Valid values: disable, enable, vip."
+realservers.http_host,string,,,,,HTTP server domain name in HTTP header.
+realservers.translate_host,string,enable|disable,,,,"Enable/disable translation of hostname/IP from virtual server to real server. Valid values: enable, disable."
+realservers.max_connections,number,,,,,"Max number of active connections that can directed to the real server. When reached, sessions are sent to other real servers."
+realservers.monitor,string,,,,,Name of the health check monitor to use when polling to determine a virtual server's connectivity status.
+realservers.client_ip,string,,,,,Only clients in this IP range can connect to this real server.
+realservers.verify_cert,string,enable|disable,,,,"Enable/disable certificate verification of the real server. Valid values: enable, disable."
+http_cookie_domain_from_host,string,disable|enable,,,,"Enable/disable use of HTTP cookie domain from host field in HTTP. Valid values: disable, enable."
+http_cookie_domain,string,,,,,Domain that HTTP cookie persistence should apply to.
+http_cookie_path,string,,,,,Limit HTTP cookie persistence to the specified path.
+http_cookie_generation,string,,,,,Generation of HTTP cookie to be accepted. Changing invalidates all existing cookies.
+http_cookie_age,number,,,,,Time in minutes that client web browsers should keep a cookie. Default is 60 seconds. 0 = no time limit.
+http_cookie_share,string,disable|same-ip,,,,"Control sharing of cookies across virtual servers. same-ip means a cookie from one virtual server can be used by another. Disable stops cookie sharing. Valid values: disable, same-ip."
+https_cookie_secure,string,disable|enable,,,,"Enable/disable verification that inserted HTTPS cookies are secure. Valid values: disable, enable."
+http_multiplex,string,enable|disable,,,,"Enable/disable HTTP multiplexing. Valid values: enable, disable."
+http_ip_header,string,enable|disable,,,,"For HTTP multiplexing, enable to add the original client IP address in the XForwarded-For HTTP header. Valid values: enable, disable."
+http_ip_header_name,string,,,,,"For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this header. If empty, X-Forwarded-For is used."
+outlook_web_access,string,disable|enable,,,,"Enable to add the Front-End-Https header for Microsoft Outlook Web Access. Valid values: disable, enable."
+weblogic_server,string,disable|enable,,,,"Enable to add an HTTP header to indicate SSL offloading for a WebLogic server. Valid values: disable, enable."
+websphere_server,string,disable|enable,,,,"Enable to add an HTTP header to indicate SSL offloading for a WebSphere server. Valid values: disable, enable."
+ssl_mode,string,half|full,,,,"Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from the FortiGate to the server (full). Valid values: half, full."
+ssl_upstream,string,enable|disable,,,,"Apply SSL encryption between the FortiGate and the upstream server (default = disable). Valid values: enable, disable."
+ssl_certificate,string,,,,,The name of the SSL certificate to use for SSL acceleration.
+ssl_server_client_certificate,string,,,,,Name of the client certificate presented to realserver during SSL/TLS handshake if requested.
+ssl_dh_bits,string,768|1024|1536|2048|3072|4096,,,,"Number of bits to use in the Diffie-Hellman exchange for RSA encryption of SSL sessions. Valid values: 768, 1024, 1536, 2048, 3072, 4096."
+ssl_algorithm,string,high|medium|low|custom,,,,"Permitted encryption algorithms for SSL sessions according to encryption strength. Valid values: high, medium, low, custom."
+ssl_cipher_suites,list(object),,,,,"SSL/TLS cipher suites acceptable from a client, ordered by priority. The structure of ssl_cipher_suites block is documented below."
+ssl_cipher_suites.priority,number,,,,,SSL/TLS cipher suites priority.
+ssl_cipher_suites.cipher,string,,,,,Cipher suite name.
+ssl_cipher_suites.versions,string,,,,,SSL/TLS versions that the cipher suite can be used with.
+ssl_server_renegotiation,string,enable|disable,,,,"Enable/disable secure renegotiation to comply with RFC 5746. Valid values: enable, disable."
+ssl_server_algorithm,string,high|medium|low|custom|client,,,,"Permitted encryption algorithms for the server side of SSL full mode sessions according to encryption strength. Valid values: high, medium, low, custom, client."
+ssl_server_cipher_suites,list(object),,,,,"SSL/TLS cipher suites to offer to a server, ordered by priority. The structure of ssl_server_cipher_suites block is documented below."
+ssl_server_cipher_suites.priority,number,,,,,SSL/TLS cipher suites priority.
+ssl_server_cipher_suites.cipher,string,,,,,Cipher suite name.
+ssl_server_cipher_suites.versions,string,,,,,SSL/TLS versions that the cipher suite can be used with.
+ssl_pfs,string,require|deny|allow,,,,"Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and server sessions. Valid values: require, deny, allow."
+ssl_min_version,string,,,,,Lowest SSL/TLS version acceptable from a client.
+ssl_max_version,string,,,,,Highest SSL/TLS version acceptable from a client.
+ssl_server_min_version,string,,,,,Lowest SSL/TLS version acceptable from a server. Use the client setting by default.
+ssl_server_max_version,string,,,,,Highest SSL/TLS version acceptable from a server. Use the client setting by default.
+ssl_accept_ffdhe_groups,string,enable|disable,,,,"Enable/disable FFDHE cipher suite for SSL key exchange. Valid values: enable, disable."
+ssl_send_empty_frags,string,enable|disable,,,,"Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 & TLS 1.0 only). May need to be disabled for compatibility with older systems. Valid values: enable, disable."
+ssl_client_fallback,string,disable|enable,,,,"Enable/disable support for preventing Downgrade Attacks on client connections (RFC 7507). Valid values: disable, enable."
+ssl_client_renegotiation,string,allow|deny|secure,,,,"Allow, deny, or require secure renegotiation of client sessions to comply with RFC 5746. Valid values: allow, deny, secure."
+ssl_client_session_state_type,string,disable|time|count|both,,,,"How to expire SSL sessions for the segment of the SSL connection between the client and the FortiGate. Valid values: disable, time, count, both."
+ssl_client_session_state_timeout,string,,,,,Number of minutes to keep client to FortiGate SSL session state.
+ssl_client_session_state_max,string,,,,,Maximum number of client to FortiGate SSL session states to keep.
+ssl_client_rekey_count,string,,,,,Maximum length of data in MB before triggering a client rekey (0 = disable).
+ssl_server_session_state_type,string,disable|time|count|both,,,,"How to expire SSL sessions for the segment of the SSL connection between the server and the FortiGate. Valid values: disable, time, count, both."
+ssl_server_session_state_timeout,string,,,,,Number of minutes to keep FortiGate to Server SSL session state.
+ssl_server_session_state_max,string,,,,,Maximum number of FortiGate to Server SSL session states to keep.
+ssl_http_location_conversion,string,enable|disable,,,,"Enable to replace HTTP with HTTPS in the reply's Location HTTP header field. Valid values: enable, disable."
+ssl_http_match_host,string,enable|disable,,,,"Enable/disable HTTP host matching for location conversion. Valid values: enable, disable."
+ssl_http_strip_secure_cookies,string,enable|disable,,,,"Enable/disable removal of HTTPS-only directives in the reply's Set-Cookie HTTP header fields. Valid values: enable, disable."
+ssl_hpkp,string,disable|enable|report-only,,,,"Enable/disable including HPKP header in response. Valid values: disable, enable, report-only."
+ssl_hpkp_primary,string,,,,,Certificate to generate primary HPKP pin from.
+ssl_hpkp_backup,string,,,,,Certificate to generate backup HPKP pin from.
+ssl_hpkp_age,string,,,,,Number of minutes the web browser should keep HPKP.
+ssl_hpkp_report_uri,string,,,,,URL to report HPKP violations to.
+ssl_hpkp_include_subdomains,string,disable|enable,,,,"Indicate that HPKP header applies to all subdomains. Valid values: disable, enable."
+ssl_hsts,string,disable|enable,,,,"Enable/disable including HSTS header in response. Valid values: disable, enable."
+ssl_hsts_age,string,,,,,Number of seconds the client should honour the HSTS setting.
+ssl_hsts_include_subdomains,string,disable|enable,,,,"Indicate that HSTS header applies to all subdomains. Valid values: disable, enable."
+monitor,list(string),,,,,Name of the health check monitor to use when polling to determine a virtual server's connectivity status. The structure of monitor block is documented below.
+max_embryonic_connections,string,,,,,Maximum number of incomplete connections.
+embedded_ipv4_address,string,disable|enable,,,,"Enable/disable embedded IPv4 address. Valid values: disable, enable."
+ipv4_mappedip,string,,,,,Start-mapped-IPv4-address [-end mapped-IPv4-address].
+ipv4_mappedport,string,,,,,IPv4 port number range on the destination network to which the external port number range is mapped.
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

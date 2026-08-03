@@ -22,6 +22,10 @@ indent_style = space
 max_line_length = 0
 trim_trailing_whitespace = false
 
+[*.py]
+indent_style = space
+indent_size = 4
+
 [Makefile]
 tab_width = 2
 indent_style = tab

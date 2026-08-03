@@ -1,0 +1,406 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: Interfaces to create,,,,,,
+#module: interfaces
+name,string,,,,,Name.
+vdom,string,,,1,,(Required) Interface is in this virtual domain (VDOM).
+vrf,number,,,,,Virtual Routing Forwarding ID.
+cli_conn_status,string,,,,,CLI connection status.
+fortilink,string,enable|disable,,,,"Enable FortiLink to dedicate this interface to manage other Fortinet devices. Valid values: enable, disable."
+switch_controller_source_ip,string,outbound|fixed,,,,"Source IP address used in FortiLink over L3 connections. Valid values: outbound, fixed."
+mode,string,static|dhcp|pppoe,,,,"Addressing mode (static, DHCP, PPPoE). Valid values: static, dhcp, pppoe."
+client_options,list(object),,,,,DHCP client options.
+client_options.id,number,,,,,ID
+client_options.code,number,,,1,,DHCP client option code
+client_options.type,string,hex|string|ip|fqdn,,,,"DHCP client option type Valid values: hex, string, ip, fqdn"
+client_options.value,string,,,,,DHCP client option value
+client_options.ip,string,,,,,DHCP option IPs
+distance,number,,0-,,,"Distance for routes learned through PPPoE or DHCP, lower distance indicates preferred route."
+priority,number,,0-,,,Priority of learned routes.
+dhcp_relay_interface_select_method,string,auto|sdwan|specify,,,,"Specify how to select outgoing interface to reach server. Valid values: auto, sdwan, specify."
+dhcp_relay_interface,string,,,,,Specify outgoing interface to reach server.
+dhcp_relay_vrf_select,number,,,,,VRF ID used for connection to server. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+dhcp_broadcast_flag,string,disable|enable,,,,"Enable/disable setting of the broadcast flag in messages sent by the DHCP client (default = enable). Valid values: disable, enable."
+dhcp_relay_service,string,disable|enable,,,,"Enable/disable allowing this interface to act as a DHCP relay. Valid values: disable, enable."
+dhcp_relay_ip,string,,,,,DHCP relay IP address.
+dhcp_relay_source_ip,string,,,,,IP address used by the DHCP relay as its source IP.
+dhcp_relay_circuit_id,string,,,,,DHCP relay circuit ID.
+dhcp_relay_link_selection,string,,,,,DHCP relay link selection.
+dhcp_relay_request_all_server,string,disable|enable,,,,"Enable/disable sending DHCP request to all servers. Valid values: disable, enable."
+dhcp_relay_allow_no_end_option,string,disable|enable,,,,"Enable/disable relaying DHCP messages with no end option. Valid values: disable, enable."
+dhcp_relay_type,string,regular|ipsec,,,,"DHCP relay type (regular or IPsec). Valid values: regular, ipsec."
+dhcp_smart_relay,string,disable|enable,,,,"Enable/disable DHCP smart relay. Valid values: disable, enable."
+dhcp_relay_agent_option,string,enable|disable,,,,"Enable/disable DHCP relay agent option. Valid values: enable, disable."
+dhcp_classless_route_addition,string,enable|disable,,,,"Enable/disable addition of classless static routes retrieved from DHCP server. Valid values: enable, disable."
+management_ip,string,,,,,High Availability in-band management IP address of this interface.
+ip,string,,,,,"Interface IPv4 address and subnet mask, syntax: X.X.X.X/24."
+allowaccess,string,,,,,Permitted types of management access to this interface.
+gwdetect,string,enable|disable,,,,"Enable/disable detect gateway alive for first. Valid values: enable, disable."
+ping_serv_status,string,,,,,PING server status.
+detectserver,string,,,,,Gateway's ping server for this IP.
+detectprotocol,string,ping|tcp-echo|udp-echo,,,,"Protocols used to detect the server. Valid values: ping, tcp-echo, udp-echo."
+ha_priority,string,,,,,HA election priority for the PING server.
+fail_detect,string,enable|disable,,,,"Enable/disable fail detection features for this interface. Valid values: enable, disable."
+fail_detect_option,string,detectserver|link-down,,,,"Options for detecting that this interface has failed. Valid values: detectserver, link-down."
+fail_alert_method,string,link-failed-signal|link-down,,,,"Select link-failed-signal or link-down method to alert about a failed link. Valid values: link-failed-signal, link-down."
+fail_action_on_extender,string,soft-restart|hard-restart|reboot,,,,"Action on extender when interface fail . Valid values: soft-restart, hard-restart, reboot."
+fail_alert_interfaces,list(string),,,,,Names of the FortiGate interfaces from which the link failure alert is sent for this interface. The structure of fail_alert_interfaces block is documented below.
+dhcp_client_identifier,string,,,,,DHCP client identifier.
+dhcp_renew_time,string,,300-604800,,,"DHCP renew time in seconds (300-604800), 0 means use the renew time provided by the server."
+dhcp_egress_cos,string,cos0|cos1|cos2|cos3|cos4|cos5|cos6|cos7,,,,"CoS in VLAN tag for outgoing DHCP packets. Valid values: cos0, cos1, cos2, cos3, cos4, cos5, cos6, cos7."
+arp_egress_cos,string,cos0|cos1|cos2|cos3|cos4|cos5|cos6|cos7,,,,"CoS in VLAN tag for outgoing ARP packets. Valid values: cos0, cos1, cos2, cos3, cos4, cos5, cos6, cos7."
+ipunnumbered,string,,,,,Unnumbered IP used for PPPoE interfaces for which no unique local address is provided.
+username,string,,,,,"Username of the PPPoE account, provided by your ISP."
+pppoe_egress_cos,string,cos0|cos1|cos2|cos3|cos4|cos5|cos6|cos7,,,,"CoS in VLAN tag for outgoing PPPoE/PPP packets. Valid values: cos0, cos1, cos2, cos3, cos4, cos5, cos6, cos7."
+pppoe_unnumbered_negotiate,string,enable|disable,,,,"Enable/disable PPPoE unnumbered negotiation. Valid values: enable, disable."
+password,string,,,,,PPPoE account's password.
+idle_timeout,string,,,,,"PPPoE auto disconnect after idle timeout seconds, 0 means no timeout."
+multilink,string,enable|disable,,,,"Enable/disable PPP multilink support. Valid values: enable, disable."
+mrru,number,,296-65535,,,"PPP MRRU (296 - 65535, default = 1500)."
+detected_peer_mtu,number,,0-4294967295,,,MTU of detected peer (0 - 4294967295).
+disc_retry_timeout,number,,0-,,,"Time in seconds to wait before retrying to start a PPPoE discovery, 0 means no timeout."
+padt_retry_timeout,number,,1-,,,PPPoE Active Discovery Terminate (PADT) used to terminate sessions after an idle time.
+service_name,string,,,,,PPPoE service name.
+ac_name,string,,,,,PPPoE server name.
+lcp_echo_interval,number,,1-,,,Time in seconds between PPPoE Link Control Protocol (LCP) echo requests.
+lcp_max_echo_fails,string,,1-,,,Maximum missed LCP echo messages before disconnect.
+defaultgw,string,enable|disable,,,,"Enable to get the gateway IP from the DHCP or PPPoE server. Valid values: enable, disable."
+dns_server_override,string,enable|disable,,,,"Enable/disable use DNS acquired by DHCP or PPPoE. Valid values: enable, disable."
+dns_server_protocol,string,cleartext|dot|doh,,,,"DNS transport protocols. Valid values: cleartext, dot, doh."
+auth_type,string,auto|pap|chap|mschapv1|mschapv2,,,,"PPP authentication type to use. Valid values: auto, pap, chap, mschapv1, mschapv2."
+pptp_client,string,enable|disable,,,,"Enable/disable PPTP client. Valid values: enable, disable."
+pptp_user,string,,,,,PPTP user name.
+pptp_password,string,,,,,PPTP password.
+pptp_server_ip,string,,,,,PPTP server IP address.
+pptp_auth_type,string,auto|pap|chap|mschapv1|mschapv2,,,,"PPTP authentication type. Valid values: auto, pap, chap, mschapv1, mschapv2."
+pptp_timeout,number,,0-,,,Idle timer in minutes (0 for disabled).
+arpforward,string,enable|disable,,,,"Enable/disable ARP forwarding. Valid values: enable, disable."
+ndiscforward,string,enable|disable,,,,"Enable/disable NDISC forwarding. Valid values: enable, disable."
+broadcast_forward,string,enable|disable,,,,"Enable/disable broadcast forwarding. Valid values: enable, disable."
+bfd,string,global|enable|disable,,,,"Bidirectional Forwarding Detection (BFD) settings. Valid values: global, enable, disable."
+bfd_desired_min_tx,number,,,,,BFD desired minimal transmit interval.
+bfd_detect_mult,number,,,,,BFD detection multiplier.
+bfd_required_min_rx,number,,,,,BFD required minimal receive interval.
+l2forward,string,enable|disable,,,,"Enable/disable l2 forwarding. Valid values: enable, disable."
+icmp_send_redirect,string,enable|disable,,,,"Enable/disable ICMP send redirect. Valid values: enable, disable."
+icmp_accept_redirect,string,enable|disable,,,,"Enable/disable ICMP accept redirect. Valid values: enable, disable."
+reachable_time,number,,30000-3600000,,,"IPv4 reachable time in milliseconds (30000 - 3600000, default = 30000)."
+vlanforward,string,enable|disable,,,,"Enable/disable traffic forwarding between VLANs on this interface. Valid values: enable, disable."
+stpforward,string,enable|disable,,,,"Enable/disable STP forwarding. Valid values: enable, disable."
+stpforward_mode,string,rpl-all-ext-id|rpl-bridge-ext-id|rpl-nothing,,,,"Configure STP forwarding mode. Valid values: rpl-all-ext-id, rpl-bridge-ext-id, rpl-nothing."
+ips_sniffer_mode,string,enable|disable,,,,"Enable/disable the use of this interface as a one-armed sniffer. Valid values: enable, disable."
+ident_accept,string,enable|disable,,,,"Enable/disable authentication for this interface. Valid values: enable, disable."
+ipmac,string,enable|disable,,,,"Enable/disable IP/MAC binding. Valid values: enable, disable."
+subst,string,enable|disable,,,,"Enable to always send packets from this interface to a destination MAC address. Valid values: enable, disable."
+macaddr,string,,,,,Change the interface's MAC address.
+virtual_mac,string,,,,,Change the interface's virtual MAC address.
+substitute_dst_mac,string,,,,,Destination MAC address that all packets are sent to from this interface.
+speed,string,,,,,Interface speed. The default setting and the options available depend on the interface hardware.
+status,string,up|down,,,,"Bring the interface up or shut the interface down. Valid values: up, down."
+netbios_forward,string,disable|enable,,,,"Enable/disable NETBIOS forwarding. Valid values: disable, enable."
+wins_ip,string,,,,,WINS server IP.
+type,string,,,,,Interface type.
+dedicated_to,string,none|management,,,,"Configure interface for single purpose. Valid values: none, management."
+trust_ip_1,string,,,,,Trusted host for dedicated management traffic (0.0.0.0/24 for all hosts).
+trust_ip_2,string,,,,,Trusted host for dedicated management traffic (0.0.0.0/24 for all hosts).
+trust_ip_3,string,,,,,Trusted host for dedicated management traffic (0.0.0.0/24 for all hosts).
+trust_ip6_1,string,,,,,Trusted IPv6 host for dedicated management traffic (::/0 for all hosts).
+trust_ip6_2,string,,,,,Trusted IPv6 host for dedicated management traffic (::/0 for all hosts).
+trust_ip6_3,string,,,,,Trusted IPv6 host for dedicated management traffic (::/0 for all hosts).
+mtu_override,string,enable|disable,,,,"Enable to set a custom MTU for this interface. Valid values: enable, disable."
+mtu,number,,,,,MTU value for this interface.
+ring_rx,number,,,,,RX ring size.
+ring_tx,number,,,,,TX ring size.
+wccp,string,enable|disable,,,,"Enable/disable WCCP on this interface. Used for encapsulated WCCP communication between WCCP clients and servers. Valid values: enable, disable."
+netflow_sampler,string,disable|tx|rx|both,,,,"Enable/disable NetFlow on this interface and set the data that NetFlow collects (rx, tx, or both). Valid values: disable, tx, rx, both."
+netflow_sample_rate,number,,1-65535,,,"NetFlow sample rate. Sample one packet every configured number of packets (1 - 65535, default = 1, which means standard NetFlow where all packets are sampled)."
+netflow_sampler_id,string,,,,,Netflow sampler ID.
+sflow_sampler,string,enable|disable,,,,"Enable/disable sFlow on this interface. Valid values: enable, disable."
+drop_overlapped_fragment,string,enable|disable,,,,"Enable/disable drop overlapped fragment packets. Valid values: enable, disable."
+drop_fragment,string,enable|disable,,,,"Enable/disable drop fragment packets. Valid values: enable, disable."
+scan_botnet_connections,string,disable|block|monitor,,,,"Enable monitoring or blocking connections to Botnet servers through this interface. Valid values: disable, block, monitor."
+src_check,string,enable|disable,,,,"Enable/disable source IP check. Valid values: enable, disable."
+sample_rate,number,,10-99999,,,sFlow sample rate (10 - 99999).
+polling_interval,number,,1-255,,,sFlow polling interval in seconds (1 - 255).
+sample_direction,string,tx|rx|both,,,,"Data that NetFlow collects (rx, tx, or both). Valid values: tx, rx, both."
+explicit_web_proxy,string,enable|disable,,,,"Enable/disable the explicit web proxy on this interface. Valid values: enable, disable."
+explicit_ftp_proxy,string,enable|disable,,,,"Enable/disable the explicit FTP proxy on this interface. Valid values: enable, disable."
+proxy_captive_portal,string,enable|disable,,,,"Enable/disable proxy captive portal on this interface. Valid values: enable, disable."
+tcp_mss,number,,,,,TCP maximum segment size. 0 means do not change segment size.
+mediatype,string,,,,,Select SFP media interface type
+inbandwidth,number,,0-100000000,,,"Bandwidth limit for incoming traffic, 0 means unlimited. On FortiOS versions 6.2.0-6.4.2, 7.0.0-7.0.5, 7.2.0: 0 - 16776000 kbps. On FortiOS versions 6.4.10-6.4.15, 7.0.6-7.0.19, 7.2.1-7.2.12, 7.4.0-7.6.7: 0 - 80000000 kbps. On FortiOS versions 7.2.13, >= 8.0.0: 0 - 100000000 kbps."
+outbandwidth,number,,0-100000000,,,"Bandwidth limit for outgoing traffic, 0 means unlimited. On FortiOS versions 6.2.0-6.2.6: 0 - 16776000 kbps. On FortiOS versions 6.4.10-6.4.15, 7.0.6-7.0.19, 7.2.1-7.2.12, 7.4.0-7.6.7: 0 - 80000000 kbps. On FortiOS versions 7.2.13, >= 8.0.0: 0 - 100000000 kbps."
+egress_shaping_profile,string,,,,,Outgoing traffic shaping profile.
+ingress_shaping_profile,string,,,,,Incoming traffic shaping profile.
+inbandwidth_source,string,default|measured,,,,"Determine which inbandwidth values to use for setting shaper. Valid values: default, measured."
+outbandwidth_source,string,default|measured,,,,"Determine which outbandwidth values to use for setting shaper. Valid values: default, measured."
+disconnect_threshold,string,,,,,Time in milliseconds to wait before sending a notification that this interface is down or disconnected.
+spillover_threshold,number,,0-16776000,,,"Egress Spillover threshold (0 - 16776000 kbps), 0 means unlimited."
+ingress_spillover_threshold,string,,0-16776000,,,"Ingress Spillover threshold (0 - 16776000 kbps), 0 means unlimited."
+weight,number,,,,,Default weight for static routes (if route has no weight configured).
+interface,string,,,,,Interface name.
+external,string,enable|disable,,,,"Enable/disable identifying the interface as an external interface (which usually means it's connected to the Internet). Valid values: enable, disable."
+vlan_protocol,string,8021q|8021ad,,,,"Ethernet protocol of VLAN. Valid values: 8021q, 8021ad."
+vlanid,number,,1-4094,,,VLAN ID (1 - 4094).
+trunk,string,enable|disable,,,,"Enable/disable VLAN trunk. Valid values: enable, disable."
+forward_domain,string,,,,,Transparent mode forward domain.
+remote_ip,string,,,,,Remote IP address of tunnel.
+member,list(string),,,,,Physical interfaces that belong to the aggregate or redundant interface
+lacp_mode,string,static|passive|active,,,,"LACP mode. Valid values: static, passive, active."
+lacp_ha_secondary,string,enable|disable,,,,"LACP HA secondary member. Valid values: enable, disable."
+lacp_ha_slave,string,enable|disable,,,,"LACP HA slave. Valid values: enable, disable."
+system_id_type,string,auto|user,,,,"Method in which system ID is generated. Valid values: auto, user."
+system_id,string,,,,,Define a system ID for the aggregate interface.
+lacp_speed,string,slow|fast,,,,"How often the interface sends LACP messages. Valid values: slow, fast."
+min_links,number,,,,,Minimum number of aggregated ports that must be up.
+min_links_down,number,operational|administrative,,,,"Action to take when less than the configured minimum number of links are active. Valid values: operational, administrative."
+algorithm,string,,,,,Frame distribution algorithm.
+link_up_delay,string,,,,,Number of milliseconds to wait before considering a link is up.
+aggregate_type,string,physical|vxlan,,,,"Type of aggregation. Valid values: physical, vxlan."
+priority_override,string,enable|disable,,,,"Enable/disable fail back to higher priority port once recovered. Valid values: enable, disable."
+aggregate,string,,,,,Aggregate interface.
+redundant_interface,string,,,,,Redundant interface.
+managed_device,list(string),,,,,"Available when FortiLink is enabled, used for managed devices through FortiLink interface. The structure of managed_device block is documented below."
+devindex,string,,,,,Device Index.
+vindex,number,,,,,Switch control interface VLAN ID.
+switch,string,,,,,Contained in switch.
+description,string,,,,,Description.
+alias,string,,,,,Alias will be displayed with the interface name to make it easier to distinguish.
+security_mode,string,none|captive-portal|802.1X,,,,"Turn on captive portal authentication for this interface. Valid values: none, captive-portal, 802.1X."
+captive_portal,string,,,,,Enable/disable captive portal.
+security_mac_auth_bypass,string,mac-auth-only|enable|disable,,,,"Enable/disable MAC authentication bypass. Valid values: mac-auth-only, enable, disable."
+security_ip_auth_bypass,string,enable|disable,,,,"Enable/disable IP authentication bypass. Valid values: enable, disable."
+security_8021x_mode,string,default|dynamic-vlan|fallback|slave,,,,"802.1X mode. Valid values: default, dynamic-vlan, fallback, slave."
+security_8021x_master,string,,,,,802.1X master virtual-switch.
+security_8021x_dynamic_vlan_id,string,,,,,VLAN ID for virtual switch.
+security_8021x_member_mode,string,switch|disable,,,,"802.1X member mode. Valid values: switch, disable."
+security_external_web,string,,,,,URL of external authentication web server.
+security_external_logout,string,,,,,URL of external authentication logout server.
+replacemsg_override_group,string,,,,,Replacement message override group.
+security_redirect_url,string,,,,,URL redirection after disclaimer/authentication.
+auth_cert,string,,,,,HTTPS server certificate.
+auth_portal_addr,string,,,,,Address of captive portal.
+security_exempt_list,string,,,,,Name of security-exempt-list.
+security_groups,list(string),,,,,User groups that can authenticate with the captive portal. The structure of security_groups block is documented below.
+ike_saml_server,string,,,,,Configure IKE authentication SAML server.
+stp,string,disable|enable,,,,"Enable/disable STP. Valid values: disable, enable."
+stp_ha_secondary,string,disable|enable|priority-adjust,,,,"Control STP behaviour on HA secondary. Valid values: disable, enable, priority-adjust."
+stp_edge,string,disable|enable,,,,"Enable/disable as STP edge port. Valid values: disable, enable."
+device_identification,string,enable|disable,,,,"Enable/disable passively gathering of device identity information about the devices on the network connected to this interface. Valid values: enable, disable."
+exclude_signatures,string,iot|ot,,,,"Exclude IOT or OT application signatures. Valid values: iot, ot."
+device_user_identification,string,enable|disable,,,,"Enable/disable passive gathering of user identity information about users on this interface. Valid values: enable, disable."
+device_identification_active_scan,string,enable|disable,,,,"Enable/disable active gathering of device identity information about the devices on the network connected to this interface. Valid values: enable, disable."
+device_access_list,string,,,,,Device access list.
+device_netscan,string,disable|enable,,,,"Enable/disable inclusion of devices detected on this interface in network vulnerability scans. Valid values: disable, enable."
+lldp_reception,string,enable|disable|vdom,,,,"Enable/disable Link Layer Discovery Protocol (LLDP) reception. Valid values: enable, disable, vdom."
+lldp_transmission,string,enable|disable|vdom,,,,"Enable/disable Link Layer Discovery Protocol (LLDP) transmission. Valid values: enable, disable, vdom."
+lldp_network_policy,string,,,,,LLDP-MED network policy profile.
+fortiheartbeat,string,enable|disable,,,,"Enable/disable FortiHeartBeat (FortiTelemetry on GUI). Valid values: enable, disable."
+broadcast_forticlient_discovery,string,enable|disable,,,,"Enable/disable broadcasting FortiClient discovery messages. Valid values: enable, disable."
+endpoint_compliance,string,enable|disable,,,,"Enable/disable endpoint compliance enforcement. Valid values: enable, disable."
+estimated_upstream_bandwidth,string,,,,,Estimated maximum upstream bandwidth (kbps). Used to estimate link utilization.
+estimated_downstream_bandwidth,string,,,,,Estimated maximum downstream bandwidth (kbps). Used to estimate link utilization.
+measured_upstream_bandwidth,number,,,,,Measured upstream bandwidth (kbps).
+measured_downstream_bandwidth,number,,,,,Measured downstream bandwidth (kbps).
+bandwidth_measure_time,string,,,,,Bandwidth measure time
+monitor_bandwidth,string,enable|disable,,,,"Enable monitoring bandwidth on this interface. Valid values: enable, disable."
+vrrp_virtual_mac,string,enable|disable,,,,"Enable/disable use of virtual MAC for VRRP. Valid values: enable, disable."
+vrrp,list(object),,,,,VRRP configuration. The structure of vrrp block is documented below.
+vrrp.vrid,number,,1-255,,,Virtual router identifier (1 - 255).
+vrrp.version,string,2|3,,,,"VRRP version. Valid values: 2, 3."
+vrrp.vrgrp,number,,1-65535,,,VRRP group ID (1 - 65535).
+vrrp.vrip,string,,,1,,IP address of the virtual router.
+vrrp.priority,number,,1-255,,,Priority of the virtual router (1 - 255).
+vrrp.adv_interval,number,,250-255000,,,Advertisement interval. On FortiOS versions 6.2.0-7.4.12: 1 - 255 seconds. On FortiOS versions >= 7.6.0: 250 - 255000 milliseconds.
+vrrp.start_time,number,,1-255,,,Startup time (1 - 255 seconds).
+vrrp.preempt,string,enable|disable,,,,"Enable/disable preempt mode. Valid values: enable, disable."
+vrrp.accept_mode,string,enable|disable,,,,"Enable/disable accept mode. Valid values: enable, disable."
+vrrp.vrdst,string,,,,,Monitor the route to this destination.
+vrrp.vrdst_priority,number,,0-254,,,Priority of the virtual router when the virtual router destination becomes unreachable (0 - 254).
+vrrp.ignore_default_route,string,enable|disable,,,,"Enable/disable ignoring of default route when checking destination. Valid values: enable, disable."
+vrrp.status,string,enable|disable,,,,"Enable/disable this VRRP configuration. Valid values: enable, disable."
+vrrp.proxy_arp,list(object),,,,,VRRP Proxy ARP configuration. The structure of proxy_arp block is documented below.
+vrrp.proxy_arp.id,number,,,,,ID.
+vrrp.proxy_arp.ip,string,,,,,Set IP addresses of proxy ARP.
+phy_setting,object,,,,,PHY settings The structure of phy_setting block is documented below.
+phy_setting.signal_ok_threshold,number,,0-12,,,"Configure the signal strength value at which the FortiGate unit detects that the receiving signal is idle or that data is not being received. Zero means idle detection is disabled. Higher values mean the signal strength must be higher in order for the FortiGate unit to consider the interface is not idle (0 - 12, default = 0)."
+phy_setting.signal_ok_threshold_value,number,,0-12,,,Signal-ok-threshold value(0 - 12).
+role,string,lan|wan|dmz|undefined,,,,"Interface role. Valid values: lan, wan, dmz, undefined."
+snmp_index,string,,,,,Permanent SNMP Index of the interface.
+secondary_ip,string,enable|disable,,,,"Enable/disable adding a secondary IP to this interface. Valid values: enable, disable."
+secondaryip,list(object),,,,,Second IP address of interface. The structure of secondaryip block is documented below.
+secondaryip.id,number,,,,,ID.
+secondaryip.ip,string,,,1,,Secondary IP address of the interface.
+secondaryip.secip_relay_ip,string,,,,,DHCP relay IP address.
+secondaryip.allowaccess,string,,,,,Management access settings for the secondary IP address.
+secondaryip.gwdetect,string,enable|disable,,,,"Enable/disable detect gateway alive for first. Valid values: enable, disable."
+secondaryip.ping_serv_status,string,,,,,PING server status.
+secondaryip.detectserver,string,,,,,Gateway's ping server for this IP.
+secondaryip.detectprotocol,string,ping|tcp-echo|udp-echo,,,,"Protocols used to detect the server. Valid values: ping, tcp-echo, udp-echo."
+secondaryip.ha_priority,string,,,,,HA election priority for the PING server.
+preserve_session_route,string,enable|disable,,,,"Enable/disable preservation of session route when dirty. Valid values: enable, disable."
+auto_auth_extension_device,string,enable|disable,,,,"Enable/disable automatic authorization of dedicated Fortinet extension device on this interface. Valid values: enable, disable."
+ap_discover,string,enable|disable,,,,"Enable/disable automatic registration of unknown FortiAP devices. Valid values: enable, disable."
+telemetry_discover,string,enable|disable,,,,"Enable/disable automatic registration of unknown FortiTelemetry agents. Valid values: enable, disable."
+fortilink_stacking,string,enable|disable,,,,"Enable/disable FortiLink switch-stacking on this interface. Valid values: enable, disable."
+fortilink_neighbor_detect,string,lldp|fortilink,,,,"Protocol for FortiGate neighbor discovery. Valid values: lldp, fortilink."
+ip_managed_by_fortiipam,string,,,,,Enable/disable automatic IP address assignment of this interface by FortiIPAM.
+managed_subnetwork_size,string,,,,,Number of IP addresses to be allocated by FortiIPAM and used by this FortiGate unit's DHCP server settings.
+ipam_conflicts,string,enable|disable,,,,"Configure behavior for this interface on how to handle IPAM conflict detections. Valid values: enable, disable."
+fortilink_split_interface,string,enable|disable,,,,"Enable/disable FortiLink split interface to connect member link to different FortiSwitch in stack for uplink redundancy. Valid values: enable, disable."
+internal,string,,,,,Implicitly created.
+fortilink_backup_link,string,,,,,fortilink split interface backup link.
+switch_controller_access_vlan,string,enable|disable,,,,"Block FortiSwitch port-to-port traffic. Valid values: enable, disable."
+switch_controller_traffic_policy,string,,,,,Switch controller traffic policy for the VLAN.
+switch_controller_rspan_mode,string,disable|enable,,,,"Stop Layer2 MAC learning and interception of BPDUs and other packets on this interface. Valid values: disable, enable."
+switch_controller_netflow_collect,string,disable|enable,,,,"NetFlow collection and processing. Valid values: disable, enable."
+switch_controller_mgmt_vlan,string,,,,,VLAN to use for FortiLink management purposes.
+switch_controller_igmp_snooping,string,enable|disable,,,,"Switch controller IGMP snooping. Valid values: enable, disable."
+switch_controller_igmp_snooping_proxy,string,enable|disable,,,,"Switch controller IGMP snooping proxy. Valid values: enable, disable."
+switch_controller_igmp_snooping_fast_leave,string,enable|disable,,,,"Switch controller IGMP snooping fast-leave. Valid values: enable, disable."
+switch_controller_dhcp_snooping,string,enable|disable,,,,"Switch controller DHCP snooping. Valid values: enable, disable."
+switch_controller_dhcp_snooping_verify_mac,string,enable|disable,,,,"Switch controller DHCP snooping verify MAC. Valid values: enable, disable."
+switch_controller_dhcp_snooping_option82,string,enable|disable,,,,"Switch controller DHCP snooping option82. Valid values: enable, disable."
+dhcp_snooping_server_list,list(object),,,,,Configure DHCP server access list. The structure of dhcp_snooping_server_list block is documented below.
+dhcp_snooping_server_list.name,string,,,1,,DHCP server name.
+dhcp_snooping_server_list.server_ip,string,,,1,,IP address for DHCP server.
+switch_controller_arp_inspection,string,,,,,Enable/disable FortiSwitch ARP inspection.
+switch_controller_learning_limit,number,,1-128,,,"Limit the number of dynamic MAC addresses on this VLAN (1 - 128, 0 = no limit, default)."
+switch_controller_nac,string,,,,,Integrated NAC settings for managed FortiSwitch.
+switch_controller_dynamic,string,,,,,Integrated FortiLink settings for managed FortiSwitch.
+switch_controller_feature,string,,,,,Interface's purpose when assigning traffic (read only).
+switch_controller_iot_scanning,string,enable|disable,,,,"Enable/disable managed FortiSwitch IoT scanning. Valid values: enable, disable."
+switch_controller_offload,string,enable|disable,,,,"Enable/disable managed FortiSwitch routing offload. Valid values: enable, disable."
+switch_controller_offload_ip,string,,,,,IP for routing offload on FortiSwitch.
+switch_controller_offload_gw,string,enable|disable,,,,"Enable/disable managed FortiSwitch routing offload gateway. Valid values: enable, disable."
+switch_controller_fortilink_settings,string,,,,,Integrated FortiLink settings for managed FortiSwitch.
+swc_first_create,string,,,,,Initial create for switch-controller VLANs.
+color,string,,,,,Color of icon on the GUI.
+tagging,list(object),,,,,Config object tagging. The structure of tagging block is documented below.
+tagging.name,string,,,,,Tagging entry name.
+tagging.category,string,,,,,Tag category.
+tagging.tags,list(string),,,1,,Tags.
+eap_supplicant,string,enable|disable,,,,"Enable/disable EAP-Supplicant. Valid values: enable, disable."
+eap_method,string,tls|peap,,,,"EAP method. Valid values: tls, peap."
+eap_identity,string,,,,,EAP identity.
+eap_password,string,,,,,EAP password.
+eap_ca_cert,string,,,,,EAP CA certificate name.
+eap_user_cert,string,,,,,EAP user certificate name.
+np_qos_profile,string,,,,,NP QoS profile ID.
+port_mirroring,string,disable|enable,,,,"Enable/disable NP port mirroring. Valid values: disable, enable."
+mirroring_direction,string,rx,,,,Port mirroring direction. Valid values: rx.
+mirroring_port,string,,,,,Mirroring port.
+mirroring_filter,list(object),,,,,Mirroring filter. The structure of mirroring_filter block is documented below.
+mirroring_filter.filter_srcip,string,,,,,Source IP and mask of mirroring filter.
+mirroring_filter.filter_dstip,string,,,,,Destinatin IP and mask of mirroring filter.
+mirroring_filter.filter_sport,string,,,,,Source port of mirroring filter.
+mirroring_filter.filter_dport,string,,,,,Destinatin port of mirroring filter.
+mirroring_filter.filter_protocol,string,,,,,Protocol of mirroring filter.
+default_purdue_level,string,1|1.5|2|2.5|3|3.5|4|5|5.5,,,,"default purdue level of device detected on this interface. Valid values: 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 5.5."
+forward_error_correction,string,,,,,Enable/disable forward error correction (FEC).
+ipv6,object,,,,,IPv6 of interface. The structure of ipv6 block is documented below.
+ipv6.ip6_mode,string,static|dhcp|pppoe|delegated,,1,,"Addressing mode (static, DHCP, delegated). Valid values: static, dhcp, pppoe, delegated."
+ipv6.client_options,list(object),,,,,DHCP6 client options. The structure of client_options block is documented below.
+ipv6.client_options.id,number,,,,,ID.
+ipv6.client_options.code,number,,,1,,DHCPv6 option code.
+ipv6.client_options.type,string,hex|string|ip6|fqdn,,,,"DHCPv6 option type. Valid values: hex, string, ip6, fqdn."
+ipv6.client_options.value,string,,,,,DHCPv6 option value (hexadecimal value must be even).
+ipv6.client_options.ip6,string,,,,,DHCP option IP6s.
+ipv6.nd_mode,string,basic|SEND-compatible,,,,"Neighbor discovery mode. Valid values: basic, SEND-compatible."
+ipv6.nd_cert,string,,,,,Neighbor discovery certificate.
+ipv6.nd_security_level,number,,0-7,,,"Neighbor discovery security level (0 - 7; 0 = least secure, default = 0)."
+ipv6.nd_timestamp_delta,number,,1-3600,,,Neighbor discovery timestamp delta value (1 - 3600 sec; default = 300).
+ipv6.nd_timestamp_fuzz,number,,1-60,,,Neighbor discovery timestamp fuzz factor (1 - 60 sec; default = 1).
+ipv6.nd_cga_modifier,string,,,,,Neighbor discovery CGA modifier.
+ipv6.ip6_dns_server_override,string,enable|disable,,,,"Enable/disable using the DNS server acquired by DHCP. Valid values: enable, disable."
+ipv6.ip6_address,string,,,,,"Primary IPv6 address prefix, syntax: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx"
+ipv6.ip6_mgmt_address,string,,,,,High Availability in-band management IPv6 address of this interface and should be in the same subnet with primary IPv6 address
+ipv6.ip6_extra_addr,list(string),,,,,Extra IPv6 address prefixes of interface. The structure of ip6_extra_addr block is documented below.
+ipv6.ip6_link_local,string,,,,,IPv6 link-local address of interface.
+ipv6.ip6_allowaccess,string,,,,,Allow management access to the interface.
+ipv6.ip6_send_adv,string,enable|disable,,,,"Enable/disable sending advertisements about the interface. Valid values: enable, disable."
+ipv6.icmp6_send_redirect,string,enable|disable,,,,"Enable/disable sending of ICMPv6 redirects. Valid values: enable, disable."
+ipv6.ip6_manage_flag,string,enable|disable,,,,"Enable/disable the managed flag. Valid values: enable, disable."
+ipv6.ip6_other_flag,string,enable|disable,,,,"Enable/disable the other IPv6 flag. Valid values: enable, disable."
+ipv6.ip6_max_interval,number,,4-1800,,,IPv6 maximum interval (4 to 1800 sec).
+ipv6.ip6_min_interval,number,,3-1350,,,IPv6 minimum interval (3 to 1350 sec).
+ipv6.ip6_link_mtu,number,,,,,IPv6 link MTU.
+ipv6.ra_send_mtu,number,enable|disable,,,,"Enable/disable sending link MTU in RA packet. Valid values: enable, disable."
+ipv6.ip6_reachable_time,number,,,,,IPv6 reachable time (milliseconds; 0 means unspecified).
+ipv6.ip6_retrans_time,number,,,,,IPv6 retransmit time (milliseconds; 0 means unspecified).
+ipv6.ip6_default_life,number,,,,,Default life (sec).
+ipv6.ip6_hop_limit,number,,,,,Hop limit (0 means unspecified).
+ipv6.ip6_adv_rio,string,enable|disable,,,,"Enable/disable sending advertisements with route information option. Valid values: enable, disable."
+ipv6.ip6_route_pref,string,medium|high|low,,,,"Set route preference to the interface (default = medium). Valid values: medium, high, low."
+ipv6.ip6_route_list,list(object),,,,,Advertised route list. The structure of ip6_route_list block is documented below.
+ipv6.ip6_route_list.route,string,,,1,,IPv6 route.
+ipv6.ip6_route_list.route_pref,string,medium|high|low,,,,"Set route preference to the interface (default = medium). Valid values: medium, high, low."
+ipv6.ip6_route_list.route_life_time,number,,0-65535,,,"Route life time in seconds (0 - 65535, default = 1800)."
+ipv6.autoconf,string,enable|disable,,,,"Enable/disable address auto config. Valid values: enable, disable."
+ipv6.unique_autoconf_addr,string,enable|disable,,,,"Enable/disable unique auto config address. Valid values: enable, disable."
+ipv6.interface_identifier,string,,,,,IPv6 interface identifier.
+ipv6.ip6_prefix_mode,string,dhcp6|ra,,,,"Assigning a prefix from DHCP or RA. Valid values: dhcp6, ra."
+ipv6.ip6_upstream_interface,string,,,,,Interface name providing delegated information.
+ipv6.ip6_delegated_prefix_iaid,string,,,,,IAID of obtained delegated-prefix from the upstream interface.
+ipv6.ip6_subnet,string,,,,,"Subnet to routing prefix, syntax: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx"
+ipv6.ip6_prefix_list,list(object),,,,,Advertised prefix list. The structure of ip6_prefix_list block is documented below.
+ipv6.ip6_prefix_list.prefix,string,,,1,,IPv6 prefix.
+ipv6.ip6_prefix_list.autonomous_flag,string,enable|disable,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
+ipv6.ip6_prefix_list.onlink_flag,string,enable|disable,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
+ipv6.ip6_prefix_list.valid_life_time,number,,,,,Valid life time (sec).
+ipv6.ip6_prefix_list.preferred_life_time,number,,,,,Preferred life time (sec).
+ipv6.ip6_prefix_list.rdnss,string,,,,,Recursive DNS server option.
+ipv6.ip6_prefix_list.dnssl,list(string),,,,,DNS search list option. The structure of dnssl block is documented below.
+ipv6.ip6_rdnss_list,list(object),,,,,Advertised IPv6 RDNSS list. The structure of ip6_rdnss_list block is documented below.
+ipv6.ip6_rdnss_list.rdnss,string,,,1,,Recursive DNS server option.
+ipv6.ip6_rdnss_list.rdnss_life_time,number,,0-4294967295,,,"Recursive DNS server life time in seconds (0 - 4294967295, default = 1800)."
+ipv6.ip6_dnssl_list,list(object),,,,,Advertised IPv6 DNSS list. The structure of ip6_dnssl_list block is documented below.
+ipv6.ip6_dnssl_list.domain,string,,,1,,Domain name.
+ipv6.ip6_dnssl_list.dnssl_life_time,number,,0-4294967295,,,"DNS search list time in seconds (0 - 4294967295, default = 1800)."
+ipv6.ip6_delegated_prefix_list,list(object),,,,,Advertised IPv6 delegated prefix list. The structure of ip6_delegated_prefix_list block is documented below.
+ipv6.ip6_delegated_prefix_list.prefix_id,number,,,,,Prefix ID.
+ipv6.ip6_delegated_prefix_list.upstream_interface,string,,,,,Name of the interface that provides delegated information.
+ipv6.ip6_delegated_prefix_list.delegated_prefix_iaid,string,,,,,IAID of obtained delegated-prefix from the upstream interface.
+ipv6.ip6_delegated_prefix_list.autonomous_flag,string,enable|disable,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
+ipv6.ip6_delegated_prefix_list.onlink_flag,string,enable|disable,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
+ipv6.ip6_delegated_prefix_list.subnet,string,,,,,Add subnet ID to routing prefix.
+ipv6.ip6_delegated_prefix_list.rdnss_service,string,delegated|default|specify,,,,"Recursive DNS service option. Valid values: delegated, default, specify."
+ipv6.ip6_delegated_prefix_list.rdnss,string,,,,,Recursive DNS server option.
+ipv6.ip6_delegated_prefix_list.dnssl_service,string,enable|disable,,,,"Enable/disable use of domain from delegated prefix for DNSSL. Valid values: enable, disable."
+ipv6.dhcp6_egress_cos,string,cos0|cos1|cos2|cos3|cos4|cos5|cos6|cos7,,,,"CoS in VLAN tag for outgoing DHCPv6 packets. Valid values: cos0, cos1, cos2, cos3, cos4, cos5, cos6, cos7."
+ipv6.dhcp6_relay_service,string,disable|enable,,,,"Enable/disable DHCPv6 relay. Valid values: disable, enable."
+ipv6.dhcp6_relay_type,string,regular,,,,DHCPv6 relay type. Valid values: regular.
+ipv6.dhcp6_relay_source_interface,string,disable|enable,,,,"Enable/disable use of address on this interface as the source address of the relay message. Valid values: disable, enable."
+ipv6.dhcp6_relay_ip,string,,,,,DHCPv6 relay IP address.
+ipv6.dhcp6_relay_source_ip,string,,,,,IPv6 address used by the DHCP6 relay as its source IP.
+ipv6.dhcp6_relay_interface_id,string,,,,,DHCP6 relay interface ID.
+ipv6.dhcp6_client_options,string,rapid|iapd|iana,,,,"DHCPv6 client options. Valid values: rapid, iapd, iana."
+ipv6.dhcp6_prefix_delegation,string,enable|disable,,,,"Enable/disable DHCPv6 prefix delegation. Valid values: enable, disable."
+ipv6.dhcp6_information_request,string,enable|disable,,,,"Enable/disable DHCPv6 information request. Valid values: enable, disable."
+ipv6.dhcp6_iapd_list,list(object),,,,,DHCPv6 IA-PD list The structure of dhcp6_iapd_list block is documented below.
+ipv6.dhcp6_iapd_list.iaid,string,,,,,Identity association identifier.
+ipv6.dhcp6_iapd_list.prefix_hint,string,,,,,DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
+ipv6.dhcp6_iapd_list.prefix_hint_plt,string,,,,,"DHCPv6 prefix hint preferred life time (sec), 0 means unlimited lease time."
+ipv6.dhcp6_iapd_list.prefix_hint_vlt,string,,,,,DHCPv6 prefix hint valid life time (sec).
+ipv6.dhcp6_prefix_hint,string,,,,,DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
+ipv6.dhcp6_prefix_hint_plt,number,,,,,"DHCPv6 prefix hint preferred life time (sec), 0 means unlimited lease time."
+ipv6.dhcp6_prefix_hint_vlt,number,,,,,DHCPv6 prefix hint valid life time (sec).
+ipv6.vrrp_virtual_mac6,string,enable|disable,,,,"Enable/disable virtual MAC for VRRP. Valid values: enable, disable."
+ipv6.vrip6_link_local,string,,,,,Link-local IPv6 address of virtual router.
+ipv6.vrrp6,list(object),,,,,IPv6 VRRP configuration. The structure of vrrp6 block is documented below.
+ipv6.vrrp6.vrid,number,,1-255,,,Virtual router identifier (1 - 255).
+ipv6.vrrp6.vrgrp,number,,1-65535,,,VRRP group ID (1 - 65535).
+ipv6.vrrp6.vrip6,string,,,1,,IPv6 address of the virtual router.
+ipv6.vrrp6.priority,number,,1-255,,,Priority of the virtual router (1 - 255).
+ipv6.vrrp6.adv_interval,number,,250-255000,,,Advertisement interval. On FortiOS versions 6.2.0-7.4.12: 1 - 255 seconds. On FortiOS versions >= 7.6.0: 250 - 255000 milliseconds.
+ipv6.vrrp6.start_time,number,,1-255,,,Startup time (1 - 255 seconds).
+ipv6.vrrp6.preempt,string,enable|disable,,,,"Enable/disable preempt mode. Valid values: enable, disable."
+ipv6.vrrp6.accept_mode,string,enable|disable,,,,"Enable/disable accept mode. Valid values: enable, disable."
+ipv6.vrrp6.vrdst6,string,,,,,Monitor the route to this destination.
+ipv6.vrrp6.vrdst_priority,number,,0-254,,,Priority of the virtual router when the virtual router destination becomes unreachable (0 - 254).
+ipv6.vrrp6.ignore_default_route,string,enable|disable,,,,"Enable/disable ignoring of default route when checking destination. Valid values: enable, disable."
+ipv6.vrrp6.status,string,enable|disable,,,,"Enable/disable VRRP. Valid values: enable, disable."
+autogenerated,string,,,,,"Indicates whether the interface is automatically created by FortiGate, for example, created during the VPN creation process. If it is, set it to auto"""
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,string,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,string,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

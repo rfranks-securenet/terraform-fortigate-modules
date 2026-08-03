@@ -1,0 +1,499 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: BGP Router configuration,,,,,,
+#name: routerbgp,,,,,,
+#module: bgp
+as_string,string,,,,,"Router AS number, asplain/asdot/asdot+ format, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as."
+as,string,,1-4294967295,1,,"(Required) Router AS number, valid from 1 to 4294967295, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as_string."
+router_id,string,,,,,Router ID.
+keepalive_timer,string,,,,,Frequency to send keep alive requests.
+holdtime_timer,string,,,,,Number of seconds to mark peer as dead.
+always_compare_med,string,enable|disable,,,,"Enable/disable always compare MED. Valid values: enable, disable."
+bestpath_as_path_ignore,string,enable|disable,,,,"Enable/disable ignore AS path. Valid values: enable, disable."
+bestpath_cmp_confed_aspath,string,enable|disable,,,,"Enable/disable compare federation AS path length. Valid values: enable, disable."
+bestpath_cmp_routerid,string,enable|disable,,,,"Enable/disable compare router ID for identical EBGP paths. Valid values: enable, disable."
+bestpath_med_confed,string,enable|disable,,,,"Enable/disable compare MED among confederation paths. Valid values: enable, disable."
+bestpath_med_missing_as_worst,string,enable|disable,,,,"Enable/disable treat missing MED as least preferred. Valid values: enable, disable."
+client_to_client_reflection,string,enable|disable,,,,"Enable/disable client-to-client route reflection. Valid values: enable, disable."
+dampening,string,enable|disable,,,,"Enable/disable route-flap dampening. Valid values: enable, disable."
+dampening6,string,enable|disable,,,,"Enable/disable IPv6 route-flap dampening. Valid values: enable, disable."
+deterministic_med,string,enable|disable,,,,"Enable/disable enforce deterministic comparison of MED. Valid values: enable, disable."
+ebgp_multipath,string,enable|disable,,,,"Enable/disable EBGP multi-path. Valid values: enable, disable."
+ibgp_multipath,string,enable|disable,,,,"Enable/disable IBGP multi-path. Valid values: enable, disable."
+enforce_first_as,string,enable|disable,,,,"Enable/disable enforce first AS for EBGP routes. Valid values: enable, disable."
+fast_external_failover,string,enable|disable,,,,"Enable/disable reset peer BGP session if link goes down. Valid values: enable, disable."
+log_neighbour_changes,string,enable|disable,,,,"Enable logging of BGP neighbour's changes Valid values: enable, disable."
+network_import_check,string,enable|disable,,,,"Enable/disable ensure BGP network route exists in IGP. Valid values: enable, disable."
+ignore_optional_capability,string,enable|disable,,,,"Don't send unknown optional capability notification message Valid values: enable, disable."
+additional_path,string,enable|disable,,,,"Enable/disable selection of BGP IPv4 additional paths. Valid values: enable, disable."
+additional_path6,string,enable|disable,,,,"Enable/disable selection of BGP IPv6 additional paths. Valid values: enable, disable."
+additional_path_vpnv4,string,enable|disable,,,,"Enable/disable selection of BGP VPNv4 additional paths. Valid values: enable, disable."
+additional_path_vpnv6,string,enable|disable,,,,"Enable/disable selection of BGP VPNv6 additional paths. Valid values: enable, disable."
+multipath_recursive_distance,string,enable|disable,,,,"Enable/disable use of recursive distance to select multipath. Valid values: enable, disable."
+recursive_next_hop,string,enable|disable,,,,"Enable/disable recursive resolution of next-hop using BGP route. Valid values: enable, disable."
+recursive_inherit_priority,string,enable|disable,,,,"Enable/disable priority inheritance for recursive resolution. Valid values: enable, disable."
+tag_resolve_mode,string,,,,,Configure tag-match mode. Resolves BGP routes with other routes containing the same tag.
+cluster_id,string,,,,,Route reflector cluster ID.
+confederation_identifier,string,,,,,Confederation identifier.
+confederation_peers,list(string),,,,,Confederation peers. The structure of confederation_peers block is documented below.
+dampening_route_map,string,,,,,Criteria for dampening.
+dampening_reachability_half_life,number,,,,,Reachability half-life time for penalty (min).
+dampening_reuse,string,,,,,Threshold to reuse routes.
+dampening_suppress,string,,,,,Threshold to suppress routes.
+dampening_max_suppress_time,number,,,,,Maximum minutes a route can be suppressed.
+dampening_unreachability_half_life,number,,,,,Unreachability half-life time for penalty (min).
+dampening6_route_map,string,,,,,Criteria for IPv6 dampening.
+dampening6_reachability_half_life,number,,,,,IPv6 reachability half-life time for penalty (min).
+dampening6_reuse,string,,,,,Threshold to reuse IPv6 routes.
+dampening6_suppress,string,,,,,Threshold to suppress IPv6 routes.
+dampening6_max_suppress_time,string,,,,,Maximum minutes an IPv6 route can be suppressed.
+dampening6_unreachability_half_life,number,,,,,IPv6 unreachability half-life time for penalty (min).
+default_local_preference,string,,,,,Default local preference.
+scan_time,number,,,,,"Background scanner interval (sec), 0 to disable it."
+distance_external,string,,,,,Distance for routes external to the AS.
+distance_internal,string,,,,,Distance for routes internal to the AS.
+distance_local,string,,,,,Distance for routes local to the AS.
+synchronization,string,enable|disable,,,,"Enable/disable only advertise routes from iBGP if routes present in an IGP. Valid values: enable, disable."
+graceful_restart,string,enable|disable,,,,"Enable/disable BGP graceful restart capabilities. Valid values: enable, disable."
+graceful_restart_time,number,,,,,Time needed for neighbors to restart (sec).
+graceful_stalepath_time,number,,,,,Time to hold stale paths of restarting neighbor (sec).
+graceful_update_delay,number,,,,,Route advertisement/selection delay after restart (sec).
+graceful_end_on_timer,string,enable|disable,,,,"Enable/disable to exit graceful restart on timer only. Valid values: enable, disable."
+additional_path_select,string,,,,,Number of additional paths to be selected for each IPv4 NLRI.
+additional_path_select6,string,,,,,Number of additional paths to be selected for each IPv6 NLRI.
+additional_path_select_vpnv4,string,,,,,Number of additional paths to be selected for each VPNv4 NLRI.
+additional_path_select_vpnv6,string,,,,,Number of additional paths to be selected for each VPNv6 NLRI.
+cross_family_conditional_adv,string,enable|disable,,,,"Enable/disable cross address family conditional advertisement. Valid values: enable, disable."
+aggregate_address,list(object),,,,,BGP aggregate address table. The structure of aggregate_address block is documented below.
+aggregate_address.id,number,,,,,ID.
+aggregate_address.prefix,string,,,,,Aggregate prefix.
+aggregate_address.as_set,string,enable|disable,,,,"Enable/disable generate AS set path information. Valid values: enable, disable."
+aggregate_address.summary_only,string,enable|disable,,,,"Enable/disable filter more specific routes from updates. Valid values: enable, disable."
+aggregate_address6,list(object),,,,,BGP IPv6 aggregate address table. The structure of aggregate_address6 block is documented below.
+aggregate_address6.id,number,,,,,ID.
+aggregate_address6.prefix6,string,,,,,Aggregate IPv6 prefix.
+aggregate_address6.as_set,string,enable|disable,,,,"Enable/disable generate AS set path information. Valid values: enable, disable."
+aggregate_address6.summary_only,string,enable|disable,,,,"Enable/disable filter more specific routes from updates. Valid values: enable, disable."
+neighbor,list(object),,,,,BGP neighbor table. The structure of neighbor block is documented below.
+neighbor.ip,string,,,,,IP/IPv6 address of neighbor.
+neighbor.name,string,,,,,Name of this neighbor.
+neighbor.advertisement_interval,number,,,,,Minimum interval (sec) between sending updates.
+neighbor.allowas_in_enable,string,enable|disable,,,,"Enable/disable IPv4 Enable to allow my AS in AS path. Valid values: enable, disable."
+neighbor.allowas_in_enable6,string,enable|disable,,,,"Enable/disable IPv6 Enable to allow my AS in AS path. Valid values: enable, disable."
+neighbor.allowas_in_enable_vpnv4,string,enable|disable,,,,"Enable/disable to allow my AS in AS path for VPNv4 route. Valid values: enable, disable."
+neighbor.allowas_in_enable_vpnv6,string,enable|disable,,,,"Enable/disable use of my AS in AS path for VPNv6 route. Valid values: enable, disable."
+neighbor.allowas_in_enable_evpn,string,enable|disable,,,,"Enable/disable to allow my AS in AS path for L2VPN EVPN route. Valid values: enable, disable."
+neighbor.allowas_in,number,,,,,IPv4 The maximum number of occurrence of my AS number allowed.
+neighbor.allowas_in6,number,,,,,IPv6 The maximum number of occurrence of my AS number allowed.
+neighbor.allowas_in_vpnv4,number,,,,,The maximum number of occurrence of my AS number allowed for VPNv4 route.
+neighbor.allowas_in_vpnv6,number,,,,,The maximum number of occurrence of my AS number allowed for VPNv6 route.
+neighbor.allowas_in_evpn,number,,,,,The maximum number of occurrence of my AS number allowed for L2VPN EVPN route.
+neighbor.attribute_unchanged,string,as-path|med|next-hop,,,,"IPv4 List of attributes that should be unchanged. Valid values: as-path, med, next-hop."
+neighbor.attribute_unchanged6,string,as-path|med|next-hop,,,,"IPv6 List of attributes that should be unchanged. Valid values: as-path, med, next-hop."
+neighbor.attribute_unchanged_vpnv4,string,as-path|med|next-hop,,,,"List of attributes that should be unchanged for VPNv4 route. Valid values: as-path, med, next-hop."
+neighbor.attribute_unchanged_vpnv6,string,as-path|med|next-hop,,,,"List of attributes that should not be changed for VPNv6 route. Valid values: as-path, med, next-hop."
+neighbor.activate,string,enable|disable,,,,"Enable/disable address family IPv4 for this neighbor. Valid values: enable, disable."
+neighbor.activate6,string,enable|disable,,,,"Enable/disable address family IPv6 for this neighbor. Valid values: enable, disable."
+neighbor.activate_vpnv4,string,enable|disable,,,,"Enable/disable address family VPNv4 for this neighbor. Valid values: enable, disable."
+neighbor.activate_vpnv6,string,enable|disable,,,,"Enable/disable address family VPNv6 for this neighbor. Valid values: enable, disable."
+neighbor.activate_evpn,string,enable|disable,,,,"Enable/disable address family L2VPN EVPN for this neighbor. Valid values: enable, disable."
+neighbor.bfd,string,enable|disable,,,,"Enable/disable BFD for this neighbor. Valid values: enable, disable."
+neighbor.capability_dynamic,string,enable|disable,,,,"Enable/disable advertise dynamic capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_orf,string,none|receive|send|both,,,,"Accept/Send IPv4 ORF lists to/from this neighbor. Valid values: none, receive, send, both."
+neighbor.capability_orf6,string,none|receive|send|both,,,,"Accept/Send IPv6 ORF lists to/from this neighbor. Valid values: none, receive, send, both."
+neighbor.capability_graceful_restart,string,enable|disable,,,,"Enable/disable advertise IPv4 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_graceful_restart6,string,enable|disable,,,,"Enable/disable advertise IPv6 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_graceful_restart_vpnv4,string,enable|disable,,,,"Enable/disable advertise VPNv4 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_graceful_restart_vpnv6,string,enable|disable,,,,"Enable/disable advertisement of VPNv6 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_graceful_restart_evpn,string,enable|disable,,,,"Enable/disable advertisement of L2VPN EVPN graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_route_refresh,string,enable|disable,,,,"Enable/disable advertise route refresh capability to this neighbor. Valid values: enable, disable."
+neighbor.capability_default_originate,string,enable|disable,,,,"Enable/disable advertise default IPv4 route to this neighbor. Valid values: enable, disable."
+neighbor.capability_default_originate6,string,enable|disable,,,,"Enable/disable advertise default IPv6 route to this neighbor. Valid values: enable, disable."
+neighbor.dont_capability_negotiate,string,enable|disable,,,,"Don't negotiate capabilities with this neighbor Valid values: enable, disable."
+neighbor.ebgp_enforce_multihop,string,enable|disable,,,,"Enable/disable allow multi-hop EBGP neighbors. Valid values: enable, disable."
+neighbor.link_down_failover,string,enable|disable,,,,"Enable/disable failover upon link down. Valid values: enable, disable."
+neighbor.stale_route,string,enable|disable,,,,"Enable/disable stale route after neighbor down. Valid values: enable, disable."
+neighbor.next_hop_self,string,enable|disable,,,,"Enable/disable IPv4 next-hop calculation for this neighbor. Valid values: enable, disable."
+neighbor.next_hop_self6,string,enable|disable,,,,"Enable/disable IPv6 next-hop calculation for this neighbor. Valid values: enable, disable."
+neighbor.next_hop_self_rr,string,enable|disable,,,,"Enable/disable setting nexthop's address to interface's IPv4 address for route-reflector routes. Valid values: enable, disable."
+neighbor.next_hop_self_rr6,string,enable|disable,,,,"Enable/disable setting nexthop's address to interface's IPv6 address for route-reflector routes. Valid values: enable, disable."
+neighbor.next_hop_self_vpnv4,string,enable|disable,,,,"Enable/disable setting VPNv4 next-hop to interface's IP address for this neighbor. Valid values: enable, disable."
+neighbor.next_hop_self_vpnv6,string,enable|disable,,,,"Enable/disable use of outgoing interface's IP address as VPNv6 next-hop for this neighbor. Valid values: enable, disable."
+neighbor.next_hop_self_rr_vpnv4,string,enable|disable,,,,"Enable/disable setting of the nexthop's address to interface's address for route-reflector VPNv4 routes. Valid values: enable, disable."
+neighbor.next_hop_self_rr_vpnv6,string,enable|disable,,,,"Enable/disable setting of the nexthop's address to interface's address for route-reflector VPNv6 routes. Valid values: enable, disable."
+neighbor.override_capability,string,enable|disable,,,,"Enable/disable override result of capability negotiation. Valid values: enable, disable."
+neighbor.passive,string,enable|disable,,,,"Enable/disable sending of open messages to this neighbor. Valid values: enable, disable."
+neighbor.remove_private_as,string,enable|disable,,,,"Enable/disable remove private AS number from IPv4 outbound updates. Valid values: enable, disable."
+neighbor.remove_private_as6,string,enable|disable,,,,"Enable/disable remove private AS number from IPv6 outbound updates. Valid values: enable, disable."
+neighbor.remove_private_as_vpnv4,string,enable|disable,,,,"Enable/disable remove private AS number from VPNv4 outbound updates. Valid values: enable, disable."
+neighbor.remove_private_as_vpnv6,string,enable|disable,,,,"Enable/disable to remove private AS number from VPNv6 outbound updates. Valid values: enable, disable."
+neighbor.remove_private_as_evpn,string,enable|disable,,,,"Enable/disable removing private AS number from L2VPN EVPN outbound updates. Valid values: enable, disable."
+neighbor.route_reflector_client,string,enable|disable,,,,"Enable/disable IPv4 AS route reflector client. Valid values: enable, disable."
+neighbor.route_reflector_client6,string,enable|disable,,,,"Enable/disable IPv6 AS route reflector client. Valid values: enable, disable."
+neighbor.route_reflector_client_vpnv4,string,enable|disable,,,,"Enable/disable VPNv4 AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor.route_reflector_client_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor.route_reflector_client_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor.route_server_client,string,enable|disable,,,,"Enable/disable IPv4 AS route server client. Valid values: enable, disable."
+neighbor.route_server_client6,string,enable|disable,,,,"Enable/disable IPv6 AS route server client. Valid values: enable, disable."
+neighbor.route_server_client_vpnv4,string,enable|disable,,,,"Enable/disable VPNv4 AS route server client for this neighbor. Valid values: enable, disable."
+neighbor.route_server_client_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 AS route server client for this neighbor. Valid values: enable, disable."
+neighbor.route_server_client_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN AS route server client for this neighbor. Valid values: enable, disable."
+neighbor.rr_attr_allow_change,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to IPv4 route reflector clients. Valid values: enable, disable."
+neighbor.rr_attr_allow_change6,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to IPv6 route reflector clients. Valid values: enable, disable."
+neighbor.rr_attr_allow_change_vpnv4,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to VPNv4 route reflector clients. Valid values: enable, disable."
+neighbor.rr_attr_allow_change_vpnv6,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to VPNv6 route reflector clients. Valid values: enable, disable."
+neighbor.rr_attr_allow_change_evpn,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to L2VPN EVPN route reflector clients. Valid values: enable, disable."
+neighbor.adv_evpn_route,string,type2|type5|local,,,,"Types of EVPN routes that can be advertised to this neighbor as IPv4 routes. Valid values: type2, type5, local."
+neighbor.shutdown,string,,,,,Enable/disable shutdown this neighbor.
+neighbor.soft_reconfiguration,string,enable|disable,,,,"Enable/disable allow IPv4 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor.soft_reconfiguration6,string,enable|disable,,,,"Enable/disable allow IPv6 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor.soft_reconfiguration_vpnv4,string,enable|disable,,,,"Enable/disable allow VPNv4 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor.soft_reconfiguration_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor.soft_reconfiguration_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN inbound soft reconfiguration. Valid values: enable, disable."
+neighbor.as_override,string,enable|disable,,,,"Enable/disable replace peer AS with own AS for IPv4. Valid values: enable, disable."
+neighbor.as_override6,string,enable|disable,,,,"Enable/disable replace peer AS with own AS for IPv6. Valid values: enable, disable."
+neighbor.strict_capability_match,string,enable|disable,,,,"Enable/disable strict capability matching. Valid values: enable, disable."
+neighbor.default_originate_routemap,string,,,,,Route map to specify criteria to originate IPv4 default.
+neighbor.default_originate_routemap6,string,,,,,Route map to specify criteria to originate IPv6 default.
+neighbor.description,string,,,,,Description.
+neighbor.distribute_list_in,string,,,,,Filter for IPv4 updates from this neighbor.
+neighbor.distribute_list_in6,string,,,,,Filter for IPv6 updates from this neighbor.
+neighbor.distribute_list_in_vpnv4,string,,,,,Filter for VPNv4 updates from this neighbor.
+neighbor.distribute_list_in_vpnv6,string,,,,,Filter for VPNv6 updates from this neighbor.
+neighbor.distribute_list_out,string,,,,,Filter for IPv4 updates to this neighbor.
+neighbor.distribute_list_out6,string,,,,,Filter for IPv6 updates to this neighbor.
+neighbor.distribute_list_out_vpnv4,string,,,,,Filter for VPNv4 updates to this neighbor.
+neighbor.distribute_list_out_vpnv6,string,,,,,Filter for VPNv6 updates to this neighbor.
+neighbor.ebgp_multihop_ttl,number,,,,,EBGP multihop TTL for this peer.
+neighbor.filter_list_in,string,,,,,BGP filter for IPv4 inbound routes.
+neighbor.filter_list_in6,string,,,,,BGP filter for IPv6 inbound routes.
+neighbor.filter_list_in_vpnv4,string,,,,,BGP filter for VPNv4 inbound routes.
+neighbor.filter_list_in_vpnv6,string,,,,,BGP filter for VPNv6 inbound routes.
+neighbor.filter_list_out,string,,,,,BGP filter for IPv4 outbound routes.
+neighbor.filter_list_out6,string,,,,,BGP filter for IPv6 outbound routes.
+neighbor.filter_list_out_vpnv4,string,,,,,BGP filter for VPNv4 outbound routes.
+neighbor.filter_list_out_vpnv6,string,,,,,BGP filter for VPNv6 outbound routes.
+neighbor.interface,string,,,,,Interface
+neighbor.maximum_prefix,number,,,,,Maximum number of IPv4 prefixes to accept from this peer.
+neighbor.maximum_prefix6,number,,,,,Maximum number of IPv6 prefixes to accept from this peer.
+neighbor.maximum_prefix_vpnv4,number,,,,,Maximum number of VPNv4 prefixes to accept from this peer.
+neighbor.maximum_prefix_vpnv6,number,,,,,Maximum number of VPNv6 prefixes to accept from this peer.
+neighbor.maximum_prefix_evpn,number,,,,,Maximum number of L2VPN EVPN prefixes to accept from this peer.
+neighbor.maximum_prefix_threshold,number,,1-100,,,Maximum IPv4 prefix threshold value (1 - 100 percent).
+neighbor.maximum_prefix_threshold6,number,,1-100,,,Maximum IPv6 prefix threshold value (1 - 100 percent).
+neighbor.maximum_prefix_threshold_vpnv4,number,,1-100,,,Maximum VPNv4 prefix threshold value (1 - 100 percent).
+neighbor.maximum_prefix_threshold_vpnv6,number,,1-100,,,Maximum VPNv6 prefix threshold value (1 - 100 percent).
+neighbor.maximum_prefix_threshold_evpn,number,,1-100,,,Maximum L2VPN EVPN prefix threshold value (1 - 100 percent).
+neighbor.maximum_prefix_warning_only,string,enable|disable,,,,"Enable/disable IPv4 Only give warning message when limit is exceeded. Valid values: enable, disable."
+neighbor.maximum_prefix_warning_only6,string,enable|disable,,,,"Enable/disable IPv6 Only give warning message when limit is exceeded. Valid values: enable, disable."
+neighbor.maximum_prefix_warning_only_vpnv4,string,enable|disable,,,,"Enable/disable only giving warning message when limit is exceeded for VPNv4 routes. Valid values: enable, disable."
+neighbor.maximum_prefix_warning_only_vpnv6,string,enable|disable,,,,"Enable/disable warning message when limit is exceeded for VPNv6 routes. Valid values: enable, disable."
+neighbor.maximum_prefix_warning_only_evpn,string,enable|disable,,,,"Enable/disable only sending warning message when exceeding limit of L2VPN EVPN routes. Valid values: enable, disable."
+neighbor.prefix_list_in,string,,,,,IPv4 Inbound filter for updates from this neighbor.
+neighbor.prefix_list_in6,string,,,,,IPv6 Inbound filter for updates from this neighbor.
+neighbor.prefix_list_in_vpnv4,string,,,,,Inbound filter for VPNv4 updates from this neighbor.
+neighbor.prefix_list_in_vpnv6,string,,,,,Inbound filter for VPNv6 updates from this neighbor.
+neighbor.prefix_list_out,string,,,,,IPv4 Outbound filter for updates to this neighbor.
+neighbor.prefix_list_out6,string,,,,,IPv6 Outbound filter for updates to this neighbor.
+neighbor.prefix_list_out_vpnv4,string,,,,,Outbound filter for VPNv4 updates to this neighbor.
+neighbor.prefix_list_out_vpnv6,string,,,,,Outbound filter for VPNv6 updates to this neighbor.
+neighbor.remote_as,number,,,,,AS number of neighbor.
+neighbor.local_as,number,,,,,Local AS number of neighbor.
+neighbor.local_as_no_prepend,string,enable|disable,,,,"Do not prepend local-as to incoming updates. Valid values: enable, disable."
+neighbor.local_as_replace_as,string,enable|disable,,,,"Replace real AS with local-as in outgoing updates. Valid values: enable, disable."
+neighbor.retain_stale_time,string,,,,,Time to retain stale routes.
+neighbor.route_map_in,string,,,,,IPv4 Inbound route map filter.
+neighbor.route_map_in6,string,,,,,IPv6 Inbound route map filter.
+neighbor.route_map_in_vpnv4,string,,,,,VPNv4 inbound route map filter.
+neighbor.route_map_in_vpnv6,string,,,,,VPNv6 inbound route map filter.
+neighbor.route_map_in_evpn,string,,,,,L2VPN EVPN inbound route map filter.
+neighbor.route_map_out,string,,,,,IPv4 Outbound route map filter.
+neighbor.route_map_out_preferable,string,,,,,IPv4 outbound route map filter if the peer is preferred.
+neighbor.route_map_out6,string,,,,,IPv6 Outbound route map filter.
+neighbor.route_map_out6_preferable,string,,,,,IPv6 outbound route map filter if the peer is preferred.
+neighbor.route_map_out_vpnv4,string,,,,,VPNv4 outbound route map filter.
+neighbor.route_map_out_vpnv6,string,,,,,VPNv6 outbound route map filter.
+neighbor.route_map_out_vpnv4_preferable,string,,,,,VPNv4 outbound route map filter if the peer is preferred.
+neighbor.route_map_out_vpnv6_preferable,string,,,,,VPNv6 outbound route map filter if this neighbor is preferred.
+neighbor.route_map_out_evpn,string,,,,,L2VPN EVPN outbound route map filter.
+neighbor.send_community,string,standard|extended|both|disable,,,,"IPv4 Send community attribute to neighbor. Valid values: standard, extended, both, disable."
+neighbor.send_community6,string,standard|extended|both|disable,,,,"IPv6 Send community attribute to neighbor. Valid values: standard, extended, both, disable."
+neighbor.send_community_vpnv4,string,standard|extended|both|disable,,,,"Send community attribute to neighbor for VPNv4 address family. Valid values: standard, extended, both, disable."
+neighbor.send_community_vpnv6,string,standard|extended|both|disable,,,,"Enable/disable sending community attribute to this neighbor for VPNv6 address family. Valid values: standard, extended, both, disable."
+neighbor.send_community_evpn,string,standard|extended|both|disable,,,,"Enable/disable sending community attribute to neighbor for L2VPN EVPN address family. Valid values: standard, extended, both, disable."
+neighbor.keep_alive_timer,number,,,,,Keep alive timer interval (sec). Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor.holdtime_timer,number,,,,,Interval (sec) before peer considered dead. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor.connect_timer,number,,,,,Interval (sec) for connect timer. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor.unsuppress_map,string,,,,,IPv4 Route map to selectively unsuppress suppressed routes.
+neighbor.unsuppress_map6,string,,,,,IPv6 Route map to selectively unsuppress suppressed routes.
+neighbor.update_source,string,,,,,Interface to use as source IP/IPv6 address of TCP connections.
+neighbor.enforce_preferred_source,string,enable|disable,,,,"Enable/disable enforce usage of the update-source as preferred source for IPv4 routes learned from this neighbor. Valid values: enable, disable."
+neighbor.weight,number,,,,,Neighbor weight. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor.restart_time,number,,,,,"Graceful restart delay time (sec, 0 = global default)."
+neighbor.additional_path,string,send|receive|both|disable,,,,"Enable/disable IPv4 additional-path capability. Valid values: send, receive, both, disable."
+neighbor.additional_path6,string,send|receive|both|disable,,,,"Enable/disable IPv6 additional-path capability. Valid values: send, receive, both, disable."
+neighbor.additional_path_vpnv4,string,send|receive|both|disable,,,,"Enable/disable VPNv4 additional-path capability. Valid values: send, receive, both, disable."
+neighbor.additional_path_vpnv6,string,send|receive|both|disable,,,,"Enable/disable VPNv6 additional-path capability. Valid values: send, receive, both, disable."
+neighbor.adv_additional_path,string,,,,,Number of IPv4 additional paths that can be advertised to this neighbor.
+neighbor.adv_additional_path6,string,,,,,Number of IPv6 additional paths that can be advertised to this neighbor.
+neighbor.adv_additional_path_vpnv4,string,,,,,Number of VPNv4 additional paths that can be advertised to this neighbor.
+neighbor.adv_additional_path_vpnv6,string,,,,,Number of VPNv6 additional paths that can be advertised to this neighbor.
+neighbor.password,string,,,,,Password used in MD5 authentication.
+neighbor.auth_options,string,,,,,Key-chain name for TCP authentication options.
+neighbor.conditional_advertise,list(object),,,,,Conditional advertisement. The structure of conditional_advertise block is documented below.
+neighbor.conditional_advertise.advertise_routemap,string,,,,,Name of advertising route map.
+neighbor.conditional_advertise.condition_routemap,string,,,,,Name of condition route map.
+neighbor.conditional_advertise.condition_type,string,exist|non-exist,,,,"Type of condition. Valid values: exist, non-exist."
+neighbor.conditional_advertise6,list(object),,,,,IPv6 conditional advertisement. The structure of conditional_advertise6 block is documented below.
+neighbor.conditional_advertise6.advertise_routemap,string,,,,,Name of advertising route map.
+neighbor.conditional_advertise6.condition_routemap,string,,,,,Name of condition route map.
+neighbor.conditional_advertise6.condition_type,string,exist|non-exist,,,,"Type of condition. Valid values: exist, non-exist."
+neighbor.graceful_shutdown_community,string,,,,,Graceful shutdown community.
+neighbor.graceful_shutdown_local_preference,string,,,,,Graceful shutdown local preference.
+neighbor.graceful_shutdown_delay,number,,,,,Delay in seconds before graceful shutdown ends.
+neighbor.use_sdwan,string,enable|disable,,,,"Use SDWAN rules for BGP connection. Valid values: enable, disable."
+neighbor_group,list(object),,,,,BGP neighbor group table. The structure of neighbor_group block is documented below.
+neighbor_group.name,string,,,,,Neighbor group name.
+neighbor_group.advertisement_interval,number,,,,,Minimum interval (sec) between sending updates.
+neighbor_group.allowas_in_enable,string,enable|disable,,,,"Enable/disable IPv4 Enable to allow my AS in AS path. Valid values: enable, disable."
+neighbor_group.allowas_in_enable6,string,enable|disable,,,,"Enable/disable IPv6 Enable to allow my AS in AS path. Valid values: enable, disable."
+neighbor_group.allowas_in_enable_vpnv4,string,enable|disable,,,,"Enable/disable to allow my AS in AS path for VPNv4 route. Valid values: enable, disable."
+neighbor_group.allowas_in_enable_vpnv6,string,enable|disable,,,,"Enable/disable use of my AS in AS path for VPNv6 route. Valid values: enable, disable."
+neighbor_group.allowas_in_enable_evpn,string,enable|disable,,,,"Enable/disable to allow my AS in AS path for L2VPN EVPN route. Valid values: enable, disable."
+neighbor_group.allowas_in,number,,,,,IPv4 The maximum number of occurrence of my AS number allowed.
+neighbor_group.allowas_in6,number,,,,,IPv6 The maximum number of occurrence of my AS number allowed.
+neighbor_group.allowas_in_vpnv4,number,,,,,The maximum number of occurrence of my AS number allowed for VPNv4 route.
+neighbor_group.allowas_in_vpnv6,number,,,,,The maximum number of occurrence of my AS number allowed for VPNv6 route.
+neighbor_group.allowas_in_evpn,number,,,,,The maximum number of occurrence of my AS number allowed for L2VPN EVPN route.
+neighbor_group.attribute_unchanged,string,as-path|med|next-hop,,,,"IPv4 List of attributes that should be unchanged. Valid values: as-path, med, next-hop."
+neighbor_group.attribute_unchanged6,string,as-path|med|next-hop,,,,"IPv6 List of attributes that should be unchanged. Valid values: as-path, med, next-hop."
+neighbor_group.attribute_unchanged_vpnv4,string,as-path|med|next-hop,,,,"List of attributes that should be unchanged for VPNv4 route. Valid values: as-path, med, next-hop."
+neighbor_group.attribute_unchanged_vpnv6,string,as-path|med|next-hop,,,,"List of attributes that should not be changed for VPNv6 route. Valid values: as-path, med, next-hop."
+neighbor_group.activate,string,enable|disable,,,,"Enable/disable address family IPv4 for this neighbor. Valid values: enable, disable."
+neighbor_group.activate6,string,enable|disable,,,,"Enable/disable address family IPv6 for this neighbor. Valid values: enable, disable."
+neighbor_group.activate_vpnv4,string,enable|disable,,,,"Enable/disable address family VPNv4 for this neighbor. Valid values: enable, disable."
+neighbor_group.activate_vpnv6,string,enable|disable,,,,"Enable/disable address family VPNv6 for this neighbor. Valid values: enable, disable."
+neighbor_group.activate_evpn,string,enable|disable,,,,"Enable/disable address family L2VPN EVPN for this neighbor. Valid values: enable, disable."
+neighbor_group.bfd,string,enable|disable,,,,"Enable/disable BFD for this neighbor. Valid values: enable, disable."
+neighbor_group.capability_dynamic,string,enable|disable,,,,"Enable/disable advertise dynamic capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_orf,string,none|receive|send|both,,,,"Accept/Send IPv4 ORF lists to/from this neighbor. Valid values: none, receive, send, both."
+neighbor_group.capability_orf6,string,none|receive|send|both,,,,"Accept/Send IPv6 ORF lists to/from this neighbor. Valid values: none, receive, send, both."
+neighbor_group.capability_graceful_restart,string,enable|disable,,,,"Enable/disable advertise IPv4 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_graceful_restart6,string,enable|disable,,,,"Enable/disable advertise IPv6 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_graceful_restart_vpnv4,string,enable|disable,,,,"Enable/disable advertise VPNv4 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_graceful_restart_vpnv6,string,enable|disable,,,,"Enable/disable advertisement of VPNv6 graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_graceful_restart_evpn,string,enable|disable,,,,"Enable/disable advertisement of L2VPN EVPN graceful restart capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_route_refresh,string,enable|disable,,,,"Enable/disable advertise route refresh capability to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_default_originate,string,enable|disable,,,,"Enable/disable advertise default IPv4 route to this neighbor. Valid values: enable, disable."
+neighbor_group.capability_default_originate6,string,enable|disable,,,,"Enable/disable advertise default IPv6 route to this neighbor. Valid values: enable, disable."
+neighbor_group.dont_capability_negotiate,string,enable|disable,,,,"Don't negotiate capabilities with this neighbor Valid values: enable, disable."
+neighbor_group.ebgp_enforce_multihop,string,enable|disable,,,,"Enable/disable allow multi-hop EBGP neighbors. Valid values: enable, disable."
+neighbor_group.link_down_failover,string,enable|disable,,,,"Enable/disable failover upon link down. Valid values: enable, disable."
+neighbor_group.stale_route,string,enable|disable,,,,"Enable/disable stale route after neighbor down. Valid values: enable, disable."
+neighbor_group.next_hop_self,string,enable|disable,,,,"Enable/disable IPv4 next-hop calculation for this neighbor. Valid values: enable, disable."
+neighbor_group.next_hop_self6,string,enable|disable,,,,"Enable/disable IPv6 next-hop calculation for this neighbor. Valid values: enable, disable."
+neighbor_group.next_hop_self_rr,string,enable|disable,,,,"Enable/disable setting nexthop's address to interface's IPv4 address for route-reflector routes. Valid values: enable, disable."
+neighbor_group.next_hop_self_rr6,string,enable|disable,,,,"Enable/disable setting nexthop's address to interface's IPv6 address for route-reflector routes. Valid values: enable, disable."
+neighbor_group.next_hop_self_vpnv4,string,enable|disable,,,,"Enable/disable setting VPNv4 next-hop to interface's IP address for this neighbor. Valid values: enable, disable."
+neighbor_group.next_hop_self_vpnv6,string,enable|disable,,,,"Enable/disable use of outgoing interface's IP address as VPNv6 next-hop for this neighbor. Valid values: enable, disable."
+neighbor_group.next_hop_self_rr_vpnv4,string,enable|disable,,,,"Enable/disable setting of the nexthop's address to interface's address for route-reflector VPNv4 routes. Valid values: enable, disable."
+neighbor_group.next_hop_self_rr_vpnv6,string,enable|disable,,,,"Enable/disable setting of the nexthop's address to interface's address for route-reflector VPNv6 routes. Valid values: enable, disable."
+neighbor_group.override_capability,string,enable|disable,,,,"Enable/disable override result of capability negotiation. Valid values: enable, disable."
+neighbor_group.passive,string,enable|disable,,,,"Enable/disable sending of open messages to this neighbor. Valid values: enable, disable."
+neighbor_group.remove_private_as,string,enable|disable,,,,"Enable/disable remove private AS number from IPv4 outbound updates. Valid values: enable, disable."
+neighbor_group.remove_private_as6,string,enable|disable,,,,"Enable/disable remove private AS number from IPv6 outbound updates. Valid values: enable, disable."
+neighbor_group.remove_private_as_vpnv4,string,enable|disable,,,,"Enable/disable remove private AS number from VPNv4 outbound updates. Valid values: enable, disable."
+neighbor_group.remove_private_as_vpnv6,string,enable|disable,,,,"Enable/disable to remove private AS number from VPNv6 outbound updates. Valid values: enable, disable."
+neighbor_group.remove_private_as_evpn,string,enable|disable,,,,"Enable/disable removing private AS number from L2VPN EVPN outbound updates. Valid values: enable, disable."
+neighbor_group.route_reflector_client,string,enable|disable,,,,"Enable/disable IPv4 AS route reflector client. Valid values: enable, disable."
+neighbor_group.route_reflector_client6,string,enable|disable,,,,"Enable/disable IPv6 AS route reflector client. Valid values: enable, disable."
+neighbor_group.route_reflector_client_vpnv4,string,enable|disable,,,,"Enable/disable VPNv4 AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor_group.route_reflector_client_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor_group.route_reflector_client_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN AS route reflector client for this neighbor. Valid values: enable, disable."
+neighbor_group.route_server_client,string,enable|disable,,,,"Enable/disable IPv4 AS route server client. Valid values: enable, disable."
+neighbor_group.route_server_client6,string,enable|disable,,,,"Enable/disable IPv6 AS route server client. Valid values: enable, disable."
+neighbor_group.route_server_client_vpnv4,string,enable|disable,,,,"Enable/disable VPNv4 AS route server client for this neighbor. Valid values: enable, disable."
+neighbor_group.route_server_client_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 AS route server client for this neighbor. Valid values: enable, disable."
+neighbor_group.route_server_client_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN AS route server client for this neighbor. Valid values: enable, disable."
+neighbor_group.rr_attr_allow_change,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to IPv4 route reflector clients. Valid values: enable, disable."
+neighbor_group.rr_attr_allow_change6,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to IPv6 route reflector clients. Valid values: enable, disable."
+neighbor_group.rr_attr_allow_change_vpnv4,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to VPNv4 route reflector clients. Valid values: enable, disable."
+neighbor_group.rr_attr_allow_change_vpnv6,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to VPNv6 route reflector clients. Valid values: enable, disable."
+neighbor_group.rr_attr_allow_change_evpn,string,enable|disable,,,,"Enable/disable allowing change of route attributes when advertising to L2VPN EVPN route reflector clients. Valid values: enable, disable."
+neighbor_group.adv_evpn_route,string,type2|type5|local,,,,"Types of EVPN routes that can be advertised to this neighbor as IPv4 routes. Valid values: type2, type5, local."
+neighbor_group.shutdown,string,,,,,Enable/disable shutdown this neighbor.
+neighbor_group.soft_reconfiguration,string,enable|disable,,,,"Enable/disable allow IPv4 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor_group.soft_reconfiguration6,string,enable|disable,,,,"Enable/disable allow IPv6 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor_group.soft_reconfiguration_vpnv4,string,enable|disable,,,,"Enable/disable allow VPNv4 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor_group.soft_reconfiguration_vpnv6,string,enable|disable,,,,"Enable/disable VPNv6 inbound soft reconfiguration. Valid values: enable, disable."
+neighbor_group.soft_reconfiguration_evpn,string,enable|disable,,,,"Enable/disable L2VPN EVPN inbound soft reconfiguration. Valid values: enable, disable."
+neighbor_group.as_override,string,enable|disable,,,,"Enable/disable replace peer AS with own AS for IPv4. Valid values: enable, disable."
+neighbor_group.as_override6,string,enable|disable,,,,"Enable/disable replace peer AS with own AS for IPv6. Valid values: enable, disable."
+neighbor_group.strict_capability_match,string,enable|disable,,,,"Enable/disable strict capability matching. Valid values: enable, disable."
+neighbor_group.default_originate_routemap,string,,,,,Route map to specify criteria to originate IPv4 default.
+neighbor_group.default_originate_routemap6,string,,,,,Route map to specify criteria to originate IPv6 default.
+neighbor_group.description,string,,,,,Description.
+neighbor_group.distribute_list_in,string,,,,,Filter for IPv4 updates from this neighbor.
+neighbor_group.distribute_list_in6,string,,,,,Filter for IPv6 updates from this neighbor.
+neighbor_group.distribute_list_in_vpnv4,string,,,,,Filter for VPNv4 updates from this neighbor.
+neighbor_group.distribute_list_in_vpnv6,string,,,,,Filter for VPNv6 updates from this neighbor.
+neighbor_group.distribute_list_out,string,,,,,Filter for IPv4 updates to this neighbor.
+neighbor_group.distribute_list_out6,string,,,,,Filter for IPv6 updates to this neighbor.
+neighbor_group.distribute_list_out_vpnv4,string,,,,,Filter for VPNv4 updates to this neighbor.
+neighbor_group.distribute_list_out_vpnv6,string,,,,,Filter for VPNv6 updates to this neighbor.
+neighbor_group.ebgp_multihop_ttl,number,,,,,EBGP multihop TTL for this peer.
+neighbor_group.filter_list_in,string,,,,,BGP filter for IPv4 inbound routes.
+neighbor_group.filter_list_in6,string,,,,,BGP filter for IPv6 inbound routes.
+neighbor_group.filter_list_in_vpnv4,string,,,,,BGP filter for VPNv4 inbound routes.
+neighbor_group.filter_list_in_vpnv6,string,,,,,BGP filter for VPNv6 inbound routes.
+neighbor_group.filter_list_out,string,,,,,BGP filter for IPv4 outbound routes.
+neighbor_group.filter_list_out6,string,,,,,BGP filter for IPv6 outbound routes.
+neighbor_group.filter_list_out_vpnv4,string,,,,,BGP filter for VPNv4 outbound routes.
+neighbor_group.filter_list_out_vpnv6,string,,,,,BGP filter for VPNv6 outbound routes.
+neighbor_group.interface,string,,,,,Interface
+neighbor_group.maximum_prefix,number,,,,,Maximum number of IPv4 prefixes to accept from this peer.
+neighbor_group.maximum_prefix6,number,,,,,Maximum number of IPv6 prefixes to accept from this peer.
+neighbor_group.maximum_prefix_vpnv4,number,,,,,Maximum number of VPNv4 prefixes to accept from this peer.
+neighbor_group.maximum_prefix_vpnv6,number,,,,,Maximum number of VPNv6 prefixes to accept from this peer.
+neighbor_group.maximum_prefix_evpn,number,,,,,Maximum number of L2VPN EVPN prefixes to accept from this peer.
+neighbor_group.maximum_prefix_threshold,number,,1-100,,,Maximum IPv4 prefix threshold value (1 - 100 percent).
+neighbor_group.maximum_prefix_threshold6,number,,1-100,,,Maximum IPv6 prefix threshold value (1 - 100 percent).
+neighbor_group.maximum_prefix_threshold_vpnv4,number,,1-100,,,Maximum VPNv4 prefix threshold value (1 - 100 percent).
+neighbor_group.maximum_prefix_threshold_vpnv6,number,,1-100,,,Maximum VPNv6 prefix threshold value (1 - 100 percent).
+neighbor_group.maximum_prefix_threshold_evpn,number,,1-100,,,Maximum L2VPN EVPN prefix threshold value (1 - 100 percent).
+neighbor_group.maximum_prefix_warning_only,string,enable|disable,,,,"Enable/disable IPv4 Only give warning message when limit is exceeded. Valid values: enable, disable."
+neighbor_group.maximum_prefix_warning_only6,string,enable|disable,,,,"Enable/disable IPv6 Only give warning message when limit is exceeded. Valid values: enable, disable."
+neighbor_group.maximum_prefix_warning_only_vpnv4,string,enable|disable,,,,"Enable/disable only giving warning message when limit is exceeded for VPNv4 routes. Valid values: enable, disable."
+neighbor_group.maximum_prefix_warning_only_vpnv6,string,enable|disable,,,,"Enable/disable warning message when limit is exceeded for VPNv6 routes. Valid values: enable, disable."
+neighbor_group.maximum_prefix_warning_only_evpn,string,enable|disable,,,,"Enable/disable only sending warning message when exceeding limit of L2VPN EVPN routes. Valid values: enable, disable."
+neighbor_group.prefix_list_in,string,,,,,IPv4 Inbound filter for updates from this neighbor.
+neighbor_group.prefix_list_in6,string,,,,,IPv6 Inbound filter for updates from this neighbor.
+neighbor_group.prefix_list_in_vpnv4,string,,,,,Inbound filter for VPNv4 updates from this neighbor.
+neighbor_group.prefix_list_in_vpnv6,string,,,,,Inbound filter for VPNv6 updates from this neighbor.
+neighbor_group.prefix_list_out,string,,,,,IPv4 Outbound filter for updates to this neighbor.
+neighbor_group.prefix_list_out6,string,,,,,IPv6 Outbound filter for updates to this neighbor.
+neighbor_group.prefix_list_out_vpnv4,string,,,,,Outbound filter for VPNv4 updates to this neighbor.
+neighbor_group.prefix_list_out_vpnv6,string,,,,,Outbound filter for VPNv6 updates to this neighbor.
+neighbor_group.remote_as,number,,,,,AS number of neighbor.
+neighbor_group.remote_as_filter,number,,,,,BGP filter for remote AS.
+neighbor_group.local_as,number,,,,,Local AS number of neighbor.
+neighbor_group.local_as_no_prepend,string,enable|disable,,,,"Do not prepend local-as to incoming updates. Valid values: enable, disable."
+neighbor_group.local_as_replace_as,string,enable|disable,,,,"Replace real AS with local-as in outgoing updates. Valid values: enable, disable."
+neighbor_group.retain_stale_time,number,,,,,Time to retain stale routes.
+neighbor_group.route_map_in,string,,,,,IPv4 Inbound route map filter.
+neighbor_group.route_map_in6,string,,,,,IPv6 Inbound route map filter.
+neighbor_group.route_map_in_vpnv4,string,,,,,VPNv4 inbound route map filter.
+neighbor_group.route_map_in_vpnv6,string,,,,,VPNv6 inbound route map filter.
+neighbor_group.route_map_in_evpn,string,,,,,L2VPN EVPN inbound route map filter.
+neighbor_group.route_map_out,string,,,,,IPv4 Outbound route map filter.
+neighbor_group.route_map_out_preferable,string,,,,,IPv4 outbound route map filter if the peer is preferred.
+neighbor_group.route_map_out6,string,,,,,IPv6 Outbound route map filter.
+neighbor_group.route_map_out6_preferable,string,,,,,IPv6 outbound route map filter if the peer is preferred.
+neighbor_group.route_map_out_vpnv4,string,,,,,VPNv4 outbound route map filter.
+neighbor_group.route_map_out_vpnv6,string,,,,,VPNv6 outbound route map filter.
+neighbor_group.route_map_out_vpnv4_preferable,string,,,,,VPNv4 outbound route map filter if the peer is preferred.
+neighbor_group.route_map_out_vpnv6_preferable,string,,,,,VPNv6 outbound route map filter if this neighbor is preferred.
+neighbor_group.route_map_out_evpn,string,,,,,L2VPN EVPN outbound route map filter.
+neighbor_group.send_community,string,standard|extended|both|disable,,,,"IPv4 Send community attribute to neighbor. Valid values: standard, extended, both, disable."
+neighbor_group.send_community6,string,standard|extended|both|disable,,,,"IPv6 Send community attribute to neighbor. Valid values: standard, extended, both, disable."
+neighbor_group.send_community_vpnv4,string,standard|extended|both|disable,,,,"Send community attribute to neighbor for VPNv4 address family. Valid values: standard, extended, both, disable."
+neighbor_group.send_community_vpnv6,string,standard|extended|both|disable,,,,"Enable/disable sending community attribute to this neighbor for VPNv6 address family. Valid values: standard, extended, both, disable."
+neighbor_group.send_community_evpn,string,standard|extended|both|disable,,,,"Enable/disable sending community attribute to neighbor for L2VPN EVPN address family. Valid values: standard, extended, both, disable."
+neighbor_group.keep_alive_timer,number,,,,,Keep alive timer interval (sec). Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor_group.holdtime_timer,number,,,,,Interval (sec) before peer considered dead. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor_group.connect_timer,number,,,,,Interval (sec) for connect timer. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor_group.unsuppress_map,string,,,,,IPv4 Route map to selectively unsuppress suppressed routes.
+neighbor_group.unsuppress_map6,string,,,,,IPv6 Route map to selectively unsuppress suppressed routes.
+neighbor_group.update_source,string,,,,,Interface to use as source IP/IPv6 address of TCP connections.
+neighbor_group.enforce_preferred_source,string,enable|disable,,,,"Enable/disable enforce usage of the update-source as preferred source for IPv4 routes learned from this neighbor. Valid values: enable, disable."
+neighbor_group.weight,number,,,,,Neighbor weight. Set to -1 means unset this variable. CLI output may have different value on different FortiOS version.
+neighbor_group.restart_time,number,,,,,"Graceful restart delay time (sec, 0 = global default)."
+neighbor_group.additional_path,string,send|receive|both|disable,,,,"Enable/disable IPv4 additional-path capability. Valid values: send, receive, both, disable."
+neighbor_group.additional_path6,string,send|receive|both|disable,,,,"Enable/disable IPv6 additional-path capability. Valid values: send, receive, both, disable."
+neighbor_group.additional_path_vpnv4,string,send|receive|both|disable,,,,"Enable/disable VPNv4 additional-path capability. Valid values: send, receive, both, disable."
+neighbor_group.additional_path_vpnv6,string,send|receive|both|disable,,,,"Enable/disable VPNv6 additional-path capability. Valid values: send, receive, both, disable."
+neighbor_group.adv_additional_path,number,,,,,Number of IPv4 additional paths that can be advertised to this neighbor.
+neighbor_group.adv_additional_path6,number,,,,,Number of IPv6 additional paths that can be advertised to this neighbor.
+neighbor_group.adv_additional_path_vpnv4,number,,,,,Number of VPNv4 additional paths that can be advertised to this neighbor.
+neighbor_group.adv_additional_path_vpnv6,number,,,,,Number of VPNv6 additional paths that can be advertised to this neighbor.
+neighbor_group.password,string,,,,,Password used in MD5 authentication.
+neighbor_group.auth_options,string,,,,,Key-chain name for TCP authentication options.
+neighbor_group.graceful_shutdown_community,string,,,,,Graceful shutdown community.
+neighbor_group.graceful_shutdown_local_preference,string,,,,,Graceful shutdown local preference.
+neighbor_group.graceful_shutdown_delay,number,,,,,Delay in seconds before graceful shutdown ends.
+neighbor_group.use_sdwan,string,enable|disable,,,,"Use SDWAN rules for BGP connection. Valid values: enable, disable"
+neighbor_range,list(object),,,,,BGP neighbor range table. The structure of neighbor_range block is documented below.
+neighbor_range.id,number,,,,,Neighbor range ID.
+neighbor_range.prefix,string,,,,,Neighbor range prefix.
+neighbor_range.max_neighbor_num,number,,,,,Maximum number of neighbors.
+neighbor_range.neighbor_group,string,,,,,Neighbor group name.
+neighbor_range6,list(object),,,,,BGP IPv6 neighbor range table. The structure of neighbor_range6 block is documented below.
+neighbor_range6.id,number,,,,,IPv6 neighbor range ID.
+neighbor_range6.prefix,string,,,,,IPv6 prefix.
+neighbor_range6.max_neighbor_num,number,,,,,Maximum number of neighbors.
+neighbor_range6.neighbor_group,string,,,,,Neighbor group name.
+network,list(object),,,,,BGP network table. The structure of network block is documented below.
+network.id,number,,,,,ID.
+network.prefix,string,,,,,Network prefix.
+network.network_import_check,string,global|enable|disable,,,,"Configure insurance of BGP network route existence in IGP. Valid values: global, enable, disable."
+network.backdoor,string,enable|disable,,,,"Enable/disable route as backdoor. Valid values: enable, disable."
+network.route_map,string,,,,,Route map to modify generated route.
+network.prefix_name,string,,,,,Name of firewall address or address group.
+network.internet_service_name,string,,,,,Name of internet service.
+network6,list(object),,,,,BGP IPv6 network table. The structure of network6 block is documented below.
+network6.id,number,,,,,ID.
+network6.prefix6,string,,,,,Network IPv6 prefix.
+network6.network_import_check,string,global|enable|disable,,,,"Configure insurance of BGP network route existence in IGP. Valid values: global, enable, disable."
+network6.backdoor,string,enable|disable,,,,"Enable/disable route as backdoor. Valid values: enable, disable."
+network6.route_map,string,,,,,Route map to modify generated route.
+redistribute,list(object),,,,,BGP IPv4 redistribute table. The structure of redistribute block is documented below.
+redistribute.name,string,,,,,Distribute list entry name.
+redistribute.status,string,enable|disable,,,,"Status Valid values: enable, disable."
+redistribute.status_evpn,string,enable|disable,,,,"EVPN redistribution status. Valid values: enable, disable."
+redistribute.route_map,string,,,,,Route map name.
+redistribute.route_map_evpn,string,,,,,Route map name for EVPN redistribution.
+redistribute6,list(object),,,,,BGP IPv6 redistribute table. The structure of redistribute6 block is documented below.
+redistribute6.name,string,,,,,Distribute list entry name.
+redistribute6.status,string,enable|disable,,,,"Status Valid values: enable, disable."
+redistribute6.route_map,string,,,,,Route map name.
+admin_distance,list(object),,,,,Administrative distance modifications. The structure of admin_distance block is documented below.
+admin_distance.id,number,,,,,ID.
+admin_distance.neighbor_prefix,string,,,,,Neighbor address prefix.
+admin_distance.route_list,string,,,,,Access list of routes to apply new distance to.
+admin_distance.distance,number,,1-255,,,Administrative distance to apply (1 - 255).
+vrf,list(object),,,,,BGP VRF leaking table. The structure of vrf block is documented below.
+vrf.vrf,number,,0-251,,,Origin VRF ID. On FortiOS versions 7.2.0-7.2.3: 0 - 63. On FortiOS versions 7.2.4-7.6.0: 0 - 251. On FortiOS versions >= 7.6.1: 0-511.
+vrf.role,string,standalone|ce|pe,,,,"VRF role. Valid values: standalone, ce, pe."
+vrf.rd,string,,,,,Route Distinguisher: AA|AA:NN.
+vrf.export_rt,list(string),,,,,List of export route target. The structure of export_rt block is documented below.
+vrf.import_rt,list(string),,,,,List of import route target. The structure of import_rt block is documented below.
+vrf.import_route_map,string,,,,,Import route map.
+vrf.leak_target,list(object),,,,,Target VRF table. The structure of leak_target block is documented below.
+vrf.leak_target.vrf,number,,0-251,,,Target VRF ID. On FortiOS versions 7.2.0-7.2.3: 0 - 63. On FortiOS versions 7.2.4-7.6.0: 0 - 251. On FortiOS versions >= 7.6.1: 0-511.
+vrf.leak_target.route_map,string,,,,,Route map of VRF leaking.
+vrf.leak_target.interface,string,,,,,Interface which is used to leak routes to target VRF.
+vrf6,list(object),,,,,BGP IPv6 VRF leaking table. The structure of vrf6 block is documented below.
+vrf6.vrf,number,,0-251,,,Origin VRF ID. On FortiOS versions 7.2.0-7.2.3: 0 - 63. On FortiOS versions 7.2.4-7.6.0: 0 - 251. On FortiOS versions >= 7.6.1: 0-511.
+vrf6.role,string,standalone|ce|pe,,,,"VRF role. Valid values: standalone, ce, pe."
+vrf6.rd,string,,,,,Route Distinguisher: AA:NN|A.B.C.D:NN.
+vrf6.export_rt,list(string),,,,,List of export route target. The structure of export_rt block is documented below.
+vrf6.import_rt,list(string),,,,,List of import route target. The structure of import_rt block is documented below.
+vrf6.import_route_map,string,,,,,Import route map.
+vrf6.leak_target,list(object),,,,,Target VRF table. The structure of leak_target block is documented below.
+vrf6.leak_target.vrf,number,,0-251,,,Target VRF ID. On FortiOS versions 7.2.0-7.2.3: 0 - 63. On FortiOS versions 7.2.4-7.6.0: 0 - 251. On FortiOS versions >= 7.6.1: 0-511.
+vrf6.leak_target.route_map,string,,,,,Route map of VRF leaking.
+vrf6.leak_target.interface,string,,,,,Interface which is used to leak routes to target VRF.
+vrf_leak,list(object),,,,,BGP VRF leaking table. The structure of vrf_leak block is documented below.
+vrf_leak.vrf,number,,0-31,,,Origin VRF ID (0 - 31).
+vrf_leak.target,list(object),,,,,Target VRF table. The structure of target block is documented below.
+vrf_leak.target.vrf,number,,0-31,,,Target VRF ID (0 - 31).
+vrf_leak.target.route_map,string,,,,,Route map of VRF leaking.
+vrf_leak.target.interface,string,,,,,Interface which is used to leak routes to target VRF.
+vrf_leak6,list(object),,,,,BGP IPv6 VRF leaking table. The structure of vrf_leak6 block is documented below.
+vrf_leak6.vrf,number,,0-31,,,Origin VRF ID (0 - 31).
+vrf_leak6.target,list(object),,,,,Target VRF table. The structure of target block is documented below.
+vrf_leak6.target.vrf,number,,0-31,,,Target VRF ID (0 - 31).
+vrf_leak6.target.route_map,string,,,,,Route map of VRF leaking.
+vrf_leak6.target.interface,string,,,,,Interface which is used to leak routes to target VRF.
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."

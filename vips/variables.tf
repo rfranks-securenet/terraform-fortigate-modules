@@ -233,19 +233,19 @@ variable "vip6" {
     error_message = "Parameter `client_cert` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.status == null || contains(["active", "standby", "disable"], p.status)]]))
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p == null || p.status == null || contains(["active", "standby", "disable"], p.status)]]))
     error_message = "Parameter `realservers.status` must be one of `active`, `standby`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.healthcheck == null || contains(["disable", "enable", "vip"], p.healthcheck)]]))
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p == null || p.healthcheck == null || contains(["disable", "enable", "vip"], p.healthcheck)]]))
     error_message = "Parameter `realservers.healthcheck` must be one of `disable`, `enable`, `vip`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.translate_host == null || contains(["enable", "disable"], p.translate_host)]]))
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p == null || p.translate_host == null || contains(["enable", "disable"], p.translate_host)]]))
     error_message = "Parameter `realservers.translate_host` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.verify_cert == null || contains(["enable", "disable"], p.verify_cert)]]))
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p == null || p.verify_cert == null || contains(["enable", "disable"], p.verify_cert)]]))
     error_message = "Parameter `realservers.verify_cert` must be one of `enable`, `disable`."
   }
   validation {
@@ -639,23 +639,23 @@ variable "vip" {
     error_message = "Parameter `client_cert` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p.type == null || contains(["ip", "address"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p == null || p.type == null || contains(["ip", "address"], p.type)]]))
     error_message = "Parameter `realservers.type` must be one of `ip`, `address`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p.status == null || contains(["active", "standby", "disable"], p.status)]]))
+    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p == null || p.status == null || contains(["active", "standby", "disable"], p.status)]]))
     error_message = "Parameter `realservers.status` must be one of `active`, `standby`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p.healthcheck == null || contains(["disable", "enable", "vip"], p.healthcheck)]]))
+    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p == null || p.healthcheck == null || contains(["disable", "enable", "vip"], p.healthcheck)]]))
     error_message = "Parameter `realservers.healthcheck` must be one of `disable`, `enable`, `vip`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p.translate_host == null || contains(["enable", "disable"], p.translate_host)]]))
+    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p == null || p.translate_host == null || contains(["enable", "disable"], p.translate_host)]]))
     error_message = "Parameter `realservers.translate_host` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p.verify_cert == null || contains(["enable", "disable"], p.verify_cert)]]))
+    condition     = alltrue(flatten([for o in var.vip : [for p in o.realservers : p == null || p.verify_cert == null || contains(["enable", "disable"], p.verify_cert)]]))
     error_message = "Parameter `realservers.verify_cert` must be one of `enable`, `disable`."
   }
   validation {

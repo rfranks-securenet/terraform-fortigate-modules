@@ -255,7 +255,7 @@ variable "address6" {
     error_message = "Parameter `color` must be in the range 1-32."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.address6 : [for p in o.subnet_segment : p.type == null || contains(["any", "specific"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.address6 : [for p in o.subnet_segment : p == null || p.type == null || contains(["any", "specific"], p.type)]]))
     error_message = "Parameter `subnet_segment.type` must be one of `any`, `specific`."
   }
   validation {

@@ -438,7 +438,7 @@ variable "interface" {
     error_message = "Parameter `mode` must be one of `static`, `dhcp`, `pppoe`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.client_options : p.type == null || contains(["hex", "string", "ip", "fqdn"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.client_options : p == null || p.type == null || contains(["hex", "string", "ip", "fqdn"], p.type)]]))
     error_message = "Parameter `client_options.type` must be one of `hex`, `string`, `ip`, `fqdn`."
   }
   validation {
@@ -870,47 +870,47 @@ variable "interface" {
     error_message = "Parameter `vrrp_virtual_mac` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.vrid == null || (p.vrid >= 1 && p.vrid <= 255)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.vrid == null || (p.vrid >= 1 && p.vrid <= 255)]]))
     error_message = "Parameter `vrrp.vrid` must be in the range 1-255."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.version == null || contains(["2", "3"], p.version)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.version == null || contains(["2", "3"], p.version)]]))
     error_message = "Parameter `vrrp.version` must be one of `2`, `3`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.vrgrp == null || (p.vrgrp >= 1 && p.vrgrp <= 65535)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.vrgrp == null || (p.vrgrp >= 1 && p.vrgrp <= 65535)]]))
     error_message = "Parameter `vrrp.vrgrp` must be in the range 1-65535."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.priority == null || (p.priority >= 1 && p.priority <= 255)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.priority == null || (p.priority >= 1 && p.priority <= 255)]]))
     error_message = "Parameter `vrrp.priority` must be in the range 1-255."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.adv_interval == null || (p.adv_interval >= 250 && p.adv_interval <= 255000)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.adv_interval == null || (p.adv_interval >= 250 && p.adv_interval <= 255000)]]))
     error_message = "Parameter `vrrp.adv_interval` must be in the range 250-255000."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.start_time == null || (p.start_time >= 1 && p.start_time <= 255)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.start_time == null || (p.start_time >= 1 && p.start_time <= 255)]]))
     error_message = "Parameter `vrrp.start_time` must be in the range 1-255."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.preempt == null || contains(["enable", "disable"], p.preempt)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.preempt == null || contains(["enable", "disable"], p.preempt)]]))
     error_message = "Parameter `vrrp.preempt` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.accept_mode == null || contains(["enable", "disable"], p.accept_mode)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.accept_mode == null || contains(["enable", "disable"], p.accept_mode)]]))
     error_message = "Parameter `vrrp.accept_mode` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.vrdst_priority == null || (p.vrdst_priority >= 0 && p.vrdst_priority <= 254)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.vrdst_priority == null || (p.vrdst_priority >= 0 && p.vrdst_priority <= 254)]]))
     error_message = "Parameter `vrrp.vrdst_priority` must be in the range 0-254."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.ignore_default_route == null || contains(["enable", "disable"], p.ignore_default_route)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.ignore_default_route == null || contains(["enable", "disable"], p.ignore_default_route)]]))
     error_message = "Parameter `vrrp.ignore_default_route` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p.status == null || contains(["enable", "disable"], p.status)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.vrrp : p == null || p.status == null || contains(["enable", "disable"], p.status)]]))
     error_message = "Parameter `vrrp.status` must be one of `enable`, `disable`."
   }
   validation {
@@ -930,11 +930,11 @@ variable "interface" {
     error_message = "Parameter `secondary_ip` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.secondaryip : p.gwdetect == null || contains(["enable", "disable"], p.gwdetect)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.secondaryip : p == null || p.gwdetect == null || contains(["enable", "disable"], p.gwdetect)]]))
     error_message = "Parameter `secondaryip.gwdetect` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : [for p in o.secondaryip : p.detectprotocol == null || contains(["ping", "tcp-echo", "udp-echo"], p.detectprotocol)]]))
+    condition     = alltrue(flatten([for o in var.interface : [for p in o.secondaryip : p == null || p.detectprotocol == null || contains(["ping", "tcp-echo", "udp-echo"], p.detectprotocol)]]))
     error_message = "Parameter `secondaryip.detectprotocol` must be one of `ping`, `tcp-echo`, `udp-echo`."
   }
   validation {
@@ -1046,10 +1046,6 @@ variable "interface" {
     error_message = "Parameter `ipv6.ip6_mode` must be one of `static`, `dhcp`, `pppoe`, `delegated`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.client_options : p.type == null || contains(["hex", "string", "ip6", "fqdn"], p.type)]]))
-    error_message = "Parameter `ipv6.client_options.type` must be one of `hex`, `string`, `ip6`, `fqdn`."
-  }
-  validation {
     condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.nd_mode == null || contains(["basic", "SEND-compatible"], o.ipv6.nd_mode)]))
     error_message = "Parameter `ipv6.nd_mode` must be one of `basic`, `SEND-compatible`."
   }
@@ -1106,14 +1102,6 @@ variable "interface" {
     error_message = "Parameter `ipv6.ip6_route_pref` must be one of `medium`, `high`, `low`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_route_list : p.route_pref == null || contains(["medium", "high", "low"], p.route_pref)]]))
-    error_message = "Parameter `ipv6.ip6_route_list.route_pref` must be one of `medium`, `high`, `low`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_route_list : p.route_life_time == null || (p.route_life_time >= 0 && p.route_life_time <= 65535)]]))
-    error_message = "Parameter `ipv6.ip6_route_list.route_life_time` must be in the range 0-65535."
-  }
-  validation {
     condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.autoconf == null || contains(["enable", "disable"], o.ipv6.autoconf)]))
     error_message = "Parameter `ipv6.autoconf` must be one of `enable`, `disable`."
   }
@@ -1124,38 +1112,6 @@ variable "interface" {
   validation {
     condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_prefix_mode == null || contains(["dhcp6", "ra"], o.ipv6.ip6_prefix_mode)]))
     error_message = "Parameter `ipv6.ip6_prefix_mode` must be one of `dhcp6`, `ra`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_prefix_list : p.autonomous_flag == null || contains(["enable", "disable"], p.autonomous_flag)]]))
-    error_message = "Parameter `ipv6.ip6_prefix_list.autonomous_flag` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_prefix_list : p.onlink_flag == null || contains(["enable", "disable"], p.onlink_flag)]]))
-    error_message = "Parameter `ipv6.ip6_prefix_list.onlink_flag` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_rdnss_list : p.rdnss_life_time == null || (p.rdnss_life_time >= 0 && p.rdnss_life_time <= 4294967295)]]))
-    error_message = "Parameter `ipv6.ip6_rdnss_list.rdnss_life_time` must be in the range 0-4294967295."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_dnssl_list : p.dnssl_life_time == null || (p.dnssl_life_time >= 0 && p.dnssl_life_time <= 4294967295)]]))
-    error_message = "Parameter `ipv6.ip6_dnssl_list.dnssl_life_time` must be in the range 0-4294967295."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_delegated_prefix_list : p.autonomous_flag == null || contains(["enable", "disable"], p.autonomous_flag)]]))
-    error_message = "Parameter `ipv6.ip6_delegated_prefix_list.autonomous_flag` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_delegated_prefix_list : p.onlink_flag == null || contains(["enable", "disable"], p.onlink_flag)]]))
-    error_message = "Parameter `ipv6.ip6_delegated_prefix_list.onlink_flag` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_delegated_prefix_list : p.rdnss_service == null || contains(["delegated", "default", "specify"], p.rdnss_service)]]))
-    error_message = "Parameter `ipv6.ip6_delegated_prefix_list.rdnss_service` must be one of `delegated`, `default`, `specify`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.ip6_delegated_prefix_list : p.dnssl_service == null || contains(["enable", "disable"], p.dnssl_service)]]))
-    error_message = "Parameter `ipv6.ip6_delegated_prefix_list.dnssl_service` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_egress_cos == null || contains(["cos0", "cos1", "cos2", "cos3", "cos4", "cos5", "cos6", "cos7"], o.ipv6.dhcp6_egress_cos)]))
@@ -1190,46 +1146,6 @@ variable "interface" {
     error_message = "Parameter `ipv6.vrrp_virtual_mac6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.vrid == null || (p.vrid >= 1 && p.vrid <= 255)]]))
-    error_message = "Parameter `ipv6.vrrp6.vrid` must be in the range 1-255."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.vrgrp == null || (p.vrgrp >= 1 && p.vrgrp <= 65535)]]))
-    error_message = "Parameter `ipv6.vrrp6.vrgrp` must be in the range 1-65535."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.priority == null || (p.priority >= 1 && p.priority <= 255)]]))
-    error_message = "Parameter `ipv6.vrrp6.priority` must be in the range 1-255."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.adv_interval == null || (p.adv_interval >= 250 && p.adv_interval <= 255000)]]))
-    error_message = "Parameter `ipv6.vrrp6.adv_interval` must be in the range 250-255000."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.start_time == null || (p.start_time >= 1 && p.start_time <= 255)]]))
-    error_message = "Parameter `ipv6.vrrp6.start_time` must be in the range 1-255."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.preempt == null || contains(["enable", "disable"], p.preempt)]]))
-    error_message = "Parameter `ipv6.vrrp6.preempt` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.accept_mode == null || contains(["enable", "disable"], p.accept_mode)]]))
-    error_message = "Parameter `ipv6.vrrp6.accept_mode` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.vrdst_priority == null || (p.vrdst_priority >= 0 && p.vrdst_priority <= 254)]]))
-    error_message = "Parameter `ipv6.vrrp6.vrdst_priority` must be in the range 0-254."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.ignore_default_route == null || contains(["enable", "disable"], p.ignore_default_route)]]))
-    error_message = "Parameter `ipv6.vrrp6.ignore_default_route` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || [for p in o.ipv6.vrrp6 : p.status == null || contains(["enable", "disable"], p.status)]]))
-    error_message = "Parameter `ipv6.vrrp6.status` must be one of `enable`, `disable`."
-  }
-  validation {
     condition     = alltrue(flatten([for o in var.interface : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
     error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
   }
@@ -1245,11 +1161,11 @@ variable "zone" {
     fabric_force_sync    = optional(string)
     fabric_object_source = optional(string)
     name                 = optional(string)
-    tagging = optional(object({
+    tagging = optional(list(object({
       name     = optional(string)
       category = optional(string)
       tags     = optional(list(string), [])
-    }))
+    })), [])
     description           = optional(string)
     intrazone             = optional(string)
     interface             = optional(list(string), [])

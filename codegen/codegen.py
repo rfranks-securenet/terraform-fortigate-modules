@@ -43,7 +43,7 @@ for source in sources:
             if colon == -1:
                 logger.warning("Found invalid meta argument: %s", line)
             meta = line[1:colon]
-            value = line[colon + 1:].strip().rstrip(",")
+            value = line[colon + 1 :].strip().rstrip(",")
             if meta == "desc":
                 # Processing description line
                 topVar._description = value
@@ -64,7 +64,9 @@ for source in sources:
             topVar.addChild(tfvar)
 
     if module is None:
-        logger.error("Module not defined for variable %s; cannot write out", topVar.name)
+        logger.error(
+            "Module not defined for variable %s; cannot write out", topVar.name
+        )
         continue
     try:
         modules[module].append(topVar.render())

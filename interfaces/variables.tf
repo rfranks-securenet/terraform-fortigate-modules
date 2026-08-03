@@ -155,7 +155,7 @@ variable "interface" {
     system_id                          = optional(string)
     lacp_speed                         = optional(string)
     min_links                          = optional(number)
-    min_links_down                     = optional(number)
+    min_links_down                     = optional(string)
     algorithm                          = optional(string)
     link_up_delay                      = optional(string)
     aggregate_type                     = optional(string)
@@ -335,7 +335,7 @@ variable "interface" {
       ip6_max_interval        = optional(number)
       ip6_min_interval        = optional(number)
       ip6_link_mtu            = optional(number)
-      ra_send_mtu             = optional(number)
+      ra_send_mtu             = optional(string)
       ip6_reachable_time      = optional(number)
       ip6_retrans_time        = optional(number)
       ip6_default_life        = optional(number)
@@ -778,7 +778,7 @@ variable "interface" {
     error_message = "Parameter `lacp_speed` must be one of `slow`, `fast`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.min_links_down == null || contains([operational, administrative], o.min_links_down)]))
+    condition     = alltrue(flatten([for o in var.interface : o.min_links_down == null || contains(["operational", "administrative"], o.min_links_down)]))
     error_message = "Parameter `min_links_down` must be one of `operational`, `administrative`."
   }
   validation {
@@ -1094,7 +1094,7 @@ variable "interface" {
     error_message = "Parameter `ipv6.ip6_min_interval` must be in the range 3-1350."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ra_send_mtu == null || contains([enable, disable], o.ra_send_mtu)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ra_send_mtu == null || contains(["enable", "disable"], o.ra_send_mtu)]))
     error_message = "Parameter `ipv6.ra_send_mtu` must be one of `enable`, `disable`."
   }
   validation {

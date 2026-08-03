@@ -6,7 +6,7 @@ fabric_object,string,enable|disable,,,,"Security Fabric global object setting. V
 fabric_force_sync,string,enable|disable,,,,"Enable/disable forced synchronization of configuration objects from the root FortiGate unit to the downstream devices. Configuration conflict check is skipped. Valid values: enable, disable."
 fabric_object_source,string,member|local|root,,,,"Source of truth for fabric object. Valid values: member, local, root."
 name,string,,,,,Zone name.
-tagging,object,,,,,Config object tagging. The structure of tagging block is documented below.
+tagging,list(object),,,,,Config object tagging. The structure of tagging block is documented below.
 tagging.name,string,,,,,Tagging entry name.
 tagging.category,string,,,,,Tag category.
 tagging.tags,list(string),,,,,Tags. The structure of tags block is documented below.

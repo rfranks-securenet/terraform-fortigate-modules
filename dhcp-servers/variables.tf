@@ -138,19 +138,19 @@ variable "dhcp_server" {
     error_message = "Parameter `ntp_service` must be one of `local`, `default`, `specify`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p == null || p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
     error_message = "Parameter `ip_range.vci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p == null || p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
     error_message = "Parameter `ip_range.uci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p.oui_match == null || contains(["disable", "enable"], p.oui_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p == null || p.oui_match == null || contains(["disable", "enable"], p.oui_match)]]))
     error_message = "Parameter `ip_range.oui_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p.lease_time == null || p.lease_time >= 0]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p == null || p.lease_time == null || p.lease_time >= 0]]))
     error_message = "Parameter `ip_range.lease_time` must be 0 or greater."
   }
   validation {
@@ -162,15 +162,15 @@ variable "dhcp_server" {
     error_message = "Parameter `template_subnet_from_interface` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p.type == null || contains(["hex", "string", "ip", "fqdn"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p == null || p.type == null || contains(["hex", "string", "ip", "fqdn"], p.type)]]))
     error_message = "Parameter `options.type` must be one of `hex`, `string`, `ip`, `fqdn`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p == null || p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
     error_message = "Parameter `options.vci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.options : p == null || p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
     error_message = "Parameter `options.uci_match` must be one of `disable`, `enable`."
   }
   validation {
@@ -214,19 +214,19 @@ variable "dhcp_server" {
     error_message = "Parameter `vci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p == null || p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
     error_message = "Parameter `exclude_range.vci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p == null || p.uci_match == null || contains(["disable", "enable"], p.uci_match)]]))
     error_message = "Parameter `exclude_range.uci_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p.oui_match == null || contains(["disable", "enable"], p.oui_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p == null || p.oui_match == null || contains(["disable", "enable"], p.oui_match)]]))
     error_message = "Parameter `exclude_range.oui_match` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p.lease_time == null || p.lease_time >= 0]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p == null || p.lease_time == null || p.lease_time >= 0]]))
     error_message = "Parameter `exclude_range.lease_time` must be 0 or greater."
   }
   validation {
@@ -234,23 +234,23 @@ variable "dhcp_server" {
     error_message = "Parameter `shared_subnet` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.type == null || contains(["mac", "option82"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.type == null || contains(["mac", "option82"], p.type)]]))
     error_message = "Parameter `reserved_address.type` must be one of `mac`, `option82`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.mac == null || contains(["mac", "option82"], p.mac)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.mac == null || contains(["mac", "option82"], p.mac)]]))
     error_message = "Parameter `reserved_address.mac` must be one of `mac`, `option82`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.action == null || contains(["assign", "block", "reserved"], p.action)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.action == null || contains(["assign", "block", "reserved"], p.action)]]))
     error_message = "Parameter `reserved_address.action` must be one of `assign`, `block`, `reserved`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.circuit_id_type == null || contains(["hex", "string"], p.circuit_id_type)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.circuit_id_type == null || contains(["hex", "string"], p.circuit_id_type)]]))
     error_message = "Parameter `reserved_address.circuit_id_type` must be one of `hex`, `string`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.remote_id_type == null || contains(["hex", "string"], p.remote_id_type)]]))
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.remote_id_type == null || contains(["hex", "string"], p.remote_id_type)]]))
     error_message = "Parameter `reserved_address.remote_id_type` must be one of `hex`, `string`."
   }
   validation {
@@ -334,11 +334,11 @@ variable "dhcp6_server" {
     error_message = "Parameter `delegated_prefix_route` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.options : p.type == null || contains(["hex", "string", "ip6", "fqdn"], p.type)]]))
+    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.options : p == null || p.type == null || contains(["hex", "string", "ip6", "fqdn"], p.type)]]))
     error_message = "Parameter `options.type` must be one of `hex`, `string`, `ip6`, `fqdn`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.options : p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.options : p == null || p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
     error_message = "Parameter `options.vci_match` must be one of `disable`, `enable`."
   }
   validation {
@@ -350,7 +350,7 @@ variable "dhcp6_server" {
     error_message = "Parameter `prefix_mode` must be one of `dhcp6`, `ra`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.ip_range : p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
+    condition     = alltrue(flatten([for o in var.dhcp6_server : [for p in o.ip_range : p == null || p.vci_match == null || contains(["disable", "enable"], p.vci_match)]]))
     error_message = "Parameter `ip_range.vci_match` must be one of `disable`, `enable`."
   }
   validation {

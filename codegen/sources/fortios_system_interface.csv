@@ -302,7 +302,7 @@ ipv6.ip6_mode,string,static|dhcp|pppoe|delegated,,1,,"Addressing mode (static, D
 ipv6.client_options,list(object),,,,,DHCP6 client options. The structure of client_options block is documented below.
 ipv6.client_options.id,number,,,,,ID.
 ipv6.client_options.code,number,,,1,,DHCPv6 option code.
-ipv6.client_options.type,string,hex|string|ip6|fqdn,,,,"DHCPv6 option type. Valid values: hex, string, ip6, fqdn."
+ipv6.client_options.type,string,,,,,"DHCPv6 option type. Valid values: hex, string, ip6, fqdn."
 ipv6.client_options.value,string,,,,,DHCPv6 option value (hexadecimal value must be even).
 ipv6.client_options.ip6,string,,,,,DHCP option IP6s.
 ipv6.nd_mode,string,basic|SEND-compatible,,,,"Neighbor discovery mode. Valid values: basic, SEND-compatible."
@@ -333,8 +333,8 @@ ipv6.ip6_adv_rio,string,enable|disable,,,,"Enable/disable sending advertisements
 ipv6.ip6_route_pref,string,medium|high|low,,,,"Set route preference to the interface (default = medium). Valid values: medium, high, low."
 ipv6.ip6_route_list,list(object),,,,,Advertised route list. The structure of ip6_route_list block is documented below.
 ipv6.ip6_route_list.route,string,,,1,,IPv6 route.
-ipv6.ip6_route_list.route_pref,string,medium|high|low,,,,"Set route preference to the interface (default = medium). Valid values: medium, high, low."
-ipv6.ip6_route_list.route_life_time,number,,0-65535,,,"Route life time in seconds (0 - 65535, default = 1800)."
+ipv6.ip6_route_list.route_pref,string,,,,,"Set route preference to the interface (default = medium). Valid values: medium, high, low."
+ipv6.ip6_route_list.route_life_time,number,,,,,"Route life time in seconds (0 - 65535, default = 1800)."
 ipv6.autoconf,string,enable|disable,,,,"Enable/disable address auto config. Valid values: enable, disable."
 ipv6.unique_autoconf_addr,string,enable|disable,,,,"Enable/disable unique auto config address. Valid values: enable, disable."
 ipv6.interface_identifier,string,,,,,IPv6 interface identifier.
@@ -344,28 +344,28 @@ ipv6.ip6_delegated_prefix_iaid,string,,,,,IAID of obtained delegated-prefix from
 ipv6.ip6_subnet,string,,,,,"Subnet to routing prefix, syntax: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx"
 ipv6.ip6_prefix_list,list(object),,,,,Advertised prefix list. The structure of ip6_prefix_list block is documented below.
 ipv6.ip6_prefix_list.prefix,string,,,1,,IPv6 prefix.
-ipv6.ip6_prefix_list.autonomous_flag,string,enable|disable,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
-ipv6.ip6_prefix_list.onlink_flag,string,enable|disable,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
+ipv6.ip6_prefix_list.autonomous_flag,string,,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
+ipv6.ip6_prefix_list.onlink_flag,string,,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
 ipv6.ip6_prefix_list.valid_life_time,number,,,,,Valid life time (sec).
 ipv6.ip6_prefix_list.preferred_life_time,number,,,,,Preferred life time (sec).
 ipv6.ip6_prefix_list.rdnss,string,,,,,Recursive DNS server option.
 ipv6.ip6_prefix_list.dnssl,list(string),,,,,DNS search list option. The structure of dnssl block is documented below.
 ipv6.ip6_rdnss_list,list(object),,,,,Advertised IPv6 RDNSS list. The structure of ip6_rdnss_list block is documented below.
 ipv6.ip6_rdnss_list.rdnss,string,,,1,,Recursive DNS server option.
-ipv6.ip6_rdnss_list.rdnss_life_time,number,,0-4294967295,,,"Recursive DNS server life time in seconds (0 - 4294967295, default = 1800)."
+ipv6.ip6_rdnss_list.rdnss_life_time,number,,,,,"Recursive DNS server life time in seconds (0 - 4294967295, default = 1800)."
 ipv6.ip6_dnssl_list,list(object),,,,,Advertised IPv6 DNSS list. The structure of ip6_dnssl_list block is documented below.
 ipv6.ip6_dnssl_list.domain,string,,,1,,Domain name.
-ipv6.ip6_dnssl_list.dnssl_life_time,number,,0-4294967295,,,"DNS search list time in seconds (0 - 4294967295, default = 1800)."
+ipv6.ip6_dnssl_list.dnssl_life_time,number,,,,,"DNS search list time in seconds (0 - 4294967295, default = 1800)."
 ipv6.ip6_delegated_prefix_list,list(object),,,,,Advertised IPv6 delegated prefix list. The structure of ip6_delegated_prefix_list block is documented below.
 ipv6.ip6_delegated_prefix_list.prefix_id,number,,,,,Prefix ID.
 ipv6.ip6_delegated_prefix_list.upstream_interface,string,,,,,Name of the interface that provides delegated information.
 ipv6.ip6_delegated_prefix_list.delegated_prefix_iaid,string,,,,,IAID of obtained delegated-prefix from the upstream interface.
-ipv6.ip6_delegated_prefix_list.autonomous_flag,string,enable|disable,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
-ipv6.ip6_delegated_prefix_list.onlink_flag,string,enable|disable,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
+ipv6.ip6_delegated_prefix_list.autonomous_flag,string,,,,,"Enable/disable the autonomous flag. Valid values: enable, disable."
+ipv6.ip6_delegated_prefix_list.onlink_flag,string,,,,,"Enable/disable the onlink flag. Valid values: enable, disable."
 ipv6.ip6_delegated_prefix_list.subnet,string,,,,,Add subnet ID to routing prefix.
-ipv6.ip6_delegated_prefix_list.rdnss_service,string,delegated|default|specify,,,,"Recursive DNS service option. Valid values: delegated, default, specify."
+ipv6.ip6_delegated_prefix_list.rdnss_service,string,,,,,"Recursive DNS service option. Valid values: delegated, default, specify."
 ipv6.ip6_delegated_prefix_list.rdnss,string,,,,,Recursive DNS server option.
-ipv6.ip6_delegated_prefix_list.dnssl_service,string,enable|disable,,,,"Enable/disable use of domain from delegated prefix for DNSSL. Valid values: enable, disable."
+ipv6.ip6_delegated_prefix_list.dnssl_service,string,,,,,"Enable/disable use of domain from delegated prefix for DNSSL. Valid values: enable, disable."
 ipv6.dhcp6_egress_cos,string,cos0|cos1|cos2|cos3|cos4|cos5|cos6|cos7,,,,"CoS in VLAN tag for outgoing DHCPv6 packets. Valid values: cos0, cos1, cos2, cos3, cos4, cos5, cos6, cos7."
 ipv6.dhcp6_relay_service,string,disable|enable,,,,"Enable/disable DHCPv6 relay. Valid values: disable, enable."
 ipv6.dhcp6_relay_type,string,regular,,,,DHCPv6 relay type. Valid values: regular.
@@ -387,18 +387,18 @@ ipv6.dhcp6_prefix_hint_vlt,number,,,,,DHCPv6 prefix hint valid life time (sec).
 ipv6.vrrp_virtual_mac6,string,enable|disable,,,,"Enable/disable virtual MAC for VRRP. Valid values: enable, disable."
 ipv6.vrip6_link_local,string,,,,,Link-local IPv6 address of virtual router.
 ipv6.vrrp6,list(object),,,,,IPv6 VRRP configuration. The structure of vrrp6 block is documented below.
-ipv6.vrrp6.vrid,number,,1-255,,,Virtual router identifier (1 - 255).
-ipv6.vrrp6.vrgrp,number,,1-65535,,,VRRP group ID (1 - 65535).
+ipv6.vrrp6.vrid,number,,,,,Virtual router identifier (1 - 255).
+ipv6.vrrp6.vrgrp,number,,,,,VRRP group ID (1 - 65535).
 ipv6.vrrp6.vrip6,string,,,1,,IPv6 address of the virtual router.
-ipv6.vrrp6.priority,number,,1-255,,,Priority of the virtual router (1 - 255).
-ipv6.vrrp6.adv_interval,number,,250-255000,,,Advertisement interval. On FortiOS versions 6.2.0-7.4.12: 1 - 255 seconds. On FortiOS versions >= 7.6.0: 250 - 255000 milliseconds.
-ipv6.vrrp6.start_time,number,,1-255,,,Startup time (1 - 255 seconds).
-ipv6.vrrp6.preempt,string,enable|disable,,,,"Enable/disable preempt mode. Valid values: enable, disable."
-ipv6.vrrp6.accept_mode,string,enable|disable,,,,"Enable/disable accept mode. Valid values: enable, disable."
+ipv6.vrrp6.priority,number,,,,,Priority of the virtual router (1 - 255).
+ipv6.vrrp6.adv_interval,number,,,,,Advertisement interval. On FortiOS versions 6.2.0-7.4.12: 1 - 255 seconds. On FortiOS versions >= 7.6.0: 250 - 255000 milliseconds.
+ipv6.vrrp6.start_time,number,,,,,Startup time (1 - 255 seconds).
+ipv6.vrrp6.preempt,string,,,,,"Enable/disable preempt mode. Valid values: enable, disable."
+ipv6.vrrp6.accept_mode,string,,,,,"Enable/disable accept mode. Valid values: enable, disable."
 ipv6.vrrp6.vrdst6,string,,,,,Monitor the route to this destination.
-ipv6.vrrp6.vrdst_priority,number,,0-254,,,Priority of the virtual router when the virtual router destination becomes unreachable (0 - 254).
-ipv6.vrrp6.ignore_default_route,string,enable|disable,,,,"Enable/disable ignoring of default route when checking destination. Valid values: enable, disable."
-ipv6.vrrp6.status,string,enable|disable,,,,"Enable/disable VRRP. Valid values: enable, disable."
+ipv6.vrrp6.vrdst_priority,number,,,,,Priority of the virtual router when the virtual router destination becomes unreachable (0 - 254).
+ipv6.vrrp6.ignore_default_route,string,,,,,"Enable/disable ignoring of default route when checking destination. Valid values: enable, disable."
+ipv6.vrrp6.status,string,,,,,"Enable/disable VRRP. Valid values: enable, disable."
 autogenerated,string,,,,,"Indicates whether the interface is automatically created by FortiGate, for example, created during the VPN creation process. If it is, set it to auto"""
 dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
 get_all_tables,string,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."

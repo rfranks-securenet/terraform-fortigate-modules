@@ -195,7 +195,7 @@ class TfVar:
             for i in range(self._familyLevel):
                 thisObject = parents.pop()
                 if thisObject._is_list:
-                    out += f"[ for {chr(112 + listLevel)} in {chr(111 + listLevel)}.{thisObject.validationName} : "
+                    out += f"[ for {chr(112 + listLevel)} in {chr(111 + listLevel)}.{thisObject.validationName} : {chr(112 + listLevel)} == null || "
                     listLevel += 1
                 else:
                     out += f" {chr(111 + listLevel)}.{thisObject.validationName} == null || "

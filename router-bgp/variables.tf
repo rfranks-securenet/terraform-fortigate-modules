@@ -1194,835 +1194,835 @@ variable "routerbgp" {
     error_message = "Parameter `cross_family_conditional_adv` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address : p.as_set == null || contains(["enable", "disable"], p.as_set)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address : p == null || p.as_set == null || contains(["enable", "disable"], p.as_set)]]))
     error_message = "Parameter `aggregate_address.as_set` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address : p.summary_only == null || contains(["enable", "disable"], p.summary_only)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address : p == null || p.summary_only == null || contains(["enable", "disable"], p.summary_only)]]))
     error_message = "Parameter `aggregate_address.summary_only` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address6 : p.as_set == null || contains(["enable", "disable"], p.as_set)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address6 : p == null || p.as_set == null || contains(["enable", "disable"], p.as_set)]]))
     error_message = "Parameter `aggregate_address6.as_set` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address6 : p.summary_only == null || contains(["enable", "disable"], p.summary_only)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.aggregate_address6 : p == null || p.summary_only == null || contains(["enable", "disable"], p.summary_only)]]))
     error_message = "Parameter `aggregate_address6.summary_only` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.allowas_in_enable == null || contains(["enable", "disable"], p.allowas_in_enable)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.allowas_in_enable == null || contains(["enable", "disable"], p.allowas_in_enable)]]))
     error_message = "Parameter `neighbor.allowas_in_enable` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.allowas_in_enable6 == null || contains(["enable", "disable"], p.allowas_in_enable6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.allowas_in_enable6 == null || contains(["enable", "disable"], p.allowas_in_enable6)]]))
     error_message = "Parameter `neighbor.allowas_in_enable6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.allowas_in_enable_vpnv4 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.allowas_in_enable_vpnv4 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv4)]]))
     error_message = "Parameter `neighbor.allowas_in_enable_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.allowas_in_enable_vpnv6 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.allowas_in_enable_vpnv6 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv6)]]))
     error_message = "Parameter `neighbor.allowas_in_enable_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.allowas_in_enable_evpn == null || contains(["enable", "disable"], p.allowas_in_enable_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.allowas_in_enable_evpn == null || contains(["enable", "disable"], p.allowas_in_enable_evpn)]]))
     error_message = "Parameter `neighbor.allowas_in_enable_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.attribute_unchanged == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.attribute_unchanged == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged)]]))
     error_message = "Parameter `neighbor.attribute_unchanged` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.attribute_unchanged6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.attribute_unchanged6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged6)]]))
     error_message = "Parameter `neighbor.attribute_unchanged6` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.attribute_unchanged_vpnv4 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.attribute_unchanged_vpnv4 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv4)]]))
     error_message = "Parameter `neighbor.attribute_unchanged_vpnv4` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.attribute_unchanged_vpnv6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.attribute_unchanged_vpnv6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv6)]]))
     error_message = "Parameter `neighbor.attribute_unchanged_vpnv6` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.activate == null || contains(["enable", "disable"], p.activate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.activate == null || contains(["enable", "disable"], p.activate)]]))
     error_message = "Parameter `neighbor.activate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.activate6 == null || contains(["enable", "disable"], p.activate6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.activate6 == null || contains(["enable", "disable"], p.activate6)]]))
     error_message = "Parameter `neighbor.activate6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.activate_vpnv4 == null || contains(["enable", "disable"], p.activate_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.activate_vpnv4 == null || contains(["enable", "disable"], p.activate_vpnv4)]]))
     error_message = "Parameter `neighbor.activate_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.activate_vpnv6 == null || contains(["enable", "disable"], p.activate_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.activate_vpnv6 == null || contains(["enable", "disable"], p.activate_vpnv6)]]))
     error_message = "Parameter `neighbor.activate_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.activate_evpn == null || contains(["enable", "disable"], p.activate_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.activate_evpn == null || contains(["enable", "disable"], p.activate_evpn)]]))
     error_message = "Parameter `neighbor.activate_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.bfd == null || contains(["enable", "disable"], p.bfd)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.bfd == null || contains(["enable", "disable"], p.bfd)]]))
     error_message = "Parameter `neighbor.bfd` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_dynamic == null || contains(["enable", "disable"], p.capability_dynamic)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_dynamic == null || contains(["enable", "disable"], p.capability_dynamic)]]))
     error_message = "Parameter `neighbor.capability_dynamic` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_orf == null || contains(["none", "receive", "send", "both"], p.capability_orf)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_orf == null || contains(["none", "receive", "send", "both"], p.capability_orf)]]))
     error_message = "Parameter `neighbor.capability_orf` must be one of `none`, `receive`, `send`, `both`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_orf6 == null || contains(["none", "receive", "send", "both"], p.capability_orf6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_orf6 == null || contains(["none", "receive", "send", "both"], p.capability_orf6)]]))
     error_message = "Parameter `neighbor.capability_orf6` must be one of `none`, `receive`, `send`, `both`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_graceful_restart == null || contains(["enable", "disable"], p.capability_graceful_restart)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_graceful_restart == null || contains(["enable", "disable"], p.capability_graceful_restart)]]))
     error_message = "Parameter `neighbor.capability_graceful_restart` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_graceful_restart6 == null || contains(["enable", "disable"], p.capability_graceful_restart6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_graceful_restart6 == null || contains(["enable", "disable"], p.capability_graceful_restart6)]]))
     error_message = "Parameter `neighbor.capability_graceful_restart6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_graceful_restart_vpnv4 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_graceful_restart_vpnv4 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv4)]]))
     error_message = "Parameter `neighbor.capability_graceful_restart_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_graceful_restart_vpnv6 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_graceful_restart_vpnv6 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv6)]]))
     error_message = "Parameter `neighbor.capability_graceful_restart_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_graceful_restart_evpn == null || contains(["enable", "disable"], p.capability_graceful_restart_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_graceful_restart_evpn == null || contains(["enable", "disable"], p.capability_graceful_restart_evpn)]]))
     error_message = "Parameter `neighbor.capability_graceful_restart_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_route_refresh == null || contains(["enable", "disable"], p.capability_route_refresh)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_route_refresh == null || contains(["enable", "disable"], p.capability_route_refresh)]]))
     error_message = "Parameter `neighbor.capability_route_refresh` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_default_originate == null || contains(["enable", "disable"], p.capability_default_originate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_default_originate == null || contains(["enable", "disable"], p.capability_default_originate)]]))
     error_message = "Parameter `neighbor.capability_default_originate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.capability_default_originate6 == null || contains(["enable", "disable"], p.capability_default_originate6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.capability_default_originate6 == null || contains(["enable", "disable"], p.capability_default_originate6)]]))
     error_message = "Parameter `neighbor.capability_default_originate6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.dont_capability_negotiate == null || contains(["enable", "disable"], p.dont_capability_negotiate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.dont_capability_negotiate == null || contains(["enable", "disable"], p.dont_capability_negotiate)]]))
     error_message = "Parameter `neighbor.dont_capability_negotiate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.ebgp_enforce_multihop == null || contains(["enable", "disable"], p.ebgp_enforce_multihop)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.ebgp_enforce_multihop == null || contains(["enable", "disable"], p.ebgp_enforce_multihop)]]))
     error_message = "Parameter `neighbor.ebgp_enforce_multihop` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.link_down_failover == null || contains(["enable", "disable"], p.link_down_failover)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.link_down_failover == null || contains(["enable", "disable"], p.link_down_failover)]]))
     error_message = "Parameter `neighbor.link_down_failover` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.stale_route == null || contains(["enable", "disable"], p.stale_route)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.stale_route == null || contains(["enable", "disable"], p.stale_route)]]))
     error_message = "Parameter `neighbor.stale_route` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self == null || contains(["enable", "disable"], p.next_hop_self)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self == null || contains(["enable", "disable"], p.next_hop_self)]]))
     error_message = "Parameter `neighbor.next_hop_self` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self6 == null || contains(["enable", "disable"], p.next_hop_self6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self6 == null || contains(["enable", "disable"], p.next_hop_self6)]]))
     error_message = "Parameter `neighbor.next_hop_self6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_rr == null || contains(["enable", "disable"], p.next_hop_self_rr)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_rr == null || contains(["enable", "disable"], p.next_hop_self_rr)]]))
     error_message = "Parameter `neighbor.next_hop_self_rr` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_rr6 == null || contains(["enable", "disable"], p.next_hop_self_rr6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_rr6 == null || contains(["enable", "disable"], p.next_hop_self_rr6)]]))
     error_message = "Parameter `neighbor.next_hop_self_rr6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_vpnv4)]]))
     error_message = "Parameter `neighbor.next_hop_self_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_vpnv6)]]))
     error_message = "Parameter `neighbor.next_hop_self_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_rr_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_rr_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv4)]]))
     error_message = "Parameter `neighbor.next_hop_self_rr_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.next_hop_self_rr_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.next_hop_self_rr_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv6)]]))
     error_message = "Parameter `neighbor.next_hop_self_rr_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.override_capability == null || contains(["enable", "disable"], p.override_capability)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.override_capability == null || contains(["enable", "disable"], p.override_capability)]]))
     error_message = "Parameter `neighbor.override_capability` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.passive == null || contains(["enable", "disable"], p.passive)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.passive == null || contains(["enable", "disable"], p.passive)]]))
     error_message = "Parameter `neighbor.passive` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.remove_private_as == null || contains(["enable", "disable"], p.remove_private_as)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.remove_private_as == null || contains(["enable", "disable"], p.remove_private_as)]]))
     error_message = "Parameter `neighbor.remove_private_as` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.remove_private_as6 == null || contains(["enable", "disable"], p.remove_private_as6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.remove_private_as6 == null || contains(["enable", "disable"], p.remove_private_as6)]]))
     error_message = "Parameter `neighbor.remove_private_as6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.remove_private_as_vpnv4 == null || contains(["enable", "disable"], p.remove_private_as_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.remove_private_as_vpnv4 == null || contains(["enable", "disable"], p.remove_private_as_vpnv4)]]))
     error_message = "Parameter `neighbor.remove_private_as_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.remove_private_as_vpnv6 == null || contains(["enable", "disable"], p.remove_private_as_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.remove_private_as_vpnv6 == null || contains(["enable", "disable"], p.remove_private_as_vpnv6)]]))
     error_message = "Parameter `neighbor.remove_private_as_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.remove_private_as_evpn == null || contains(["enable", "disable"], p.remove_private_as_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.remove_private_as_evpn == null || contains(["enable", "disable"], p.remove_private_as_evpn)]]))
     error_message = "Parameter `neighbor.remove_private_as_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_reflector_client == null || contains(["enable", "disable"], p.route_reflector_client)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_reflector_client == null || contains(["enable", "disable"], p.route_reflector_client)]]))
     error_message = "Parameter `neighbor.route_reflector_client` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_reflector_client6 == null || contains(["enable", "disable"], p.route_reflector_client6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_reflector_client6 == null || contains(["enable", "disable"], p.route_reflector_client6)]]))
     error_message = "Parameter `neighbor.route_reflector_client6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_reflector_client_vpnv4 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_reflector_client_vpnv4 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv4)]]))
     error_message = "Parameter `neighbor.route_reflector_client_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_reflector_client_vpnv6 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_reflector_client_vpnv6 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv6)]]))
     error_message = "Parameter `neighbor.route_reflector_client_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_reflector_client_evpn == null || contains(["enable", "disable"], p.route_reflector_client_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_reflector_client_evpn == null || contains(["enable", "disable"], p.route_reflector_client_evpn)]]))
     error_message = "Parameter `neighbor.route_reflector_client_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_server_client == null || contains(["enable", "disable"], p.route_server_client)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_server_client == null || contains(["enable", "disable"], p.route_server_client)]]))
     error_message = "Parameter `neighbor.route_server_client` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_server_client6 == null || contains(["enable", "disable"], p.route_server_client6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_server_client6 == null || contains(["enable", "disable"], p.route_server_client6)]]))
     error_message = "Parameter `neighbor.route_server_client6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_server_client_vpnv4 == null || contains(["enable", "disable"], p.route_server_client_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_server_client_vpnv4 == null || contains(["enable", "disable"], p.route_server_client_vpnv4)]]))
     error_message = "Parameter `neighbor.route_server_client_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_server_client_vpnv6 == null || contains(["enable", "disable"], p.route_server_client_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_server_client_vpnv6 == null || contains(["enable", "disable"], p.route_server_client_vpnv6)]]))
     error_message = "Parameter `neighbor.route_server_client_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.route_server_client_evpn == null || contains(["enable", "disable"], p.route_server_client_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.route_server_client_evpn == null || contains(["enable", "disable"], p.route_server_client_evpn)]]))
     error_message = "Parameter `neighbor.route_server_client_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.rr_attr_allow_change == null || contains(["enable", "disable"], p.rr_attr_allow_change)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.rr_attr_allow_change == null || contains(["enable", "disable"], p.rr_attr_allow_change)]]))
     error_message = "Parameter `neighbor.rr_attr_allow_change` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.rr_attr_allow_change6 == null || contains(["enable", "disable"], p.rr_attr_allow_change6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.rr_attr_allow_change6 == null || contains(["enable", "disable"], p.rr_attr_allow_change6)]]))
     error_message = "Parameter `neighbor.rr_attr_allow_change6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.rr_attr_allow_change_vpnv4 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.rr_attr_allow_change_vpnv4 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv4)]]))
     error_message = "Parameter `neighbor.rr_attr_allow_change_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.rr_attr_allow_change_vpnv6 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.rr_attr_allow_change_vpnv6 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv6)]]))
     error_message = "Parameter `neighbor.rr_attr_allow_change_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.rr_attr_allow_change_evpn == null || contains(["enable", "disable"], p.rr_attr_allow_change_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.rr_attr_allow_change_evpn == null || contains(["enable", "disable"], p.rr_attr_allow_change_evpn)]]))
     error_message = "Parameter `neighbor.rr_attr_allow_change_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.adv_evpn_route == null || contains(["type2", "type5", "local"], p.adv_evpn_route)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.adv_evpn_route == null || contains(["type2", "type5", "local"], p.adv_evpn_route)]]))
     error_message = "Parameter `neighbor.adv_evpn_route` must be one of `type2`, `type5`, `local`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.soft_reconfiguration == null || contains(["enable", "disable"], p.soft_reconfiguration)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.soft_reconfiguration == null || contains(["enable", "disable"], p.soft_reconfiguration)]]))
     error_message = "Parameter `neighbor.soft_reconfiguration` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.soft_reconfiguration6 == null || contains(["enable", "disable"], p.soft_reconfiguration6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.soft_reconfiguration6 == null || contains(["enable", "disable"], p.soft_reconfiguration6)]]))
     error_message = "Parameter `neighbor.soft_reconfiguration6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.soft_reconfiguration_vpnv4 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.soft_reconfiguration_vpnv4 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv4)]]))
     error_message = "Parameter `neighbor.soft_reconfiguration_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.soft_reconfiguration_vpnv6 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.soft_reconfiguration_vpnv6 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv6)]]))
     error_message = "Parameter `neighbor.soft_reconfiguration_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.soft_reconfiguration_evpn == null || contains(["enable", "disable"], p.soft_reconfiguration_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.soft_reconfiguration_evpn == null || contains(["enable", "disable"], p.soft_reconfiguration_evpn)]]))
     error_message = "Parameter `neighbor.soft_reconfiguration_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.as_override == null || contains(["enable", "disable"], p.as_override)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.as_override == null || contains(["enable", "disable"], p.as_override)]]))
     error_message = "Parameter `neighbor.as_override` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.as_override6 == null || contains(["enable", "disable"], p.as_override6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.as_override6 == null || contains(["enable", "disable"], p.as_override6)]]))
     error_message = "Parameter `neighbor.as_override6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.strict_capability_match == null || contains(["enable", "disable"], p.strict_capability_match)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.strict_capability_match == null || contains(["enable", "disable"], p.strict_capability_match)]]))
     error_message = "Parameter `neighbor.strict_capability_match` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_threshold == null || (p.maximum_prefix_threshold >= 1 && p.maximum_prefix_threshold <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_threshold == null || (p.maximum_prefix_threshold >= 1 && p.maximum_prefix_threshold <= 100)]]))
     error_message = "Parameter `neighbor.maximum_prefix_threshold` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_threshold6 == null || (p.maximum_prefix_threshold6 >= 1 && p.maximum_prefix_threshold6 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_threshold6 == null || (p.maximum_prefix_threshold6 >= 1 && p.maximum_prefix_threshold6 <= 100)]]))
     error_message = "Parameter `neighbor.maximum_prefix_threshold6` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_threshold_vpnv4 == null || (p.maximum_prefix_threshold_vpnv4 >= 1 && p.maximum_prefix_threshold_vpnv4 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_threshold_vpnv4 == null || (p.maximum_prefix_threshold_vpnv4 >= 1 && p.maximum_prefix_threshold_vpnv4 <= 100)]]))
     error_message = "Parameter `neighbor.maximum_prefix_threshold_vpnv4` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_threshold_vpnv6 == null || (p.maximum_prefix_threshold_vpnv6 >= 1 && p.maximum_prefix_threshold_vpnv6 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_threshold_vpnv6 == null || (p.maximum_prefix_threshold_vpnv6 >= 1 && p.maximum_prefix_threshold_vpnv6 <= 100)]]))
     error_message = "Parameter `neighbor.maximum_prefix_threshold_vpnv6` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_threshold_evpn == null || (p.maximum_prefix_threshold_evpn >= 1 && p.maximum_prefix_threshold_evpn <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_threshold_evpn == null || (p.maximum_prefix_threshold_evpn >= 1 && p.maximum_prefix_threshold_evpn <= 100)]]))
     error_message = "Parameter `neighbor.maximum_prefix_threshold_evpn` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_warning_only == null || contains(["enable", "disable"], p.maximum_prefix_warning_only)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_warning_only == null || contains(["enable", "disable"], p.maximum_prefix_warning_only)]]))
     error_message = "Parameter `neighbor.maximum_prefix_warning_only` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_warning_only6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_warning_only6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only6)]]))
     error_message = "Parameter `neighbor.maximum_prefix_warning_only6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_warning_only_vpnv4 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_warning_only_vpnv4 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv4)]]))
     error_message = "Parameter `neighbor.maximum_prefix_warning_only_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_warning_only_vpnv6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_warning_only_vpnv6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv6)]]))
     error_message = "Parameter `neighbor.maximum_prefix_warning_only_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.maximum_prefix_warning_only_evpn == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.maximum_prefix_warning_only_evpn == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_evpn)]]))
     error_message = "Parameter `neighbor.maximum_prefix_warning_only_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.local_as_no_prepend == null || contains(["enable", "disable"], p.local_as_no_prepend)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.local_as_no_prepend == null || contains(["enable", "disable"], p.local_as_no_prepend)]]))
     error_message = "Parameter `neighbor.local_as_no_prepend` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.local_as_replace_as == null || contains(["enable", "disable"], p.local_as_replace_as)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.local_as_replace_as == null || contains(["enable", "disable"], p.local_as_replace_as)]]))
     error_message = "Parameter `neighbor.local_as_replace_as` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.send_community == null || contains(["standard", "extended", "both", "disable"], p.send_community)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.send_community == null || contains(["standard", "extended", "both", "disable"], p.send_community)]]))
     error_message = "Parameter `neighbor.send_community` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.send_community6 == null || contains(["standard", "extended", "both", "disable"], p.send_community6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.send_community6 == null || contains(["standard", "extended", "both", "disable"], p.send_community6)]]))
     error_message = "Parameter `neighbor.send_community6` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.send_community_vpnv4 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.send_community_vpnv4 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv4)]]))
     error_message = "Parameter `neighbor.send_community_vpnv4` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.send_community_vpnv6 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.send_community_vpnv6 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv6)]]))
     error_message = "Parameter `neighbor.send_community_vpnv6` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.send_community_evpn == null || contains(["standard", "extended", "both", "disable"], p.send_community_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.send_community_evpn == null || contains(["standard", "extended", "both", "disable"], p.send_community_evpn)]]))
     error_message = "Parameter `neighbor.send_community_evpn` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.enforce_preferred_source == null || contains(["enable", "disable"], p.enforce_preferred_source)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.enforce_preferred_source == null || contains(["enable", "disable"], p.enforce_preferred_source)]]))
     error_message = "Parameter `neighbor.enforce_preferred_source` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.additional_path == null || contains(["send", "receive", "both", "disable"], p.additional_path)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.additional_path == null || contains(["send", "receive", "both", "disable"], p.additional_path)]]))
     error_message = "Parameter `neighbor.additional_path` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.additional_path6 == null || contains(["send", "receive", "both", "disable"], p.additional_path6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.additional_path6 == null || contains(["send", "receive", "both", "disable"], p.additional_path6)]]))
     error_message = "Parameter `neighbor.additional_path6` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.additional_path_vpnv4 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.additional_path_vpnv4 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv4)]]))
     error_message = "Parameter `neighbor.additional_path_vpnv4` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.additional_path_vpnv6 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.additional_path_vpnv6 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv6)]]))
     error_message = "Parameter `neighbor.additional_path_vpnv6` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : [for q in p.conditional_advertise : q.condition_type == null || contains(["exist", "non-exist"], q.condition_type)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || [for q in p.conditional_advertise : q == null || q.condition_type == null || contains(["exist", "non-exist"], q.condition_type)]]]))
     error_message = "Parameter `neighbor.conditional_advertise.condition_type` must be one of `exist`, `non-exist`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : [for q in p.conditional_advertise6 : q.condition_type == null || contains(["exist", "non-exist"], q.condition_type)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || [for q in p.conditional_advertise6 : q == null || q.condition_type == null || contains(["exist", "non-exist"], q.condition_type)]]]))
     error_message = "Parameter `neighbor.conditional_advertise6.condition_type` must be one of `exist`, `non-exist`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p.use_sdwan == null || contains(["enable", "disable"], p.use_sdwan)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor : p == null || p.use_sdwan == null || contains(["enable", "disable"], p.use_sdwan)]]))
     error_message = "Parameter `neighbor.use_sdwan` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.allowas_in_enable == null || contains(["enable", "disable"], p.allowas_in_enable)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.allowas_in_enable == null || contains(["enable", "disable"], p.allowas_in_enable)]]))
     error_message = "Parameter `neighbor_group.allowas_in_enable` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.allowas_in_enable6 == null || contains(["enable", "disable"], p.allowas_in_enable6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.allowas_in_enable6 == null || contains(["enable", "disable"], p.allowas_in_enable6)]]))
     error_message = "Parameter `neighbor_group.allowas_in_enable6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.allowas_in_enable_vpnv4 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.allowas_in_enable_vpnv4 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv4)]]))
     error_message = "Parameter `neighbor_group.allowas_in_enable_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.allowas_in_enable_vpnv6 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.allowas_in_enable_vpnv6 == null || contains(["enable", "disable"], p.allowas_in_enable_vpnv6)]]))
     error_message = "Parameter `neighbor_group.allowas_in_enable_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.allowas_in_enable_evpn == null || contains(["enable", "disable"], p.allowas_in_enable_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.allowas_in_enable_evpn == null || contains(["enable", "disable"], p.allowas_in_enable_evpn)]]))
     error_message = "Parameter `neighbor_group.allowas_in_enable_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.attribute_unchanged == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.attribute_unchanged == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged)]]))
     error_message = "Parameter `neighbor_group.attribute_unchanged` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.attribute_unchanged6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.attribute_unchanged6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged6)]]))
     error_message = "Parameter `neighbor_group.attribute_unchanged6` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.attribute_unchanged_vpnv4 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.attribute_unchanged_vpnv4 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv4)]]))
     error_message = "Parameter `neighbor_group.attribute_unchanged_vpnv4` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.attribute_unchanged_vpnv6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.attribute_unchanged_vpnv6 == null || contains(["as-path", "med", "next-hop"], p.attribute_unchanged_vpnv6)]]))
     error_message = "Parameter `neighbor_group.attribute_unchanged_vpnv6` must be one of `as-path`, `med`, `next-hop`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.activate == null || contains(["enable", "disable"], p.activate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.activate == null || contains(["enable", "disable"], p.activate)]]))
     error_message = "Parameter `neighbor_group.activate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.activate6 == null || contains(["enable", "disable"], p.activate6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.activate6 == null || contains(["enable", "disable"], p.activate6)]]))
     error_message = "Parameter `neighbor_group.activate6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.activate_vpnv4 == null || contains(["enable", "disable"], p.activate_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.activate_vpnv4 == null || contains(["enable", "disable"], p.activate_vpnv4)]]))
     error_message = "Parameter `neighbor_group.activate_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.activate_vpnv6 == null || contains(["enable", "disable"], p.activate_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.activate_vpnv6 == null || contains(["enable", "disable"], p.activate_vpnv6)]]))
     error_message = "Parameter `neighbor_group.activate_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.activate_evpn == null || contains(["enable", "disable"], p.activate_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.activate_evpn == null || contains(["enable", "disable"], p.activate_evpn)]]))
     error_message = "Parameter `neighbor_group.activate_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.bfd == null || contains(["enable", "disable"], p.bfd)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.bfd == null || contains(["enable", "disable"], p.bfd)]]))
     error_message = "Parameter `neighbor_group.bfd` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_dynamic == null || contains(["enable", "disable"], p.capability_dynamic)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_dynamic == null || contains(["enable", "disable"], p.capability_dynamic)]]))
     error_message = "Parameter `neighbor_group.capability_dynamic` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_orf == null || contains(["none", "receive", "send", "both"], p.capability_orf)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_orf == null || contains(["none", "receive", "send", "both"], p.capability_orf)]]))
     error_message = "Parameter `neighbor_group.capability_orf` must be one of `none`, `receive`, `send`, `both`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_orf6 == null || contains(["none", "receive", "send", "both"], p.capability_orf6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_orf6 == null || contains(["none", "receive", "send", "both"], p.capability_orf6)]]))
     error_message = "Parameter `neighbor_group.capability_orf6` must be one of `none`, `receive`, `send`, `both`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_graceful_restart == null || contains(["enable", "disable"], p.capability_graceful_restart)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_graceful_restart == null || contains(["enable", "disable"], p.capability_graceful_restart)]]))
     error_message = "Parameter `neighbor_group.capability_graceful_restart` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_graceful_restart6 == null || contains(["enable", "disable"], p.capability_graceful_restart6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_graceful_restart6 == null || contains(["enable", "disable"], p.capability_graceful_restart6)]]))
     error_message = "Parameter `neighbor_group.capability_graceful_restart6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_graceful_restart_vpnv4 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_graceful_restart_vpnv4 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv4)]]))
     error_message = "Parameter `neighbor_group.capability_graceful_restart_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_graceful_restart_vpnv6 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_graceful_restart_vpnv6 == null || contains(["enable", "disable"], p.capability_graceful_restart_vpnv6)]]))
     error_message = "Parameter `neighbor_group.capability_graceful_restart_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_graceful_restart_evpn == null || contains(["enable", "disable"], p.capability_graceful_restart_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_graceful_restart_evpn == null || contains(["enable", "disable"], p.capability_graceful_restart_evpn)]]))
     error_message = "Parameter `neighbor_group.capability_graceful_restart_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_route_refresh == null || contains(["enable", "disable"], p.capability_route_refresh)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_route_refresh == null || contains(["enable", "disable"], p.capability_route_refresh)]]))
     error_message = "Parameter `neighbor_group.capability_route_refresh` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_default_originate == null || contains(["enable", "disable"], p.capability_default_originate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_default_originate == null || contains(["enable", "disable"], p.capability_default_originate)]]))
     error_message = "Parameter `neighbor_group.capability_default_originate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.capability_default_originate6 == null || contains(["enable", "disable"], p.capability_default_originate6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.capability_default_originate6 == null || contains(["enable", "disable"], p.capability_default_originate6)]]))
     error_message = "Parameter `neighbor_group.capability_default_originate6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.dont_capability_negotiate == null || contains(["enable", "disable"], p.dont_capability_negotiate)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.dont_capability_negotiate == null || contains(["enable", "disable"], p.dont_capability_negotiate)]]))
     error_message = "Parameter `neighbor_group.dont_capability_negotiate` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.ebgp_enforce_multihop == null || contains(["enable", "disable"], p.ebgp_enforce_multihop)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.ebgp_enforce_multihop == null || contains(["enable", "disable"], p.ebgp_enforce_multihop)]]))
     error_message = "Parameter `neighbor_group.ebgp_enforce_multihop` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.link_down_failover == null || contains(["enable", "disable"], p.link_down_failover)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.link_down_failover == null || contains(["enable", "disable"], p.link_down_failover)]]))
     error_message = "Parameter `neighbor_group.link_down_failover` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.stale_route == null || contains(["enable", "disable"], p.stale_route)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.stale_route == null || contains(["enable", "disable"], p.stale_route)]]))
     error_message = "Parameter `neighbor_group.stale_route` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self == null || contains(["enable", "disable"], p.next_hop_self)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self == null || contains(["enable", "disable"], p.next_hop_self)]]))
     error_message = "Parameter `neighbor_group.next_hop_self` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self6 == null || contains(["enable", "disable"], p.next_hop_self6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self6 == null || contains(["enable", "disable"], p.next_hop_self6)]]))
     error_message = "Parameter `neighbor_group.next_hop_self6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_rr == null || contains(["enable", "disable"], p.next_hop_self_rr)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_rr == null || contains(["enable", "disable"], p.next_hop_self_rr)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_rr` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_rr6 == null || contains(["enable", "disable"], p.next_hop_self_rr6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_rr6 == null || contains(["enable", "disable"], p.next_hop_self_rr6)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_rr6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_vpnv4)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_vpnv6)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_rr_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_rr_vpnv4 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv4)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_rr_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.next_hop_self_rr_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.next_hop_self_rr_vpnv6 == null || contains(["enable", "disable"], p.next_hop_self_rr_vpnv6)]]))
     error_message = "Parameter `neighbor_group.next_hop_self_rr_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.override_capability == null || contains(["enable", "disable"], p.override_capability)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.override_capability == null || contains(["enable", "disable"], p.override_capability)]]))
     error_message = "Parameter `neighbor_group.override_capability` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.passive == null || contains(["enable", "disable"], p.passive)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.passive == null || contains(["enable", "disable"], p.passive)]]))
     error_message = "Parameter `neighbor_group.passive` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.remove_private_as == null || contains(["enable", "disable"], p.remove_private_as)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.remove_private_as == null || contains(["enable", "disable"], p.remove_private_as)]]))
     error_message = "Parameter `neighbor_group.remove_private_as` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.remove_private_as6 == null || contains(["enable", "disable"], p.remove_private_as6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.remove_private_as6 == null || contains(["enable", "disable"], p.remove_private_as6)]]))
     error_message = "Parameter `neighbor_group.remove_private_as6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.remove_private_as_vpnv4 == null || contains(["enable", "disable"], p.remove_private_as_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.remove_private_as_vpnv4 == null || contains(["enable", "disable"], p.remove_private_as_vpnv4)]]))
     error_message = "Parameter `neighbor_group.remove_private_as_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.remove_private_as_vpnv6 == null || contains(["enable", "disable"], p.remove_private_as_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.remove_private_as_vpnv6 == null || contains(["enable", "disable"], p.remove_private_as_vpnv6)]]))
     error_message = "Parameter `neighbor_group.remove_private_as_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.remove_private_as_evpn == null || contains(["enable", "disable"], p.remove_private_as_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.remove_private_as_evpn == null || contains(["enable", "disable"], p.remove_private_as_evpn)]]))
     error_message = "Parameter `neighbor_group.remove_private_as_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_reflector_client == null || contains(["enable", "disable"], p.route_reflector_client)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_reflector_client == null || contains(["enable", "disable"], p.route_reflector_client)]]))
     error_message = "Parameter `neighbor_group.route_reflector_client` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_reflector_client6 == null || contains(["enable", "disable"], p.route_reflector_client6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_reflector_client6 == null || contains(["enable", "disable"], p.route_reflector_client6)]]))
     error_message = "Parameter `neighbor_group.route_reflector_client6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_reflector_client_vpnv4 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_reflector_client_vpnv4 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv4)]]))
     error_message = "Parameter `neighbor_group.route_reflector_client_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_reflector_client_vpnv6 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_reflector_client_vpnv6 == null || contains(["enable", "disable"], p.route_reflector_client_vpnv6)]]))
     error_message = "Parameter `neighbor_group.route_reflector_client_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_reflector_client_evpn == null || contains(["enable", "disable"], p.route_reflector_client_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_reflector_client_evpn == null || contains(["enable", "disable"], p.route_reflector_client_evpn)]]))
     error_message = "Parameter `neighbor_group.route_reflector_client_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_server_client == null || contains(["enable", "disable"], p.route_server_client)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_server_client == null || contains(["enable", "disable"], p.route_server_client)]]))
     error_message = "Parameter `neighbor_group.route_server_client` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_server_client6 == null || contains(["enable", "disable"], p.route_server_client6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_server_client6 == null || contains(["enable", "disable"], p.route_server_client6)]]))
     error_message = "Parameter `neighbor_group.route_server_client6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_server_client_vpnv4 == null || contains(["enable", "disable"], p.route_server_client_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_server_client_vpnv4 == null || contains(["enable", "disable"], p.route_server_client_vpnv4)]]))
     error_message = "Parameter `neighbor_group.route_server_client_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_server_client_vpnv6 == null || contains(["enable", "disable"], p.route_server_client_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_server_client_vpnv6 == null || contains(["enable", "disable"], p.route_server_client_vpnv6)]]))
     error_message = "Parameter `neighbor_group.route_server_client_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.route_server_client_evpn == null || contains(["enable", "disable"], p.route_server_client_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.route_server_client_evpn == null || contains(["enable", "disable"], p.route_server_client_evpn)]]))
     error_message = "Parameter `neighbor_group.route_server_client_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.rr_attr_allow_change == null || contains(["enable", "disable"], p.rr_attr_allow_change)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.rr_attr_allow_change == null || contains(["enable", "disable"], p.rr_attr_allow_change)]]))
     error_message = "Parameter `neighbor_group.rr_attr_allow_change` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.rr_attr_allow_change6 == null || contains(["enable", "disable"], p.rr_attr_allow_change6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.rr_attr_allow_change6 == null || contains(["enable", "disable"], p.rr_attr_allow_change6)]]))
     error_message = "Parameter `neighbor_group.rr_attr_allow_change6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.rr_attr_allow_change_vpnv4 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.rr_attr_allow_change_vpnv4 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv4)]]))
     error_message = "Parameter `neighbor_group.rr_attr_allow_change_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.rr_attr_allow_change_vpnv6 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.rr_attr_allow_change_vpnv6 == null || contains(["enable", "disable"], p.rr_attr_allow_change_vpnv6)]]))
     error_message = "Parameter `neighbor_group.rr_attr_allow_change_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.rr_attr_allow_change_evpn == null || contains(["enable", "disable"], p.rr_attr_allow_change_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.rr_attr_allow_change_evpn == null || contains(["enable", "disable"], p.rr_attr_allow_change_evpn)]]))
     error_message = "Parameter `neighbor_group.rr_attr_allow_change_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.adv_evpn_route == null || contains(["type2", "type5", "local"], p.adv_evpn_route)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.adv_evpn_route == null || contains(["type2", "type5", "local"], p.adv_evpn_route)]]))
     error_message = "Parameter `neighbor_group.adv_evpn_route` must be one of `type2`, `type5`, `local`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.soft_reconfiguration == null || contains(["enable", "disable"], p.soft_reconfiguration)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.soft_reconfiguration == null || contains(["enable", "disable"], p.soft_reconfiguration)]]))
     error_message = "Parameter `neighbor_group.soft_reconfiguration` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.soft_reconfiguration6 == null || contains(["enable", "disable"], p.soft_reconfiguration6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.soft_reconfiguration6 == null || contains(["enable", "disable"], p.soft_reconfiguration6)]]))
     error_message = "Parameter `neighbor_group.soft_reconfiguration6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.soft_reconfiguration_vpnv4 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.soft_reconfiguration_vpnv4 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv4)]]))
     error_message = "Parameter `neighbor_group.soft_reconfiguration_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.soft_reconfiguration_vpnv6 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.soft_reconfiguration_vpnv6 == null || contains(["enable", "disable"], p.soft_reconfiguration_vpnv6)]]))
     error_message = "Parameter `neighbor_group.soft_reconfiguration_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.soft_reconfiguration_evpn == null || contains(["enable", "disable"], p.soft_reconfiguration_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.soft_reconfiguration_evpn == null || contains(["enable", "disable"], p.soft_reconfiguration_evpn)]]))
     error_message = "Parameter `neighbor_group.soft_reconfiguration_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.as_override == null || contains(["enable", "disable"], p.as_override)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.as_override == null || contains(["enable", "disable"], p.as_override)]]))
     error_message = "Parameter `neighbor_group.as_override` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.as_override6 == null || contains(["enable", "disable"], p.as_override6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.as_override6 == null || contains(["enable", "disable"], p.as_override6)]]))
     error_message = "Parameter `neighbor_group.as_override6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.strict_capability_match == null || contains(["enable", "disable"], p.strict_capability_match)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.strict_capability_match == null || contains(["enable", "disable"], p.strict_capability_match)]]))
     error_message = "Parameter `neighbor_group.strict_capability_match` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_threshold == null || (p.maximum_prefix_threshold >= 1 && p.maximum_prefix_threshold <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_threshold == null || (p.maximum_prefix_threshold >= 1 && p.maximum_prefix_threshold <= 100)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_threshold` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_threshold6 == null || (p.maximum_prefix_threshold6 >= 1 && p.maximum_prefix_threshold6 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_threshold6 == null || (p.maximum_prefix_threshold6 >= 1 && p.maximum_prefix_threshold6 <= 100)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_threshold6` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_threshold_vpnv4 == null || (p.maximum_prefix_threshold_vpnv4 >= 1 && p.maximum_prefix_threshold_vpnv4 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_threshold_vpnv4 == null || (p.maximum_prefix_threshold_vpnv4 >= 1 && p.maximum_prefix_threshold_vpnv4 <= 100)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_threshold_vpnv4` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_threshold_vpnv6 == null || (p.maximum_prefix_threshold_vpnv6 >= 1 && p.maximum_prefix_threshold_vpnv6 <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_threshold_vpnv6 == null || (p.maximum_prefix_threshold_vpnv6 >= 1 && p.maximum_prefix_threshold_vpnv6 <= 100)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_threshold_vpnv6` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_threshold_evpn == null || (p.maximum_prefix_threshold_evpn >= 1 && p.maximum_prefix_threshold_evpn <= 100)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_threshold_evpn == null || (p.maximum_prefix_threshold_evpn >= 1 && p.maximum_prefix_threshold_evpn <= 100)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_threshold_evpn` must be in the range 1-100."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_warning_only == null || contains(["enable", "disable"], p.maximum_prefix_warning_only)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_warning_only == null || contains(["enable", "disable"], p.maximum_prefix_warning_only)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_warning_only` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_warning_only6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_warning_only6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only6)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_warning_only6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_warning_only_vpnv4 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_warning_only_vpnv4 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv4)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_warning_only_vpnv4` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_warning_only_vpnv6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_warning_only_vpnv6 == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_vpnv6)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_warning_only_vpnv6` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.maximum_prefix_warning_only_evpn == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.maximum_prefix_warning_only_evpn == null || contains(["enable", "disable"], p.maximum_prefix_warning_only_evpn)]]))
     error_message = "Parameter `neighbor_group.maximum_prefix_warning_only_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.local_as_no_prepend == null || contains(["enable", "disable"], p.local_as_no_prepend)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.local_as_no_prepend == null || contains(["enable", "disable"], p.local_as_no_prepend)]]))
     error_message = "Parameter `neighbor_group.local_as_no_prepend` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.local_as_replace_as == null || contains(["enable", "disable"], p.local_as_replace_as)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.local_as_replace_as == null || contains(["enable", "disable"], p.local_as_replace_as)]]))
     error_message = "Parameter `neighbor_group.local_as_replace_as` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.send_community == null || contains(["standard", "extended", "both", "disable"], p.send_community)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.send_community == null || contains(["standard", "extended", "both", "disable"], p.send_community)]]))
     error_message = "Parameter `neighbor_group.send_community` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.send_community6 == null || contains(["standard", "extended", "both", "disable"], p.send_community6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.send_community6 == null || contains(["standard", "extended", "both", "disable"], p.send_community6)]]))
     error_message = "Parameter `neighbor_group.send_community6` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.send_community_vpnv4 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.send_community_vpnv4 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv4)]]))
     error_message = "Parameter `neighbor_group.send_community_vpnv4` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.send_community_vpnv6 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.send_community_vpnv6 == null || contains(["standard", "extended", "both", "disable"], p.send_community_vpnv6)]]))
     error_message = "Parameter `neighbor_group.send_community_vpnv6` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.send_community_evpn == null || contains(["standard", "extended", "both", "disable"], p.send_community_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.send_community_evpn == null || contains(["standard", "extended", "both", "disable"], p.send_community_evpn)]]))
     error_message = "Parameter `neighbor_group.send_community_evpn` must be one of `standard`, `extended`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.enforce_preferred_source == null || contains(["enable", "disable"], p.enforce_preferred_source)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.enforce_preferred_source == null || contains(["enable", "disable"], p.enforce_preferred_source)]]))
     error_message = "Parameter `neighbor_group.enforce_preferred_source` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.additional_path == null || contains(["send", "receive", "both", "disable"], p.additional_path)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.additional_path == null || contains(["send", "receive", "both", "disable"], p.additional_path)]]))
     error_message = "Parameter `neighbor_group.additional_path` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.additional_path6 == null || contains(["send", "receive", "both", "disable"], p.additional_path6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.additional_path6 == null || contains(["send", "receive", "both", "disable"], p.additional_path6)]]))
     error_message = "Parameter `neighbor_group.additional_path6` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.additional_path_vpnv4 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv4)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.additional_path_vpnv4 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv4)]]))
     error_message = "Parameter `neighbor_group.additional_path_vpnv4` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.additional_path_vpnv6 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv6)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.additional_path_vpnv6 == null || contains(["send", "receive", "both", "disable"], p.additional_path_vpnv6)]]))
     error_message = "Parameter `neighbor_group.additional_path_vpnv6` must be one of `send`, `receive`, `both`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p.use_sdwan == null || contains(["enable", "disable"], p.use_sdwan)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.neighbor_group : p == null || p.use_sdwan == null || contains(["enable", "disable"], p.use_sdwan)]]))
     error_message = "Parameter `neighbor_group.use_sdwan` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network : p.network_import_check == null || contains(["global", "enable", "disable"], p.network_import_check)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network : p == null || p.network_import_check == null || contains(["global", "enable", "disable"], p.network_import_check)]]))
     error_message = "Parameter `network.network_import_check` must be one of `global`, `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network : p.backdoor == null || contains(["enable", "disable"], p.backdoor)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network : p == null || p.backdoor == null || contains(["enable", "disable"], p.backdoor)]]))
     error_message = "Parameter `network.backdoor` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network6 : p.network_import_check == null || contains(["global", "enable", "disable"], p.network_import_check)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network6 : p == null || p.network_import_check == null || contains(["global", "enable", "disable"], p.network_import_check)]]))
     error_message = "Parameter `network6.network_import_check` must be one of `global`, `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network6 : p.backdoor == null || contains(["enable", "disable"], p.backdoor)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.network6 : p == null || p.backdoor == null || contains(["enable", "disable"], p.backdoor)]]))
     error_message = "Parameter `network6.backdoor` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute : p.status == null || contains(["enable", "disable"], p.status)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute : p == null || p.status == null || contains(["enable", "disable"], p.status)]]))
     error_message = "Parameter `redistribute.status` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute : p.status_evpn == null || contains(["enable", "disable"], p.status_evpn)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute : p == null || p.status_evpn == null || contains(["enable", "disable"], p.status_evpn)]]))
     error_message = "Parameter `redistribute.status_evpn` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute6 : p.status == null || contains(["enable", "disable"], p.status)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.redistribute6 : p == null || p.status == null || contains(["enable", "disable"], p.status)]]))
     error_message = "Parameter `redistribute6.status` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.admin_distance : p.distance == null || (p.distance >= 1 && p.distance <= 255)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.admin_distance : p == null || p.distance == null || (p.distance >= 1 && p.distance <= 255)]]))
     error_message = "Parameter `admin_distance.distance` must be in the range 1-255."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : p.vrf == null || (p.vrf >= 0 && p.vrf <= 251)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : p == null || p.vrf == null || (p.vrf >= 0 && p.vrf <= 251)]]))
     error_message = "Parameter `vrf.vrf` must be in the range 0-251."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : p.role == null || contains(["standalone", "ce", "pe"], p.role)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : p == null || p.role == null || contains(["standalone", "ce", "pe"], p.role)]]))
     error_message = "Parameter `vrf.role` must be one of `standalone`, `ce`, `pe`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : [for q in p.leak_target : q.vrf == null || (q.vrf >= 0 && q.vrf <= 251)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf : p == null || [for q in p.leak_target : q == null || q.vrf == null || (q.vrf >= 0 && q.vrf <= 251)]]]))
     error_message = "Parameter `vrf.leak_target.vrf` must be in the range 0-251."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : p.vrf == null || (p.vrf >= 0 && p.vrf <= 251)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : p == null || p.vrf == null || (p.vrf >= 0 && p.vrf <= 251)]]))
     error_message = "Parameter `vrf6.vrf` must be in the range 0-251."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : p.role == null || contains(["standalone", "ce", "pe"], p.role)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : p == null || p.role == null || contains(["standalone", "ce", "pe"], p.role)]]))
     error_message = "Parameter `vrf6.role` must be one of `standalone`, `ce`, `pe`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : [for q in p.leak_target : q.vrf == null || (q.vrf >= 0 && q.vrf <= 251)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf6 : p == null || [for q in p.leak_target : q == null || q.vrf == null || (q.vrf >= 0 && q.vrf <= 251)]]]))
     error_message = "Parameter `vrf6.leak_target.vrf` must be in the range 0-251."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak : p.vrf == null || (p.vrf >= 0 && p.vrf <= 31)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak : p == null || p.vrf == null || (p.vrf >= 0 && p.vrf <= 31)]]))
     error_message = "Parameter `vrf_leak.vrf` must be in the range 0-31."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak : [for q in p.target : q.vrf == null || (q.vrf >= 0 && q.vrf <= 31)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak : p == null || [for q in p.target : q == null || q.vrf == null || (q.vrf >= 0 && q.vrf <= 31)]]]))
     error_message = "Parameter `vrf_leak.target.vrf` must be in the range 0-31."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak6 : p.vrf == null || (p.vrf >= 0 && p.vrf <= 31)]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak6 : p == null || p.vrf == null || (p.vrf >= 0 && p.vrf <= 31)]]))
     error_message = "Parameter `vrf_leak6.vrf` must be in the range 0-31."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak6 : [for q in p.target : q.vrf == null || (q.vrf >= 0 && q.vrf <= 31)]]]))
+    condition     = alltrue(flatten([for o in var.routerbgp : [for p in o.vrf_leak6 : p == null || [for q in p.target : q == null || q.vrf == null || (q.vrf >= 0 && q.vrf <= 31)]]]))
     error_message = "Parameter `vrf_leak6.target.vrf` must be in the range 0-31."
   }
   validation {

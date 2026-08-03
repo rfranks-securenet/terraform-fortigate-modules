@@ -15,7 +15,7 @@ terraform {
 }
 
 resource "fortios_system_interface" "interfaces" {
-  for_each = { for interface in var.interfaces : interface.name => interface }
+  for_each = { for interface in var.interface : interface.name => interface }
   lifecycle {
     ignore_changes = [cli_conn_status, ipv6[0].cli_conn6_status]
   }
@@ -516,7 +516,7 @@ resource "fortios_system_interface" "interfaces" {
 }
 
 resource "fortios_system_zone" "zones" {
-  for_each              = { for zone in var.zones : zone.name => zone }
+  for_each              = { for zone in var.zone : zone.name => zone }
   depends_on            = [fortios_system_interface.interfaces]
   uuid                  = each.value.uuid
   fabric_object         = each.value.fabric_object

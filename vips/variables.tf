@@ -177,35 +177,35 @@ variable "vip6" {
     error_message = "Parameter `h3_support` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.max_idle_timeout == null || (o.max_idle_timeout >= 1 && o.max_idle_timeout <= 60000)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.max_idle_timeout == null || (o.quic.max_idle_timeout >= 1 && o.quic.max_idle_timeout <= 60000)]))
     error_message = "Parameter `quic.max_idle_timeout` must be in the range 1-60000."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.max_udp_payload_size == null || (o.max_udp_payload_size >= 1200 && o.max_udp_payload_size <= 1500)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.max_udp_payload_size == null || (o.quic.max_udp_payload_size >= 1200 && o.quic.max_udp_payload_size <= 1500)]))
     error_message = "Parameter `quic.max_udp_payload_size` must be in the range 1200-1500."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.active_connection_id_limit == null || (o.active_connection_id_limit >= 1 && o.active_connection_id_limit <= 8)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.active_connection_id_limit == null || (o.quic.active_connection_id_limit >= 1 && o.quic.active_connection_id_limit <= 8)]))
     error_message = "Parameter `quic.active_connection_id_limit` must be in the range 1-8."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.ack_delay_exponent == null || (o.ack_delay_exponent >= 1 && o.ack_delay_exponent <= 20)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.ack_delay_exponent == null || (o.quic.ack_delay_exponent >= 1 && o.quic.ack_delay_exponent <= 20)]))
     error_message = "Parameter `quic.ack_delay_exponent` must be in the range 1-20."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.max_ack_delay == null || (o.max_ack_delay >= 1 && o.max_ack_delay <= 16383)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.max_ack_delay == null || (o.quic.max_ack_delay >= 1 && o.quic.max_ack_delay <= 16383)]))
     error_message = "Parameter `quic.max_ack_delay` must be in the range 1-16383."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.max_datagram_frame_size == null || (o.max_datagram_frame_size >= 1 && o.max_datagram_frame_size <= 1500)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.max_datagram_frame_size == null || (o.quic.max_datagram_frame_size >= 1 && o.quic.max_datagram_frame_size <= 1500)]))
     error_message = "Parameter `quic.max_datagram_frame_size` must be in the range 1-1500."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.active_migration == null || contains(["enable", "disable"], o.active_migration)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.active_migration == null || contains(["enable", "disable"], o.quic.active_migration)]))
     error_message = "Parameter `quic.active_migration` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.grease_quic_bit == null || contains(["enable", "disable"], o.grease_quic_bit)]))
+    condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.quic.grease_quic_bit == null || contains(["enable", "disable"], o.quic.grease_quic_bit)]))
     error_message = "Parameter `quic.grease_quic_bit` must be one of `enable`, `disable`."
   }
   validation {
@@ -539,35 +539,35 @@ variable "vip" {
     error_message = "Parameter `h3_support` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.max_idle_timeout == null || (o.max_idle_timeout >= 1 && o.max_idle_timeout <= 60000)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.max_idle_timeout == null || (o.quic.max_idle_timeout >= 1 && o.quic.max_idle_timeout <= 60000)]))
     error_message = "Parameter `quic.max_idle_timeout` must be in the range 1-60000."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.max_udp_payload_size == null || (o.max_udp_payload_size >= 1200 && o.max_udp_payload_size <= 1500)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.max_udp_payload_size == null || (o.quic.max_udp_payload_size >= 1200 && o.quic.max_udp_payload_size <= 1500)]))
     error_message = "Parameter `quic.max_udp_payload_size` must be in the range 1200-1500."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.active_connection_id_limit == null || (o.active_connection_id_limit >= 1 && o.active_connection_id_limit <= 8)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.active_connection_id_limit == null || (o.quic.active_connection_id_limit >= 1 && o.quic.active_connection_id_limit <= 8)]))
     error_message = "Parameter `quic.active_connection_id_limit` must be in the range 1-8."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.ack_delay_exponent == null || (o.ack_delay_exponent >= 1 && o.ack_delay_exponent <= 20)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.ack_delay_exponent == null || (o.quic.ack_delay_exponent >= 1 && o.quic.ack_delay_exponent <= 20)]))
     error_message = "Parameter `quic.ack_delay_exponent` must be in the range 1-20."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.max_ack_delay == null || (o.max_ack_delay >= 1 && o.max_ack_delay <= 16383)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.max_ack_delay == null || (o.quic.max_ack_delay >= 1 && o.quic.max_ack_delay <= 16383)]))
     error_message = "Parameter `quic.max_ack_delay` must be in the range 1-16383."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.max_datagram_frame_size == null || (o.max_datagram_frame_size >= 1 && o.max_datagram_frame_size <= 1500)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.max_datagram_frame_size == null || (o.quic.max_datagram_frame_size >= 1 && o.quic.max_datagram_frame_size <= 1500)]))
     error_message = "Parameter `quic.max_datagram_frame_size` must be in the range 1-1500."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.active_migration == null || contains(["enable", "disable"], o.active_migration)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.active_migration == null || contains(["enable", "disable"], o.quic.active_migration)]))
     error_message = "Parameter `quic.active_migration` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.grease_quic_bit == null || contains(["enable", "disable"], o.grease_quic_bit)]))
+    condition     = alltrue(flatten([for o in var.vip : o.quic == null || o.quic.grease_quic_bit == null || contains(["enable", "disable"], o.quic.grease_quic_bit)]))
     error_message = "Parameter `quic.grease_quic_bit` must be one of `enable`, `disable`."
   }
   validation {

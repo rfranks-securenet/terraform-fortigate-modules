@@ -914,11 +914,11 @@ variable "interface" {
     error_message = "Parameter `vrrp.status` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.phy_setting == null || o.signal_ok_threshold == null || (o.signal_ok_threshold >= 0 && o.signal_ok_threshold <= 12)]))
+    condition     = alltrue(flatten([for o in var.interface : o.phy_setting == null || o.phy_setting.signal_ok_threshold == null || (o.phy_setting.signal_ok_threshold >= 0 && o.phy_setting.signal_ok_threshold <= 12)]))
     error_message = "Parameter `phy_setting.signal_ok_threshold` must be in the range 0-12."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.phy_setting == null || o.signal_ok_threshold_value == null || (o.signal_ok_threshold_value >= 0 && o.signal_ok_threshold_value <= 12)]))
+    condition     = alltrue(flatten([for o in var.interface : o.phy_setting == null || o.phy_setting.signal_ok_threshold_value == null || (o.phy_setting.signal_ok_threshold_value >= 0 && o.phy_setting.signal_ok_threshold_value <= 12)]))
     error_message = "Parameter `phy_setting.signal_ok_threshold_value` must be in the range 0-12."
   }
   validation {
@@ -1042,7 +1042,7 @@ variable "interface" {
     error_message = "Parameter `default_purdue_level` must be one of `1`, `1.5`, `2`, `2.5`, `3`, `3.5`, `4`, `5`, `5.5`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_mode == null || contains(["static", "dhcp", "pppoe", "delegated"], o.ip6_mode)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_mode == null || contains(["static", "dhcp", "pppoe", "delegated"], o.ipv6.ip6_mode)]))
     error_message = "Parameter `ipv6.ip6_mode` must be one of `static`, `dhcp`, `pppoe`, `delegated`."
   }
   validation {
@@ -1050,59 +1050,59 @@ variable "interface" {
     error_message = "Parameter `ipv6.client_options.type` must be one of `hex`, `string`, `ip6`, `fqdn`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.nd_mode == null || contains(["basic", "SEND-compatible"], o.nd_mode)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.nd_mode == null || contains(["basic", "SEND-compatible"], o.ipv6.nd_mode)]))
     error_message = "Parameter `ipv6.nd_mode` must be one of `basic`, `SEND-compatible`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.nd_security_level == null || (o.nd_security_level >= 0 && o.nd_security_level <= 7)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.nd_security_level == null || (o.ipv6.nd_security_level >= 0 && o.ipv6.nd_security_level <= 7)]))
     error_message = "Parameter `ipv6.nd_security_level` must be in the range 0-7."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.nd_timestamp_delta == null || (o.nd_timestamp_delta >= 1 && o.nd_timestamp_delta <= 3600)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.nd_timestamp_delta == null || (o.ipv6.nd_timestamp_delta >= 1 && o.ipv6.nd_timestamp_delta <= 3600)]))
     error_message = "Parameter `ipv6.nd_timestamp_delta` must be in the range 1-3600."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.nd_timestamp_fuzz == null || (o.nd_timestamp_fuzz >= 1 && o.nd_timestamp_fuzz <= 60)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.nd_timestamp_fuzz == null || (o.ipv6.nd_timestamp_fuzz >= 1 && o.ipv6.nd_timestamp_fuzz <= 60)]))
     error_message = "Parameter `ipv6.nd_timestamp_fuzz` must be in the range 1-60."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_dns_server_override == null || contains(["enable", "disable"], o.ip6_dns_server_override)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_dns_server_override == null || contains(["enable", "disable"], o.ipv6.ip6_dns_server_override)]))
     error_message = "Parameter `ipv6.ip6_dns_server_override` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_send_adv == null || contains(["enable", "disable"], o.ip6_send_adv)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_send_adv == null || contains(["enable", "disable"], o.ipv6.ip6_send_adv)]))
     error_message = "Parameter `ipv6.ip6_send_adv` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.icmp6_send_redirect == null || contains(["enable", "disable"], o.icmp6_send_redirect)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.icmp6_send_redirect == null || contains(["enable", "disable"], o.ipv6.icmp6_send_redirect)]))
     error_message = "Parameter `ipv6.icmp6_send_redirect` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_manage_flag == null || contains(["enable", "disable"], o.ip6_manage_flag)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_manage_flag == null || contains(["enable", "disable"], o.ipv6.ip6_manage_flag)]))
     error_message = "Parameter `ipv6.ip6_manage_flag` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_other_flag == null || contains(["enable", "disable"], o.ip6_other_flag)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_other_flag == null || contains(["enable", "disable"], o.ipv6.ip6_other_flag)]))
     error_message = "Parameter `ipv6.ip6_other_flag` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_max_interval == null || (o.ip6_max_interval >= 4 && o.ip6_max_interval <= 1800)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_max_interval == null || (o.ipv6.ip6_max_interval >= 4 && o.ipv6.ip6_max_interval <= 1800)]))
     error_message = "Parameter `ipv6.ip6_max_interval` must be in the range 4-1800."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_min_interval == null || (o.ip6_min_interval >= 3 && o.ip6_min_interval <= 1350)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_min_interval == null || (o.ipv6.ip6_min_interval >= 3 && o.ipv6.ip6_min_interval <= 1350)]))
     error_message = "Parameter `ipv6.ip6_min_interval` must be in the range 3-1350."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ra_send_mtu == null || contains(["enable", "disable"], o.ra_send_mtu)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ra_send_mtu == null || contains(["enable", "disable"], o.ipv6.ra_send_mtu)]))
     error_message = "Parameter `ipv6.ra_send_mtu` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_adv_rio == null || contains(["enable", "disable"], o.ip6_adv_rio)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_adv_rio == null || contains(["enable", "disable"], o.ipv6.ip6_adv_rio)]))
     error_message = "Parameter `ipv6.ip6_adv_rio` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_route_pref == null || contains(["medium", "high", "low"], o.ip6_route_pref)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_route_pref == null || contains(["medium", "high", "low"], o.ipv6.ip6_route_pref)]))
     error_message = "Parameter `ipv6.ip6_route_pref` must be one of `medium`, `high`, `low`."
   }
   validation {
@@ -1114,15 +1114,15 @@ variable "interface" {
     error_message = "Parameter `ipv6.ip6_route_list.route_life_time` must be in the range 0-65535."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.autoconf == null || contains(["enable", "disable"], o.autoconf)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.autoconf == null || contains(["enable", "disable"], o.ipv6.autoconf)]))
     error_message = "Parameter `ipv6.autoconf` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.unique_autoconf_addr == null || contains(["enable", "disable"], o.unique_autoconf_addr)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.unique_autoconf_addr == null || contains(["enable", "disable"], o.ipv6.unique_autoconf_addr)]))
     error_message = "Parameter `ipv6.unique_autoconf_addr` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ip6_prefix_mode == null || contains(["dhcp6", "ra"], o.ip6_prefix_mode)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.ip6_prefix_mode == null || contains(["dhcp6", "ra"], o.ipv6.ip6_prefix_mode)]))
     error_message = "Parameter `ipv6.ip6_prefix_mode` must be one of `dhcp6`, `ra`."
   }
   validation {
@@ -1158,35 +1158,35 @@ variable "interface" {
     error_message = "Parameter `ipv6.ip6_delegated_prefix_list.dnssl_service` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_egress_cos == null || contains(["cos0", "cos1", "cos2", "cos3", "cos4", "cos5", "cos6", "cos7"], o.dhcp6_egress_cos)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_egress_cos == null || contains(["cos0", "cos1", "cos2", "cos3", "cos4", "cos5", "cos6", "cos7"], o.ipv6.dhcp6_egress_cos)]))
     error_message = "Parameter `ipv6.dhcp6_egress_cos` must be one of `cos0`, `cos1`, `cos2`, `cos3`, `cos4`, `cos5`, `cos6`, `cos7`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_relay_service == null || contains(["disable", "enable"], o.dhcp6_relay_service)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_relay_service == null || contains(["disable", "enable"], o.ipv6.dhcp6_relay_service)]))
     error_message = "Parameter `ipv6.dhcp6_relay_service` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_relay_type == null || contains(["regular"], o.dhcp6_relay_type)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_relay_type == null || contains(["regular"], o.ipv6.dhcp6_relay_type)]))
     error_message = "Parameter `ipv6.dhcp6_relay_type` must be one of `regular`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_relay_source_interface == null || contains(["disable", "enable"], o.dhcp6_relay_source_interface)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_relay_source_interface == null || contains(["disable", "enable"], o.ipv6.dhcp6_relay_source_interface)]))
     error_message = "Parameter `ipv6.dhcp6_relay_source_interface` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_client_options == null || contains(["rapid", "iapd", "iana"], o.dhcp6_client_options)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_client_options == null || contains(["rapid", "iapd", "iana"], o.ipv6.dhcp6_client_options)]))
     error_message = "Parameter `ipv6.dhcp6_client_options` must be one of `rapid`, `iapd`, `iana`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_prefix_delegation == null || contains(["enable", "disable"], o.dhcp6_prefix_delegation)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_prefix_delegation == null || contains(["enable", "disable"], o.ipv6.dhcp6_prefix_delegation)]))
     error_message = "Parameter `ipv6.dhcp6_prefix_delegation` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.dhcp6_information_request == null || contains(["enable", "disable"], o.dhcp6_information_request)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.dhcp6_information_request == null || contains(["enable", "disable"], o.ipv6.dhcp6_information_request)]))
     error_message = "Parameter `ipv6.dhcp6_information_request` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.vrrp_virtual_mac6 == null || contains(["enable", "disable"], o.vrrp_virtual_mac6)]))
+    condition     = alltrue(flatten([for o in var.interface : o.ipv6 == null || o.ipv6.vrrp_virtual_mac6 == null || contains(["enable", "disable"], o.ipv6.vrrp_virtual_mac6)]))
     error_message = "Parameter `ipv6.vrrp_virtual_mac6` must be one of `enable`, `disable`."
   }
   validation {

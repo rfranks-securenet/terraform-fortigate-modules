@@ -202,18 +202,18 @@ class TfVar:
             error = ""
             if self._valid_values:
                 if self._type == "string":
-                    out += f"{chr(111 + listLevel)}.{self._name} == null || contains([\"{'","'.join(self._valid_values)}\"], {chr(111 + listLevel)}.{self._name})"
+                    out += f"{chr(111 + listLevel)}.{self.validationName} == null || contains([\"{'","'.join(self._valid_values)}\"], {chr(111 + listLevel)}.{self.validationName})"
                 elif self._type == "number":
-                    out += f"{chr(111 + listLevel)}.{self._name} == null || contains([{','.join(self._valid_values)}], {chr(111 + listLevel)}.{self._name})"
+                    out += f"{chr(111 + listLevel)}.{self.validationName} == null || contains([{','.join(self._valid_values)}], {chr(111 + listLevel)}.{self.validationName})"
                 error = f"Parameter `{self._fullname}` must be one of `{'`, `'.join(self._valid_values)}`."
 
             if self._valid_range:
                 try:
                     high = self._valid_range["high"]
-                    out += f"{chr(111 + listLevel)}.{self._name} == null || ({chr(111 + listLevel)}.{self._name} >= {self._valid_range['low']} && {chr(111 + listLevel)}.{self._name} <= {self._valid_range['high']})"
+                    out += f"{chr(111 + listLevel)}.{self.validationName} == null || ({chr(111 + listLevel)}.{self.validationName} >= {self._valid_range['low']} && {chr(111 + listLevel)}.{self.validationName} <= {self._valid_range['high']})"
                     error = f"Parameter `{self._fullname}` must be in the range {self._valid_range['low']}-{self._valid_range['high']}."
                 except KeyError:
-                    out += f"{chr(111 + listLevel)}.{self._name} == null || {chr(111 + listLevel)}.{self._name} >= {self._valid_range['low']}"
+                    out += f"{chr(111 + listLevel)}.{self.validationName} == null || {chr(111 + listLevel)}.{self.validationName} >= {self._valid_range['low']}"
                     error = f"Parameter `{self._fullname}` must be {self._valid_range['low']} or greater."
             out += "]" * listLevel
             out += "]))\n"

@@ -103,8 +103,8 @@ variable "dhcp_server" {
       remote_id       = optional(string)
       description     = optional(string)
     })), [])
-    dynamic_sort_subtable = optional(string)
-    get_all_tables        = optional(bool)
+    dynamic_sort_subtable = optional(string, "natural")
+    get_all_tables        = optional(bool, false)
     vdomparam             = optional(string)
     update_if_exist       = optional(bool)
   }))
@@ -115,7 +115,7 @@ variable "dhcp_server" {
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.lease_time == null || o.lease_time >= 0]))
-    error_message = "Parameter `lease_time` must be greater than 0."
+    error_message = "Parameter `lease_time` must be 0 or greater."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.mac_acl_default_action == null || contains(["assign", "block"], o.mac_acl_default_action)]))
@@ -151,7 +151,7 @@ variable "dhcp_server" {
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.ip_range : p.lease_time == null || p.lease_time >= 0]]))
-    error_message = "Parameter `ip_range.lease_time` must be greater than 0."
+    error_message = "Parameter `ip_range.lease_time` must be 0 or greater."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.timezone_option == null || contains(["disable", "default", "specify"], o.timezone_option)]))
@@ -207,7 +207,7 @@ variable "dhcp_server" {
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.ddns_ttl == null || o.ddns_ttl >= 0]))
-    error_message = "Parameter `ddns_ttl` must be greater than 0."
+    error_message = "Parameter `ddns_ttl` must be 0 or greater."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.vci_match == null || contains(["disable", "enable"], o.vci_match)]))
@@ -227,11 +227,15 @@ variable "dhcp_server" {
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.exclude_range : p.lease_time == null || p.lease_time >= 0]]))
-    error_message = "Parameter `exclude_range.lease_time` must be greater than 0."
+    error_message = "Parameter `exclude_range.lease_time` must be 0 or greater."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : o.shared_subnet == null || contains(["disable", "enable"], o.shared_subnet)]))
     error_message = "Parameter `shared_subnet` must be one of `disable`, `enable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.type == null || contains(["mac", "option82"], p.type)]]))
+    error_message = "Parameter `reserved_address.type` must be one of `mac`, `option82`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p.mac == null || contains(["mac", "option82"], p.mac)]]))
@@ -254,12 +258,13 @@ variable "dhcp_server" {
     error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
   }
 }
+
 variable "dhcp6_server" {
   description = "Interfaces to create"
   default     = []
 
   type = list(object({
-    fosid                  = optional(number)
+    fosid                  = number
     status                 = optional(string)
     rapid_commit           = optional(string)
     lease_time             = optional(number)
@@ -303,18 +308,18 @@ variable "dhcp6_server" {
       vci_string = optional(list(string), [])
     })), [])
     dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
+    get_all_tables        = optional(bool, false)
     vdomparam             = optional(string)
     update_if_exist       = optional(bool)
   }))
 
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp6_server : o.status == null || contains(["enable", "disable"], o.status)]))
-    error_message = "Parameter `status` must be one of `enable`, `disable`."
+    condition     = alltrue(flatten([for o in var.dhcp6_server : o.status == null || contains(["disable", "enable"], o.status)]))
+    error_message = "Parameter `status` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp6_server : o.rapid_commit == null || contains(["enable", "disable"], o.rapid_commit)]))
-    error_message = "Parameter `rapid_commit` must be one of `enable`, `disable`."
+    condition     = alltrue(flatten([for o in var.dhcp6_server : o.rapid_commit == null || contains(["disable", "enable"], o.rapid_commit)]))
+    error_message = "Parameter `rapid_commit` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.dhcp6_server : o.dns_service == null || contains(["delegated", "default", "specify"], o.dns_service)]))

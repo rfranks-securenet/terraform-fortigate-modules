@@ -1,3 +1,293 @@
+variable "addgrp6" {
+  description = "IPv6 Address Groups"
+  default     = []
+
+  type = list(object({
+    name           = string
+    type           = optional(string)
+    category       = optional(string)
+    uuid           = optional(string)
+    visibility     = optional(string)
+    color          = optional(number)
+    comment        = optional(string)
+    member         = list(string)
+    exclude        = optional(string)
+    exclude_member = optional(list(string), [])
+    tagging = optional(list(object({
+      name     = optional(string)
+      category = optional(string)
+      tags     = optional(list(string), [])
+    })), [])
+    display_with          = optional(string)
+    custom_tags           = optional(list(string), [])
+    fabric_object         = optional(string)
+    fabric_force_sync     = optional(string)
+    fabric_object_source  = optional(string)
+    dynamic_sort_subtable = optional(string, "natural")
+    get_all_tables        = optional(bool, false)
+    vdomparam             = optional(string)
+    update_if_exist       = optional(bool)
+  }))
+
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.type == null || contains(["default", "dynamic-tag"], o.type)]))
+    error_message = "Parameter `type` must be one of `default`, `dynamic-tag`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.category == null || contains(["default", "ztna-ems-tag"], o.category)]))
+    error_message = "Parameter `category` must be one of `default`, `ztna-ems-tag`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
+    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.color == null || (o.color >= 1 && o.color <= 32)]))
+    error_message = "Parameter `color` must be in the range 1-32."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.exclude == null || contains(["enable", "disable"], o.exclude)]))
+    error_message = "Parameter `exclude` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.display_with == null || contains(["all-tags", "first-tag-only", "icon-and-color"], o.display_with)]))
+    error_message = "Parameter `display_with` must be one of `all-tags`, `first-tag-only`, `icon-and-color`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
+    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
+    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
+    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.addgrp6 : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
+    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
+  }
+}
+
+variable "custom_service" {
+  description = "Custom Services"
+  default     = []
+
+  type = list(object({
+    name                  = string
+    uuid                  = optional(string)
+    proxy                 = optional(string)
+    category              = optional(string)
+    protocol              = optional(number)
+    helper                = optional(string)
+    iprange               = optional(string)
+    fqdn                  = optional(string)
+    protocol_number       = optional(string)
+    icmptype              = optional(string)
+    icmpcode              = optional(string)
+    tcp_portrange         = optional(string)
+    udp_portrange         = optional(string)
+    udplite_portrange     = optional(string)
+    sctp_portrange        = optional(string)
+    tcp_halfclose_timer   = optional(number, 0)
+    tcp_halfopen_timer    = optional(string, "0")
+    tcp_timewait_timer    = optional(string, "0")
+    tcp_rst_timer         = optional(string, "0")
+    udp_idle_timer        = optional(string, "0")
+    session_ttl           = optional(string, "0")
+    check_reset_range     = optional(string)
+    comment               = optional(string)
+    color                 = optional(number, 0)
+    visibility            = optional(string)
+    app_service_type      = optional(string)
+    app_category          = optional(list(string), [])
+    application           = optional(list(string), [])
+    fabric_object         = optional(string)
+    fabric_force_sync     = optional(string)
+    fabric_object_source  = optional(string)
+    dynamic_sort_subtable = optional(string, "natural")
+    get_all_tables        = optional(bool, false)
+    vdomparam             = optional(string)
+    update_if_exist       = optional(bool)
+  }))
+
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.proxy == null || contains(["enable", "disable"], o.proxy)]))
+    error_message = "Parameter `proxy` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_halfclose_timer == null || (o.tcp_halfclose_timer >= 1 && o.tcp_halfclose_timer <= 86400)]))
+    error_message = "Parameter `tcp_halfclose_timer` must be in the range 1-86400."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_halfopen_timer == null || (o.tcp_halfopen_timer >= 1 && o.tcp_halfopen_timer <= 86400)]))
+    error_message = "Parameter `tcp_halfopen_timer` must be in the range 1-86400."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_timewait_timer == null || (o.tcp_timewait_timer >= 1 && o.tcp_timewait_timer <= 300)]))
+    error_message = "Parameter `tcp_timewait_timer` must be in the range 1-300."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_rst_timer == null || (o.tcp_rst_timer >= 5 && o.tcp_rst_timer <= 300)]))
+    error_message = "Parameter `tcp_rst_timer` must be in the range 5-300."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.udp_idle_timer == null || (o.udp_idle_timer >= 0 && o.udp_idle_timer <= 86400)]))
+    error_message = "Parameter `udp_idle_timer` must be in the range 0-86400."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.session_ttl == null || (o.session_ttl >= 300 && o.session_ttl <= 2764800)]))
+    error_message = "Parameter `session_ttl` must be in the range 300-2764800."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.check_reset_range == null || contains(["disable", "strict", "default"], o.check_reset_range)]))
+    error_message = "Parameter `check_reset_range` must be one of `disable`, `strict`, `default`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.color == null || (o.color >= 1 && o.color <= 32)]))
+    error_message = "Parameter `color` must be in the range 1-32."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
+    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.app_service_type == null || contains(["disable", "app-id", "app-category"], o.app_service_type)]))
+    error_message = "Parameter `app_service_type` must be one of `disable`, `app-id`, `app-category`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
+    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
+    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
+    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.custom_service : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
+    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
+  }
+}
+
+variable "address6" {
+  description = "IPv6 address objects to create"
+  default     = []
+
+  type = list(object({
+    name         = string
+    uuid         = optional(string)
+    type         = optional(string)
+    sub_type     = optional(string)
+    route_tag    = optional(string)
+    macaddr      = optional(list(string), [])
+    start_mac    = optional(string)
+    end_mac      = optional(string)
+    sdn          = optional(string)
+    ip6          = optional(string)
+    wildcard     = optional(string)
+    start_ip     = optional(string)
+    end_ip       = optional(string)
+    fqdn         = optional(string)
+    country      = optional(string)
+    cache_ttl    = optional(number)
+    display_with = optional(string)
+    custom_tags  = optional(list(string), [])
+    visibility   = optional(string)
+    color        = optional(number)
+    obj_id       = optional(string)
+    list         = optional(list(string), [])
+    tagging = optional(list(object({
+      name     = optional(string)
+      category = optional(string)
+      tags     = optional(list(string), [])
+    })), [])
+    comment  = optional(string)
+    template = optional(string)
+    subnet_segment = optional(list(object({
+      name  = optional(string)
+      type  = optional(string)
+      value = optional(string)
+    })), [])
+    host_type             = optional(string)
+    host                  = optional(string)
+    tenant                = optional(string)
+    epg_name              = optional(string)
+    sdn_tag               = optional(string)
+    filter                = optional(string)
+    sdn_addr_type         = optional(string)
+    obj_tag               = optional(string)
+    tag_detection_level   = optional(string)
+    tag_type              = optional(string)
+    passive_fqdn_learning = optional(string)
+    fabric_object         = optional(string)
+    fabric_force_sync     = optional(string)
+    fabric_object_source  = optional(string)
+    dynamic_sort_subtable = optional(string, "natural")
+    get_all_tables        = optional(bool, false)
+    vdomparam             = optional(string)
+    update_if_exist       = optional(bool)
+  }))
+
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.type == null || contains(["ipprefix", "iprange", "fqdn", "geography", "dynamic", "template", "mac", "route-tag", "wildcard"], o.type)]))
+    error_message = "Parameter `type` must be one of `ipprefix`, `iprange`, `fqdn`, `geography`, `dynamic`, `template`, `mac`, `route-tag`, `wildcard`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.sub_type == null || contains(["sdn", "ems-tag", "8021x"], o.sub_type)]))
+    error_message = "Parameter `sub_type` must be one of `sdn`, `ems-tag`, `8021x`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.display_with == null || contains(["all-tags", "first-tag-only", "icon-and-color"], o.display_with)]))
+    error_message = "Parameter `display_with` must be one of `all-tags`, `first-tag-only`, `icon-and-color`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
+    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.color == null || (o.color >= 1 && o.color <= 32)]))
+    error_message = "Parameter `color` must be in the range 1-32."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : [for p in o.subnet_segment : p.type == null || contains(["any", "specific"], p.type)]]))
+    error_message = "Parameter `subnet_segment.type` must be one of `any`, `specific`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.host_type == null || contains(["any", "specific"], o.host_type)]))
+    error_message = "Parameter `host_type` must be one of `any`, `specific`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.sdn_addr_type == null || contains(["private", "public", "all"], o.sdn_addr_type)]))
+    error_message = "Parameter `sdn_addr_type` must be one of `private`, `public`, `all`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.passive_fqdn_learning == null || contains(["disable", "enable"], o.passive_fqdn_learning)]))
+    error_message = "Parameter `passive_fqdn_learning` must be one of `disable`, `enable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
+    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
+    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
+    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.address6 : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
+    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
+  }
+}
+
 variable "address" {
   description = "IPv4 address objects to create"
   default     = []
@@ -64,7 +354,7 @@ variable "address" {
     fabric_force_sync       = optional(string)
     fabric_object_source    = optional(string)
     dynamic_sort_subtable   = optional(string, "natural")
-    get_all_tables          = optional(bool, "false")
+    get_all_tables          = optional(bool, false)
     vdomparam               = optional(string)
     update_if_exist         = optional(bool)
   }))
@@ -131,115 +421,6 @@ variable "address" {
   }
 }
 
-variable "address6" {
-  description = "IPv6 address objects to create"
-  default     = []
-
-  type = list(object({
-    name         = string
-    uuid         = optional(string)
-    type         = optional(string)
-    sub_type     = optional(string)
-    route_tag    = optional(string)
-    macaddr      = optional(list(string), [])
-    start_mac    = optional(string)
-    end_mac      = optional(string)
-    sdn          = optional(string)
-    ip6          = optional(string)
-    wildcard     = optional(string)
-    start_ip     = optional(string)
-    end_ip       = optional(string)
-    fqdn         = optional(string)
-    country      = optional(string)
-    cache_ttl    = optional(number)
-    display_with = optional(string)
-    custom_tags  = optional(list(string), [])
-    visibility   = optional(string)
-    color        = optional(number)
-    obj_id       = optional(string)
-    list         = optional(list(string), [])
-    tagging = optional(list(object({
-      name     = optional(string)
-      category = optional(string)
-      tags     = optional(list(string), [])
-    })), [])
-    comment  = optional(string)
-    template = optional(string)
-    subnet_segment = optional(list(object({
-      name  = optional(string)
-      type  = optional(string)
-      value = optional(string)
-    })), [])
-    host_type             = optional(string)
-    host                  = optional(string)
-    tenant                = optional(string)
-    epg_name              = optional(string)
-    sdn_tag               = optional(string)
-    filter                = optional(string)
-    sdn_addr_type         = optional(string)
-    obj_tag               = optional(string)
-    tag_detection_level   = optional(string)
-    tag_type              = optional(string)
-    passive_fqdn_learning = optional(string)
-    fabric_object         = optional(string)
-    fabric_force_sync     = optional(string)
-    fabric_object_source  = optional(string)
-    dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
-    vdomparam             = optional(string)
-    update_if_exist       = optional(bool)
-  }))
-
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.type == null || contains(["ipprefix", "iprange", "fqdn", "geography", "dynamic", "template", "mac", "route-tag", "wildcard"], o.type)]))
-    error_message = "Parameter `type` must be one of `ipprefix`, `iprange`, `fqdn`, `geography`, `dynamic`, `template`, `mac`, `route-tag`, `wildcard`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.sub_type == null || contains(["sdn", "ems-tag", "8021x"], o.sub_type)]))
-    error_message = "Parameter `sub_type` must be one of `sdn`, `ems-tag`, `8021x`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.display_with == null || contains(["all-tags", "first-tag-only", "icon-and-color"], o.display_with)]))
-    error_message = "Parameter `display_with` must be one of `all-tags`, `first-tag-only`, `icon-and-color`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
-    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.color == null || (o.color >= 1 && o.color <= 32)]))
-    error_message = "Parameter `color` must be in the range 1-32."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : [for p in o.subnet_segment : p.type == null || contains(["any", "specific"], p.type)]]))
-    error_message = "Parameter `subnet_segment.type` must be one of `any`, `specific`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.sdn_addr_type == null || contains(["private", "public", "all"], o.sdn_addr_type)]))
-    error_message = "Parameter `sdn_addr_type` must be one of `private`, `public`, `all`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.passive_fqdn_learning == null || contains(["disable", "enable"], o.passive_fqdn_learning)]))
-    error_message = "Parameter `passive_fqdn_learning` must be one of `disable`, `enable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
-    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
-    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
-    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.address6 : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
-    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
-  }
-}
-
 variable "addgrp" {
   description = "IPv4 Address Groups"
   default     = []
@@ -267,7 +448,7 @@ variable "addgrp" {
     fabric_force_sync     = optional(string)
     fabric_object_source  = optional(string)
     dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
+    get_all_tables        = optional(bool, false)
     vdomparam             = optional(string)
     update_if_exist       = optional(bool)
   }))
@@ -306,71 +487,6 @@ variable "addgrp" {
   }
 }
 
-variable "addgrp6" {
-  description = "IPv6 Address Groups"
-  default     = []
-
-  type = list(object({
-    name           = string
-    type           = optional(string)
-    category       = optional(string)
-    uuid           = optional(string)
-    visibility     = optional(string)
-    color          = optional(number)
-    comment        = optional(string)
-    member         = list(string)
-    exclude        = optional(string)
-    exclude_member = optional(list(string), [])
-    tagging = optional(list(object({
-      name     = optional(string)
-      category = optional(string)
-      tags     = optional(list(string), [])
-    })), [])
-    display_with          = optional(string)
-    custom_tags           = optional(list(string), [])
-    fabric_object         = optional(string)
-    fabric_force_sync     = optional(string)
-    fabric_object_source  = optional(string)
-    dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
-    vdomparam             = optional(string)
-    update_if_exist       = optional(bool)
-  }))
-
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
-    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.color == null || (o.color >= 1 && o.color <= 32)]))
-    error_message = "Parameter `color` must be in the range 1-32."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.exclude == null || contains(["enable", "disable"], o.exclude)]))
-    error_message = "Parameter `exclude` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.display_with == null || contains(["all-tags", "first-tag-only", "icon-and-color"], o.display_with)]))
-    error_message = "Parameter `display_with` must be one of `all-tags`, `first-tag-only`, `icon-and-color`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
-    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
-    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
-    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.addgrp6 : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
-    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
-  }
-}
-
 variable "service_category" {
   description = "Service categories"
   default     = []
@@ -397,109 +513,5 @@ variable "service_category" {
   validation {
     condition     = alltrue(flatten([for o in var.service_category : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
     error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
-  }
-}
-
-variable "custom_service" {
-  description = "Custom Services"
-  default     = []
-
-  type = list(object({
-    name                  = string
-    uuid                  = optional(string)
-    proxy                 = optional(string)
-    category              = optional(string)
-    protocol              = optional(number)
-    helper                = optional(string)
-    iprange               = optional(string)
-    fqdn                  = optional(string)
-    protocol_number       = optional(string)
-    icmptype              = optional(string)
-    icmpcode              = optional(string)
-    tcp_portrange         = optional(string)
-    udp_portrange         = optional(string)
-    udplite_portrange     = optional(string)
-    sctp_portrange        = optional(string)
-    tcp_halfclose_timer   = optional(number, "0")
-    tcp_halfopen_timer    = optional(string, "0")
-    tcp_timewait_timer    = optional(string, "0")
-    tcp_rst_timer         = optional(string, "0")
-    udp_idle_timer        = optional(string, "0")
-    session_ttl           = optional(string, "0")
-    check_reset_range     = optional(string)
-    comment               = optional(string)
-    color                 = optional(number, "0")
-    visibility            = optional(string)
-    app_service_type      = optional(string)
-    app_category          = optional(list(string), [])
-    application           = optional(list(string), [])
-    fabric_object         = optional(string)
-    fabric_force_sync     = optional(string)
-    fabric_object_source  = optional(string)
-    dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
-    vdomparam             = optional(string)
-    update_if_exist       = optional(bool)
-  }))
-
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.proxy == null || contains(["enable", "disable"], o.proxy)]))
-    error_message = "Parameter `proxy` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_halfclose_timer == null || (o.tcp_halfclose_timer >= 1 && o.tcp_halfclose_timer <= 86400)]))
-    error_message = "Parameter `tcp_halfclose_timer` must be in the range 1-86400."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_halfopen_timer == null || (o.tcp_halfopen_timer >= 1 && o.tcp_halfopen_timer <= 86400)]))
-    error_message = "Parameter `tcp_halfopen_timer` must be in the range 1-86400."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_timewait_timer == null || (o.tcp_timewait_timer >= 1 && o.tcp_timewait_timer <= 300)]))
-    error_message = "Parameter `tcp_timewait_timer` must be in the range 1-300."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.tcp_rst_timer == null || (o.tcp_rst_timer >= 5 && o.tcp_rst_timer <= 300)]))
-    error_message = "Parameter `tcp_rst_timer` must be in the range 5-300."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.udp_idle_timer == null || (o.udp_idle_timer >= 0 && o.udp_idle_timer <= 86400)]))
-    error_message = "Parameter `udp_idle_timer` must be in the range 0-86400."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.session_ttl == null || (o.session_ttl >= 300 && o.session_ttl <= 2764800)]))
-    error_message = "Parameter `session_ttl` must be in the range 300-2764800."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.check_reset_range == null || contains(["disable", "strict", "default"], o.check_reset_range)]))
-    error_message = "Parameter `check_reset_range` must be one of `disable`, `strict`, `default`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.color == null || (o.color >= 1 && o.color <= 32)]))
-    error_message = "Parameter `color` must be in the range 1-32."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.visibility == null || contains(["enable", "disable"], o.visibility)]))
-    error_message = "Parameter `visibility` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.app_service_type == null || contains(["disable", "app-id", "app-category"], o.app_service_type)]))
-    error_message = "Parameter `app_service_type` must be one of `disable`, `app-id`, `app-category`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_object == null || contains(["enable", "disable"], o.fabric_object)]))
-    error_message = "Parameter `fabric_object` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_force_sync == null || contains(["enable", "disable"], o.fabric_force_sync)]))
-    error_message = "Parameter `fabric_force_sync` must be one of `enable`, `disable`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.fabric_object_source == null || contains(["member", "local", "root"], o.fabric_object_source)]))
-    error_message = "Parameter `fabric_object_source` must be one of `member`, `local`, `root`."
-  }
-  validation {
-    condition     = alltrue(flatten([for o in var.custom_service : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
-    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
   }
 }

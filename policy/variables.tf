@@ -225,7 +225,7 @@ variable "policy" {
       to   = optional(string)
     })), [])
     dynamic_sort_subtable = optional(string, "natural")
-    get_all_tables        = optional(bool, "false")
+    get_all_tables        = optional(bool, false)
     vdomparam             = optional(string)
     update_if_exist       = optional(bool)
   }))

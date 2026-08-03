@@ -217,8 +217,8 @@ variable "phase1interface" {
     fortinet_esp                      = optional(string)
     auto_transport_threshold          = optional(number)
     fallback_tcp_threshold            = optional(number)
-    dynamic_sort_subtable             = optional(string)
-    get_all_tables                    = optional(bool)
+    dynamic_sort_subtable             = optional(string, "natural")
+    get_all_tables                    = optional(bool, false)
     vdomparam                         = optional(string)
     update_if_exist                   = optional(bool)
   }))
@@ -256,8 +256,8 @@ variable "phase1interface" {
     error_message = "Parameter `monitor_hold_down_type` must be one of `immediate`, `delay`, `time`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase1interface : o.monitor_hold_down_weekday == null || contains(["everyday", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "Saturday"], o.monitor_hold_down_weekday)]))
-    error_message = "Parameter `monitor_hold_down_weekday` must be one of `everyday`, `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `Saturday`."
+    condition     = alltrue(flatten([for o in var.phase1interface : o.monitor_hold_down_weekday == null || contains(["everyday", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"], o.monitor_hold_down_weekday)]))
+    error_message = "Parameter `monitor_hold_down_weekday` must be one of `everyday`, `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.net_device == null || contains(["enable", "disable"], o.net_device)]))
@@ -286,6 +286,10 @@ variable "phase1interface" {
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.peer_egress_shaping == null || contains(["enable", "disable"], o.peer_egress_shaping)]))
     error_message = "Parameter `peer_egress_shaping` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.phase1interface : o.peer_egress_shaping_value == null || (o.peer_egress_shaping_value >= 0 && o.peer_egress_shaping_value <= 100000000)]))
+    error_message = "Parameter `peer_egress_shaping_value` must be in the range 0-100000000."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.multipath == null || (o.multipath >= 0 && o.multipath <= 31)]))
@@ -336,8 +340,8 @@ variable "phase1interface" {
     error_message = "Parameter `client_keep_alive` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase1interface : o.add_route == null || contains(["enable", "disable"], o.add_route)]))
-    error_message = "Parameter `add_route` must be one of `enable`, `disable`."
+    condition     = alltrue(flatten([for o in var.phase1interface : o.add_route == null || contains(["disable", "enable"], o.add_route)]))
+    error_message = "Parameter `add_route` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.add_gw_route == null || contains(["enable", "disable"], o.add_gw_route)]))
@@ -346,6 +350,10 @@ variable "phase1interface" {
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.distance == null || (o.distance >= 1 && o.distance <= 255)]))
     error_message = "Parameter `distance` must be in the range 1-255."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.phase1interface : o.priority == null || (o.priority >= 1 && o.priority <= 65535)]))
+    error_message = "Parameter `priority` must be in the range 1-65535."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.localid_type == null || contains(["auto", "fqdn", "user-fqdn", "keyid", "address", "asn1dn"], o.localid_type)]))
@@ -552,6 +560,10 @@ variable "phase1interface" {
     error_message = "Parameter `fec_send_timeout` must be in the range 1-1000."
   }
   validation {
+    condition     = alltrue(flatten([for o in var.phase1interface : o.fec_base == null || (o.fec_base >= 1 && o.fec_base <= 40)]))
+    error_message = "Parameter `fec_base` must be in the range 1-40."
+  }
+  validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.fec_codec_string == null || contains(["rs", "xor"], o.fec_codec_string)]))
     error_message = "Parameter `fec_codec_string` must be one of `rs`, `xor`."
   }
@@ -560,8 +572,16 @@ variable "phase1interface" {
     error_message = "Parameter `fec_codec` must be in the range 0-1."
   }
   validation {
+    condition     = alltrue(flatten([for o in var.phase1interface : o.fec_redundant == null || (o.fec_redundant >= 1 && o.fec_redundant <= 20)]))
+    error_message = "Parameter `fec_redundant` must be in the range 1-20."
+  }
+  validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.fec_ingress == null || contains(["enable", "disable"], o.fec_ingress)]))
     error_message = "Parameter `fec_ingress` must be one of `enable`, `disable`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.phase1interface : o.fec_receive_timeout == null || (o.fec_receive_timeout >= 1 && o.fec_receive_timeout <= 1000)]))
+    error_message = "Parameter `fec_receive_timeout` must be in the range 1-1000."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.network_overlay == null || contains(["disable", "enable"], o.network_overlay)]))
@@ -620,8 +640,8 @@ variable "phase1interface" {
     error_message = "Parameter `fortinet_esp` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase1interface : o.dynamic_sort_subtable == null || contains(["false", "true", "natrual", "alphabetical"], o.dynamic_sort_subtable)]))
-    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natrual`, `alphabetical`."
+    condition     = alltrue(flatten([for o in var.phase1interface : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
+    error_message = "Parameter `dynamic_sort_subtable` must be one of `false`, `true`, `natural`, `alphabetical`."
   }
 }
 
@@ -740,8 +760,8 @@ variable "phase2interface" {
     error_message = "Parameter `keylifekbs` must be in the range 5120-4294967295."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase2interface : o.keylife_type == null || contains(["seconds", "kbps", "both"], o.keylife_type)]))
-    error_message = "Parameter `keylife_type` must be one of `seconds`, `kbps`, `both`."
+    condition     = alltrue(flatten([for o in var.phase2interface : o.keylife_type == null || contains(["seconds", "kbs", "both"], o.keylife_type)]))
+    error_message = "Parameter `keylife_type` must be one of `seconds`, `kbs`, `both`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.phase2interface : o.single_source == null || contains(["enable", "disable"], o.single_source)]))
@@ -768,15 +788,23 @@ variable "phase2interface" {
     error_message = "Parameter `diffserv` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase2interface : o.protocol == null || (o.protocol >= 0 && o.protocol <= 255)]))
-    error_message = "Parameter `protocol` must be in the range 0-255."
+    condition     = alltrue(flatten([for o in var.phase2interface : o.protocol == null || (o.protocol >= 1 && o.protocol <= 255)]))
+    error_message = "Parameter `protocol` must be in the range 1-255."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase2interface : o.src_port == null || (o.src_port >= 0 && o.src_port <= 65535)]))
-    error_message = "Parameter `src_port` must be in the range 0-65535."
+    condition     = alltrue(flatten([for o in var.phase2interface : o.src_addr_type == null || contains(["subnet", "range", "ip", "name", "subnet6", "range6", "ip6", "name6"], o.src_addr_type)]))
+    error_message = "Parameter `src_addr_type` must be one of `subnet`, `range`, `ip`, `name`, `subnet6`, `range6`, `ip6`, `name6`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase2interface : o.dst_port == null || (o.dst_port >= 0 && o.dst_port <= 65535)]))
-    error_message = "Parameter `dst_port` must be in the range 0-65535."
+    condition     = alltrue(flatten([for o in var.phase2interface : o.src_port == null || (o.src_port >= 1 && o.src_port <= 65535)]))
+    error_message = "Parameter `src_port` must be in the range 1-65535."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.phase2interface : o.dst_addr_type == null || contains(["subnet", "range", "ip", "name", "subnet6", "range6", "ip6", "name6"], o.dst_addr_type)]))
+    error_message = "Parameter `dst_addr_type` must be one of `subnet`, `range`, `ip`, `name`, `subnet6`, `range6`, `ip6`, `name6`."
+  }
+  validation {
+    condition     = alltrue(flatten([for o in var.phase2interface : o.dst_port == null || (o.dst_port >= 1 && o.dst_port <= 65535)]))
+    error_message = "Parameter `dst_port` must be in the range 1-65535."
   }
 }

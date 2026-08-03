@@ -1,0 +1,16 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: IPv4 Routing prefix list,,,,,,
+#module: router-global
+name,string,,,1,,(Required) Name.
+comments,string,,,,,Comment.
+rule,list(object),,,,,IPv6 prefix list rule. The structure of rule block is documented below.
+rule.id,number,,,,,Rule ID.
+rule.action,string,permit|deny,,,,"Permit or deny this IP address and netmask prefix. Valid values: permit, deny."
+rule.prefix,string,,,,,"IPv4 prefix to define regular filter criteria, such as ""any"" or subnets."
+rule.ge,number,,0-32,,,Minimum prefix length to be matched (0 - 32).
+rule.le,number,,0-32,,,Maximum prefix length to be matched (0 - 32).
+rule.flags,string,,,,,Flags.
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

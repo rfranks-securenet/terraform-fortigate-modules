@@ -1,0 +1,104 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: DHCP Servers to create,,,,,,
+#name: dhcp_server,,,,,,
+#module: dhcp-servers
+fosid,number,,,,,ID.
+status,string,disable|enable,,,,"Enable/disable this DHCP configuration. Valid values: disable, enable."
+lease_time,number,,0-,,,"Lease time in seconds, 0 means unlimited."
+mac_acl_default_action,string,assign|block,,,,"MAC access control default action (allow or block assigning IP settings). Valid values: assign, block."
+forticlient_on_net_status,string,disable|enable,,,,"Enable/disable FortiClient-On-Net service for this DHCP server. Valid values: disable, enable."
+dns_service,string,local|default|specify,,,,"Options for assigning DNS servers to DHCP clients. Valid values: local, default, specify."
+dns_server1,string,,,,,DNS server 1.
+dns_server2,string,,,,,DNS server 2.
+dns_server3,string,,,,,DNS server 3.
+dns_server4,string,,,,,DNS server 4.
+wifi_ac_service,string,specify|local,,,,"Options for assigning WiFi Access Controllers to DHCP clients Valid values: specify, local."
+wifi_ac1,string,,,,,"WiFi Access Controller 1 IP address (DHCP option 138, RFC 5417)."
+wifi_ac2,string,,,,,"WiFi Access Controller 2 IP address (DHCP option 138, RFC 5417)."
+wifi_ac3,string,,,,,"WiFi Access Controller 3 IP address (DHCP option 138, RFC 5417)."
+ntp_service,string,local|default|specify,,,,"Options for assigning Network Time Protocol (NTP) servers to DHCP clients. Valid values: local, default, specify."
+ntp_server1,string,,,,,NTP server 1.
+ntp_server2,string,,,,,NTP server 2.
+ntp_server3,string,,,,,NTP server 3.
+domain,string,,,,,Domain name suffix for the IP addresses that the DHCP server assigns to clients.
+wins_server1,string,,,,,WINS server 1.
+wins_server2,string,,,,,WINS server 2.
+default_gateway,string,,,,,Default gateway IP address assigned by the DHCP server.
+next_server,string,,,,,"IP address of a server, such as a TFTP server, from which DHCP clients can download a boot file."
+netmask,string,,,1,,(Required) Netmask assigned by the DHCP server.
+interface,string,,,1,,(Required) DHCP server can assign IP configurations to clients connected to this interface.
+ip_range,list(object),,,,,DHCP IP range configuration. The structure of ip_range block is documented below.
+ip_range.id,number,,,,,ID.
+ip_range.start_ip,string,,,1,,Start of IP range.
+ip_range.end_ip,string,,,1,,End of IP range.
+ip_range.vci_match,string,disable|enable,,,,"Enable/disable vendor class identifier (VCI) matching. When enabled only DHCP requests with a matching VCI are served with this range. Valid values: disable, enable."
+ip_range.vci_string,list(string),,,,,One or more VCI strings in quotes separated by spaces. The structure of vci_string block is documented below.
+ip_range.uci_match,string,disable|enable,,,,"Enable/disable user class identifier (UCI) matching. When enabled only DHCP requests with a matching UCI are served with this range. Valid values: disable, enable."
+ip_range.uci_string,list(string),,,,,One or more UCI strings in quotes separated by spaces. The structure of uci_string block is documented below.
+ip_range.oui_match,string,disable|enable,,,,"Enable/disable organizationally unique identifier (OUI) matching. When enabled only DHCP requests with a matching OUI are served with this range. Valid values: disable, enable."
+ip_range.oui_string,list(string),,,,,One or more OUI strings in quotes separated by spaces (in format of xx:xx:xx). The structure of oui_string block is documented below.
+ip_range.lease_time,number,,0-,,,"Lease time in seconds, 0 means default lease time."
+ip_range.vendor,string,,,,,Vendor this ip-range will be assigned to.
+timezone_option,string,disable|default|specify,,,,"Options for the DHCP server to set the client's time zone. Valid values: disable, default, specify."
+timezone,string,,,,,Select the time zone to be assigned to DHCP clients.
+tftp_server,list(string),,,,,One or more hostnames or IP addresses of the TFTP servers in quotes separated by spaces. The structure of tftp_server block is documented below.
+filename,string,,,,,Name of the boot file on the TFTP server.
+template,string,,,,,DHCP template associated with the server.
+template_subnet,string,,,,,Configure template subnet.
+template_subnet_from_interface,string,disable|enable,,,,"Use interface subnet as DHCP template subnet. Valid values: disable, enable."
+options,list(object),,,,,DHCP options. The structure of options block is documented below.
+options.id,number,,,,,ID.
+options.code,number,,,1,,DHCP option code.
+options.type,string,hex|string|ip|fqdn,,,,"DHCP option type. Valid values: hex, string, ip, fqdn."
+options.value,string,,,,,DHCP option value.
+options.ip,string,,,,,DHCP option IPs.
+options.vci_match,string,disable|enable,,,,"Enable/disable vendor class identifier (VCI) matching. When enabled only DHCP requests with a matching VCI are served with this option. Valid values: disable, enable."
+options.vci_string,list(string),,,,,One or more VCI strings in quotes separated by spaces. The structure of vci_string block is documented below.
+options.uci_match,string,disable|enable,,,,"Enable/disable user class identifier (UCI) matching. When enabled only DHCP requests with a matching UCI are served with this option. Valid values: disable, enable."
+options.uci_string,list(string),,,,,One or more UCI strings in quotes separated by spaces. The structure of uci_string block is documented below.
+server_type,string,regular|ipsec,,,,"DHCP server can be a normal DHCP server or an IPsec DHCP server. Valid values: regular, ipsec."
+ip_mode,string,range|usrgrp,,,,"Method used to assign client IP. Valid values: range, usrgrp."
+conflicted_ip_timeout,string,,,,,Time in seconds to wait after a conflicted IP address is removed from the DHCP range before it can be reused.
+ipsec_lease_hold,string,,,,,DHCP over IPsec leases expire this many seconds after tunnel down (0 to disable forced-expiry).
+auto_configuration,string,disable|enable,,,,"Enable/disable auto configuration. Valid values: disable, enable."
+dhcp_settings_from_fortiipam,string,disable|enable,,,,"Enable/disable populating of DHCP server settings from FortiIPAM. Valid values: disable, enable."
+auto_managed_status,string,disable|enable,,,,"Enable/disable use of this DHCP server once this interface has been assigned an IP address from FortiIPAM. Valid values: disable, enable."
+ddns_update,string,disable|enable,,,,"Enable/disable DDNS update for DHCP. Valid values: disable, enable."
+ddns_update_override,string,disable|enable,,,,"Enable/disable DDNS update override for DHCP. Valid values: disable, enable."
+ddns_server_ip,string,,,,,DDNS server IP.
+ddns_zone,string,,,,,Zone of your domain name (ex. DDNS.com).
+ddns_auth,string,disable|tsig,,,,"DDNS authentication mode. Valid values: disable, tsig."
+ddns_keyname,string,,,,,DDNS update key name.
+ddns_key,string,,,,,DDNS update key (base 64 encoding).
+ddns_ttl,number,,0-,,,TTL.
+vci_match,string,disable|enable,,,,"Enable/disable vendor class identifier (VCI) matching. When enabled only DHCP requests with a matching VCI are served. Valid values: disable, enable."
+vci_string,list(string),,,,,One or more VCI strings in quotes separated by spaces. The structure of vci_string block is documented below.
+exclude_range,list(object),,,,,Exclude one or more ranges of IP addresses from being assigned to clients. The structure of exclude_range block is documented below.
+exclude_range.id,number,,,,,ID.
+exclude_range.start_ip,string,,,1,,Start of IP range.
+exclude_range.end_ip,string,,,1,,End of IP range.
+exclude_range.vci_match,string,disable|enable,,,,"Enable/disable vendor class identifier (VCI) matching. When enabled only DHCP requests with a matching VCI are served with this range. Valid values: disable, enable."
+exclude_range.vci_string,list(string),,,,,One or more VCI strings in quotes separated by spaces. The structure of vci_string block is documented below.
+exclude_range.uci_match,string,disable|enable,,,,"Enable/disable user class identifier (UCI) matching. When enabled only DHCP requests with a matching UCI are served with this range. Valid values: disable, enable."
+exclude_range.uci_string,list(string),,,,,One or more UCI strings in quotes separated by spaces. The structure of uci_string block is documented below.
+exclude_range.oui_match,string,disable|enable,,,,"Enable/disable organizationally unique identifier (OUI) matching. When enabled only DHCP requests with a matching OUI are served with this range. Valid values: disable, enable."
+exclude_range.oui_string,list(string),,,,,One or more OUI strings in quotes separated by spaces (in format of xx:xx:xx). The structure of oui_string block is documented below.
+exclude_range.lease_time,number,,0-,,,"Lease time in seconds, 0 means default lease time."
+exclude_range.vendor,string,,,,,Vendor this ip-range will be assigned to.
+shared_subnet,string,disable|enable,,,,"Enable/disable shared subnet. Valid values: disable, enable."
+relay_agent,string,,,,,Relay agent IP.
+reserved_address,list(object),,,,,Options for the DHCP server to assign IP settings to specific MAC addresses. The structure of reserved_address block is documented below.
+reserved_address.id,number,,,,,ID.
+reserved_address.type,string,mac|option82,,,,"DHCP reserved-address type. Valid values: mac, option82."
+reserved_address.ip,string,,,1,,IP address to be reserved for the MAC address.
+reserved_address.mac,string,mac|option82,,1,,MAC address of the client that will get the reserved IP address.
+reserved_address.action,string,assign|block|reserved,,,,"Options for the DHCP server to configure the client with the reserved MAC address. Valid values: assign, block, reserved."
+reserved_address.circuit_id_type,string,hex|string,,,,"DHCP option type. Valid values: hex, string."
+reserved_address.circuit_id,string,,,,,Option 82 circuit-ID of the client that will get the reserved IP address.
+reserved_address.remote_id_type,string,hex|string,,,,"DHCP option type. Valid values: hex, string."
+reserved_address.remote_id,string,,,,,Option 82 remote-ID of the client that will get the reserved IP address.
+reserved_address.description,string,,,,,Description.
+dynamic_sort_subtable,string,false|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ false, true, natural, alphabetical ]. false: Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,false,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ false, true ]. false: Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is false. If you want to inherit the value of the provider, please do not set this parameter."

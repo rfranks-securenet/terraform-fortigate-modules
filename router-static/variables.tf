@@ -1,0 +1,35 @@
+variable "static_routes" {
+  description = "Static Router configuration"
+  default     = []
+
+  type = list(object({
+    seq_num                     = optional(number)
+    status                      = optional(string)
+    dst                         = optional(string)
+    src                         = optional(string)
+    gateway                     = optional(string)
+    preferred_source            = optional(string)
+    distance                    = optional(number)
+    weight                      = optional(number)
+    priority                    = optional(number)
+    device                      = optional(string)
+    comment                     = optional(string)
+    blackhole                   = optional(string)
+    dynamic_gateway             = optional(string)
+    sdwan_zone                  = optional(string)
+    sdwan                       = optional(string)
+    virtual_wan_link            = optional(string)
+    dstaddr                     = optional(string)
+    internet_service            = optional(string)
+    internet_service_custom     = optional(string)
+    internet_service_fortiguard = optional(string)
+    link_monitor_exempt         = optional(string)
+    tag                         = optional(string)
+    vrf                         = optional(number)
+    bfd                         = optional(string)
+    dynamic_sort_subtable       = optional(string)
+    get_all_tables              = optional(bool)
+    vdomparam                   = optional(string)
+    update_if_exist             = optional(bool)
+  }))
+}

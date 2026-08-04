@@ -3,27 +3,6 @@
  *
  * This terraform module configures VIP and VIP6 objects on a firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
-
-# locals {
-#   vdom_nats_yaml = {
-#     for vdom in var.vdoms : vdom => fileexists("${var.config_path}/${vdom}/nat.yaml") ? yamldecode(file("${var.config_path}/${vdom}/nat.yaml")) : {}
-#   }
-#
-#   nats = flatten([
-#     for vdom in var.vdoms : [
-#       for name, nat in(local.vdom_nats_yaml[vdom] == null ? {} : local.vdom_nats_yaml[vdom]) : [merge(nat, { name = name, vdom = vdom })]
-#     ]
-#   ])
-# }
 
 resource "fortios_firewall_vip" "vips" {
   for_each                              = { for vip in var.vip : vip.name => vip }

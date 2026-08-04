@@ -3,15 +3,6 @@
  *
  * This terraform module configures static routes on a firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_router_static" "static_route" {
   for_each                    = { for route in var.static_routes : "${route.dst}_${route.gateway == null ? route.blackhole == "enable" ? "blackhole" : route.device == null ? "" : route.device : route.gateway}" => route }

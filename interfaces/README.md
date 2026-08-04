@@ -37,5 +37,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_interface"></a> [interface](#output\_interface) | n/a |
+| <a name="output_zone"></a> [zone](#output\_zone) | n/a |
 <!-- END_TF_DOCS -->

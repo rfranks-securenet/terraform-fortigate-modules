@@ -1,5 +1,5 @@
 output "interface" {
-  value = fortios_system_interface.interfaces
+  value     = fortios_system_interface.interfaces
   sensitive = true
 }
 

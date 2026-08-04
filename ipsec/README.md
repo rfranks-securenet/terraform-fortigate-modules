@@ -36,5 +36,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_phase1interface"></a> [phase1interface](#output\_phase1interface) | n/a |
+| <a name="output_phase2interface"></a> [phase2interface](#output\_phase2interface) | n/a |
 <!-- END_TF_DOCS -->

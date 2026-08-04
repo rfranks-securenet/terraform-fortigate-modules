@@ -3,15 +3,6 @@
  *
  * This terraform module configures IPsec tunnels on a FortiGate firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_vpnipsec_phase1interface" "phase1" {
   for_each                          = { for phase1 in var.phase1interface : phase1.name => phase1 }

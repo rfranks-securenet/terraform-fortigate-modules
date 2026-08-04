@@ -39,5 +39,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_prefixlist"></a> [prefixlist](#output\_prefixlist) | n/a |
+| <a name="output_prefixlist6"></a> [prefixlist6](#output\_prefixlist6) | n/a |
+| <a name="output_routemap"></a> [routemap](#output\_routemap) | n/a |
 <!-- END_TF_DOCS -->

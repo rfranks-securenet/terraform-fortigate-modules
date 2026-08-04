@@ -3,6 +3,7 @@ variable "centralsnatmap" {
   default     = []
 
   type = list(object({
+    name = string
     policyid              = optional(number)
     uuid                  = optional(string)
     status                = optional(string)

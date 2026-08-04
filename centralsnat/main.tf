@@ -3,15 +3,6 @@
  *
  * This terraform module configures Central SNAT rules on a Fortigate Firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_firewall_centralsnatmap" "snats" {
   for_each              = { for snat in var.centralsnatmap : snat.name => snat }

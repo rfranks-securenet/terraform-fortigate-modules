@@ -3,15 +3,6 @@
  *
  * This terraform module configures DHCP servers on a firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 resource "fortios_systemdhcp_server" "dhcp" {
   for_each = { for server in var.dhcp_server : server.interface => server }
 
@@ -192,7 +183,7 @@ resource "fortios_systemdhcp_server" "dhcp" {
 }
 
 resource "fortios_systemdhcp6_server" "dhcp" {
-  for_each               = { for server in var.dhcp6 : server.interface => server }
+  for_each               = { for server in var.dhcp6_server : server.interface => server }
   fosid                  = each.value.fosid
   status                 = each.value.status
   rapid_commit           = each.value.rapid_commit

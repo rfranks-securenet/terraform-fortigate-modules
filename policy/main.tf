@@ -3,15 +3,6 @@
  *
  * This terraform module configures Policy on a firewall
  */
-terraform {
-  required_version = ">= v1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_firewall_policy" "policy" {
   for_each                       = { for policy in var.policy : policy.name => policy }

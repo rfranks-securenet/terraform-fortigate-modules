@@ -44,5 +44,12 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_address"></a> [address](#output\_address) | n/a |
+| <a name="output_address6"></a> [address6](#output\_address6) | n/a |
+| <a name="output_addrgrp"></a> [addrgrp](#output\_addrgrp) | n/a |
+| <a name="output_addrgrp6"></a> [addrgrp6](#output\_addrgrp6) | n/a |
+| <a name="output_category"></a> [category](#output\_category) | n/a |
+| <a name="output_custom"></a> [custom](#output\_custom) | n/a |
 <!-- END_TF_DOCS -->

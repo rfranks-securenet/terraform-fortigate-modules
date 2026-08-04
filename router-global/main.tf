@@ -4,15 +4,6 @@
  * This terraform module configures global router objects such as prefix lists,
  * route maps, etc.
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_router_prefixlist6" "prefixlist6" {
   for_each              = { for prefix_list in var.prefixlist6 : prefix_list.name => prefix_list }

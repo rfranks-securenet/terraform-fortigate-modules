@@ -3,15 +3,6 @@
  *
  * This terraform module configures BGP on a firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_router_bgp" "router_bgp" {
   for_each                            = { for o in var.routerbgp : o.as => o }

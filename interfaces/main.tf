@@ -4,15 +4,6 @@
  * This terraform module configures interfaces, zones & hardware
  * switches on a firewall
  */
-terraform {
-  required_version = ">= 1.11.0"
-  required_providers {
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = ">= 1.22.0"
-    }
-  }
-}
 
 resource "fortios_system_interface" "interfaces" {
   for_each = { for interface in var.interface : interface.name => interface }

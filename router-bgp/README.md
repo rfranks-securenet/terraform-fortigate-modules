@@ -36,5 +36,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_bgp"></a> [bgp](#output\_bgp) | n/a |
+| <a name="output_neighbor"></a> [neighbor](#output\_neighbor) | n/a |
 <!-- END_TF_DOCS -->

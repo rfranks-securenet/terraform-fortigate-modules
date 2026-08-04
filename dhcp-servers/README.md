@@ -36,5 +36,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_dhcp6_server"></a> [dhcp6\_server](#output\_dhcp6\_server) | n/a |
+| <a name="output_dhcp_server"></a> [dhcp\_server](#output\_dhcp\_server) | n/a |
 <!-- END_TF_DOCS -->

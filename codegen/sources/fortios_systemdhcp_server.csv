@@ -91,7 +91,7 @@ reserved_address,list(object),,,,,Options for the DHCP server to assign IP setti
 reserved_address.id,number,,,,,ID.
 reserved_address.type,string,mac|option82,,,,"DHCP reserved-address type. Valid values: mac, option82."
 reserved_address.ip,string,,,1,,IP address to be reserved for the MAC address.
-reserved_address.mac,string,mac|option82,,1,,MAC address of the client that will get the reserved IP address.
+reserved_address.mac,string,,,1,,MAC address of the client that will get the reserved IP address.
 reserved_address.action,string,assign|block|reserved,,,,"Options for the DHCP server to configure the client with the reserved MAC address. Valid values: assign, block, reserved."
 reserved_address.circuit_id_type,string,hex|string,,,,"DHCP option type. Valid values: hex, string."
 reserved_address.circuit_id,string,,,,,Option 82 circuit-ID of the client that will get the reserved IP address.

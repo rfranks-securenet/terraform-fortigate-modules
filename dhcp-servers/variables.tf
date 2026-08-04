@@ -238,10 +238,6 @@ variable "dhcp_server" {
     error_message = "Parameter `reserved_address.type` must be one of `mac`, `option82`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.mac == null || contains(["mac", "option82"], p.mac)]]))
-    error_message = "Parameter `reserved_address.mac` must be one of `mac`, `option82`."
-  }
-  validation {
     condition     = alltrue(flatten([for o in var.dhcp_server : [for p in o.reserved_address : p == null || p.action == null || contains(["assign", "block", "reserved"], p.action)]]))
     error_message = "Parameter `reserved_address.action` must be one of `assign`, `block`, `reserved`."
   }

@@ -34,7 +34,5 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-| ---- | ----------- |
-| <a name="output_policy"></a> [policy](#output\_policy) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->

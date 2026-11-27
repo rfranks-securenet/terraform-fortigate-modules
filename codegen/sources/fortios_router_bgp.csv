@@ -3,7 +3,7 @@ Variable,Type,Values,Value range,Required,Default,Description
 #name: routerbgp,,,,,,
 #module: router-bgp
 as_string,string,,,,,"Router AS number, asplain/asdot/asdot+ format, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as."
-as,string,,1-4294967295,1,,"(Required) Router AS number, valid from 1 to 4294967295, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as_string."
+as,string,,1-4294967295,,,"Router AS number, valid from 1 to 4294967295, 0 to disable BGP. Due to the data type change of API, for other versions of FortiOS, please check variable as_string."
 router_id,string,,,,,Router ID.
 keepalive_timer,string,,,,,Frequency to send keep alive requests.
 holdtime_timer,string,,,,,Number of seconds to mark peer as dead.

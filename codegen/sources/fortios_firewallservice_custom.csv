@@ -17,15 +17,15 @@ tcp_portrange,string,,,,,Multiple TCP port ranges.
 udp_portrange,string,,,,,Multiple UDP port ranges.
 udplite_portrange,string,,,,,Multiple UDP-Lite port ranges.
 sctp_portrange,string,,,,,Multiple SCTP port ranges.
-tcp_halfclose_timer,number,,1-86400,,0,"Wait time to close a TCP session waiting for an unanswered FIN packet (1 - 86400 sec, 0 = default)."
-tcp_halfopen_timer,string,,1-86400,,0,"Wait time to close a TCP session waiting for an unanswered open session packet (1 - 86400 sec, 0 = default)."
-tcp_timewait_timer,string,,1-300,,0,"Set the length of the TCP TIME-WAIT state in seconds (1 - 300 sec, 0 = default)."
-tcp_rst_timer,string,,5-300,,0,"Set the length of the TCP CLOSE state in seconds (5 - 300 sec, 0 = default)."
-udp_idle_timer,string,,0-86400,,0,"Number of seconds before an idle UDP/UDP-Lite connection times out (0 - 86400 sec, 0 = default)."
-session_ttl,string,,300-2764800,,0,"Session TTL (300 - 2764800, 0 = default)."
+tcp_halfclose_timer,number,,1-86400,,,"Wait time to close a TCP session waiting for an unanswered FIN packet (1 - 86400 sec, 0 = default)."
+tcp_halfopen_timer,string,,1-86400,,,"Wait time to close a TCP session waiting for an unanswered open session packet (1 - 86400 sec, 0 = default)."
+tcp_timewait_timer,string,,1-300,,,"Set the length of the TCP TIME-WAIT state in seconds (1 - 300 sec, 0 = default)."
+tcp_rst_timer,string,,5-300,,,"Set the length of the TCP CLOSE state in seconds (5 - 300 sec, 0 = default)."
+udp_idle_timer,string,,0-86400,,,"Number of seconds before an idle UDP/UDP-Lite connection times out (0 - 86400 sec, 0 = default)."
+session_ttl,string,,300-2764800,,,"Session TTL (300 - 2764800, 0 = default)."
 check_reset_range,string,disable|strict|default,,,,"Configure the type of ICMP error message verification. Valid values: disable, strict, default."
 comment,string,,,,,Comment.
-color,number,,1-32,,0,Color of icon on the GUI.
+color,number,,1-32,,,Color of icon on the GUI.
 visibility,string,enable|disable,,,,"Enable/disable the visibility of the service on the GUI. Valid values: enable, disable."
 app_service_type,string,disable|app-id|app-category,,,,"Application service type. Valid values: disable, app-id, app-category."
 app_category,list(string),,,,,Application category ID. The structure of app_category block is documented below.

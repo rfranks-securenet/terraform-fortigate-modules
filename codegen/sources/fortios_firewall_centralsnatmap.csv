@@ -1,6 +1,7 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: Central SNATs to create,,,,,,
 #module: centralsnat
+name,string,,,1,,Policy Name.
 policyid,number,,,,,Policy ID.
 uuid,string,,,,,Universally Unique Identifier (UUID; automatically assigned but can be manually reset).
 status,string,enable|disable,,,,"Enable/disable the active status of this policy. Valid values: enable, disable."

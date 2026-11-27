@@ -109,7 +109,7 @@ forticlient_enforcement,string,enable|disable,,,,"Enable/disable FortiClient enf
 comments,string,,,,,Comment.
 npu_offload,string,enable|disable,,,,"Enable/disable offloading NPU. Valid values: enable, disable."
 send_cert_chain,string,enable|disable,,,,"Enable/disable sending certificate chain. Valid values: enable, disable."
-dhgrp,number,1|2|5|14|15|16|17|18|19|20|21|27|28|29|30|31|32,,,,"DH group. Valid values: 1, 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 27, 28, 29, 30, 31, 32."
+dhgrp,string,,,,,"DH group. Valid values: 1, 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 27, 28, 29, 30, 31, 32."
 addke1,string,,,,,ADDKE1 group.
 addke2,string,,,,,ADDKE2 group.
 addke3,string,,,,,ADDKE3 group.

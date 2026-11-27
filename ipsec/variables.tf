@@ -392,10 +392,6 @@ variable "phase1interface" {
     error_message = "Parameter `send_cert_chain` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.phase1interface : o.dhgrp == null || contains([1, 2, 5, 14, 15, 16, 17, 18, 19, 20, 21, 27, 28, 29, 30, 31, 32], o.dhgrp)]))
-    error_message = "Parameter `dhgrp` must be one of `1`, `2`, `5`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `27`, `28`, `29`, `30`, `31`, `32`."
-  }
-  validation {
     condition     = alltrue(flatten([for o in var.phase1interface : o.suite_b == null || contains(["disable", "suite-b-gcm-128", "suite-b-gcm-256"], o.suite_b)]))
     error_message = "Parameter `suite_b` must be one of `disable`, `suite-b-gcm-128`, `suite-b-gcm-256`."
   }

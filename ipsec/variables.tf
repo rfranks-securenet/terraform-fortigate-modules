@@ -113,7 +113,7 @@ variable "phase1interface" {
     comments                          = optional(string)
     npu_offload                       = optional(string)
     send_cert_chain                   = optional(string)
-    dhgrp                             = optional(number)
+    dhgrp                             = optional(string)
     addke1                            = optional(string)
     addke2                            = optional(string)
     addke3                            = optional(string)

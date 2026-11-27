@@ -5,7 +5,7 @@
  */
 
 resource "fortios_router_bgp" "router_bgp" {
-  for_each                            = { for o in var.routerbgp : o.as => o }
+  for_each                            = { for o in var.routerbgp : o.as_string => o }
   as_string                           = each.value.as_string
   as                                  = each.value.as
   router_id                           = each.value.router_id

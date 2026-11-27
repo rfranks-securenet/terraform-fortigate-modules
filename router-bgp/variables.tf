@@ -560,7 +560,7 @@ variable "routerbgp" {
 
   type = list(object({
     as_string                           = optional(string)
-    as                                  = string
+    as                                  = optional(string)
     router_id                           = optional(string)
     keepalive_timer                     = optional(string)
     holdtime_timer                      = optional(string)

@@ -1,0 +1,29 @@
+Variable,Type,Values,Value range,Required,Default,Description
+#desc: Static Router configuration,,,,,,
+#name: static_route6,,,,,,
+#module: router-static,,,,,,
+seq_num,string,,,,,Sequence number.
+status,string,enable|disable,,,,Enable/disable this static route
+dst,string,,,,,Destination IPv6 prefix.
+gateway,string,,,,,IPv6 address of the gateway.
+device,string,,,1,,Gateway out interface or tunnel.
+devindex,string,,0-4294967295,,,Device index.
+distance,string,,1-255,,,Administrative distance (1 - 255).
+weight,string,,0-255,,,Administrative weight (0 - 255).
+priority,string,,1-65535,,,Administrative priority.
+comment,string,,,,,Optional comments.
+blackhole,string,enable|disable,,,,Enable/disable black hole.
+dynamic_gateway,string,enable|disable,,,,Enable use of dynamic gateway retrieved from Router Advertisement (RA).
+sdwan_zone,list(object),,,,,Choose SD-WAN Zone. The structure of sdwan_zone block is documented below.
+sdwan_zone.name,string,,,,,
+dstaddr,string,,,,,Name of firewall address or address group.
+sdwan,string,enable|disable,,,,Enable/disable egress through the SD-WAN.
+virtual_wan_link,string,enable|disable,,,,Enable/disable egress through the virtual-wan-link.
+link_monitor_exempt,string,enable|disable,,,,Enable/disable withdrawal of this static route when link monitor or health check is down.
+vrf,string,,,,,Virtual Routing Forwarding ID.
+bfd,string,enable|disable,,,,Enable/disable Bidirectional Forwarding Detection (BFD).
+tag,string,,,,,Route tag.
+dynamic_sort_subtable,string,|true|natural|alphabetical,,,natural,"Sort sub-tables, please do not set this parameter when configuring static sub-tables. Options: [ , true, natural, alphabetical ]. : Default value, do not sort tables; true/natural: sort tables in natural order. For example: [ a10, a2 ] --> [ a2, a10 ]; alphabetical: sort tables in alphabetical order. For example: [ a10, a2 ] --> [ a10, a2 ]."
+get_all_tables,bool,,,,,"Get all sub-tables including unconfigured tables. Do not set this variable to true if you configure sub-table in another resource, otherwise, conflicts and overwrite will occur. Options: [ , true ]. : Default value, do not get unconfigured tables; true: get all tables including unconfigured tables."
+vdomparam,string,,,,,"Specifies the vdom to which the resource will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter."
+update_if_exist,bool,,,,,"Equivalent functionality of import the resource. If set to true, will check whether the resource exist, if so, will do the UPDATE operation rather CREATE. Default is . If you want to inherit the value of the provider, please do not set this parameter."

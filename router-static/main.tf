@@ -5,7 +5,7 @@
  */
 
 resource "fortios_router_static" "static_route" {
-  for_each                    = { for route in var.static_routes : "${route.dst}_${route.gateway == null ? route.blackhole == "enable" ? "blackhole" : route.device == null ? "" : route.device : route.gateway}" => route }
+  for_each                    = { for route in var.static_route : "${route.dst}_${route.gateway == null ? route.blackhole == "enable" ? "blackhole" : route.device == null ? "" : route.device : route.gateway}" => route }
   seq_num                     = each.value.seq_num
   status                      = each.value.status
   dst                         = each.value.dst
@@ -38,6 +38,41 @@ resource "fortios_router_static" "static_route" {
     for_each = each.value.sdwan_zone == null ? [] : [each.value.sdwan_zone]
     content {
       name = sdwan_zone.value
+    }
+  }
+}
+
+resource "fortios_router_static6" "static_route" {
+  for_each = { for route in var.static_route6 : "${route.dst}_${route.gateway == null ? route.blackhole == "enable" ? "blackhole" : route.device == null ? "" : route.device : route.gateway}" => route }
+
+  seq_num               = each.value.seq_num
+  status                = each.value.status
+  dst                   = each.value.dst
+  gateway               = each.value.gateway
+  device                = each.value.device
+  devindex              = each.value.devindex
+  distance              = each.value.distance
+  weight                = each.value.weight
+  priority              = each.value.priority
+  comment               = each.value.comment
+  blackhole             = each.value.blackhole
+  dynamic_gateway       = each.value.dynamic_gateway
+  dstaddr               = each.value.dstaddr
+  sdwan                 = each.value.sdwan
+  virtual_wan_link      = each.value.virtual_wan_link
+  link_monitor_exempt   = each.value.link_monitor_exempt
+  vrf                   = each.value.vrf
+  bfd                   = each.value.bfd
+  tag                   = each.value.tag
+  dynamic_sort_subtable = each.value.dynamic_sort_subtable
+  get_all_tables        = each.value.get_all_tables
+  vdomparam             = each.value.vdomparam
+  update_if_exist       = each.value.update_if_exist
+
+  dynamic "sdwan_zone" {
+    for_each = each.value.sdwan_zone == null ? [] : each.value.sdwan_zone
+    content {
+      name = sdwan_zone.value.name
     }
   }
 }

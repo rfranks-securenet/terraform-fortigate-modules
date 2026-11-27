@@ -1,6 +1,6 @@
 Variable,Type,Values,Value range,Required,Default,Description
 #desc: Static Router configuration,,,,,,
-#name: static_routes,,,,,,
+#name: static_route,,,,,,
 #module: router-static
 seq_num,number,,,,,"Sequence number."
 status,string,,,,,"Enable/disable this static route. Valid values: enable, disable."
